@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <form action="">
+    
+            <!-- 아이디/패스워드 입력 -->
+            <fieldset>
+                <legend>로그인 정보</legend>
+                <label for="userid">id</label><br>
+                <input id="userid" type="text" placeholder="이메일 형식"><br><br>            
+
+                <label for="userpw">password</label><br>
+                <input id="userpw" type="password" placeholder="영문/숫자/특수문자 혼합">
+            </fieldset>
+            <br><br>
+    
+            <!-- 부가세 포함(checkbox) -->
+            <input type="checkbox" id="vatIncluded" checked>
+            <label for="vatIncluded">부가세 포함</label>
+            <br><br>
+    
+            <!-- 과일 1종 선택(radio) -->
+            <input type="radio" id="apple" name="fruit" value="apple" checked>
+            <label for="apple">사과</label>
+
+            <input type="radio" id="grape" name="fruit" value="grape">
+            <label for="grape">포도</label>
+
+            <input type="radio" id="orange" name="fruit" value="orange">
+            <label for="orange">오렌지</label>
+
+        </form>
+
+        <br><br>
+        <button type="submit">제출</button>
+        <!-- <input type="submit" value="제출"> 둘 다 같은 용도-->
+    
+</body>
+</html>

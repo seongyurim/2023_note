@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <!-- 위치정보를 나타내는 두가지 방법
+    1) 절대경로: C드라이브부터 전체 경로를 기입하는 방법
+    2) 상대경로: 내 현재 위치를 기준으로 위치를 찾아가는 방법
+-->
+
+    <!-- 웹링크를 이용한 경로 -->
+    <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+    
+    <br>
+
+    <!-- [절대경로] -->
+    <img src="C:\Users\Si7A-45\Documents\Projects\HTML\images\puppy.jpg">
+   
+    <br>
+
+    <!-- [상대경로] .은 현재 내 위치를 의미 -->
+    <img src=".\images\puppy.jpg">
+
+    <br>
+
+    <!-- [상대경로] 현재 디렉토리(HTML)에 있으므로 .\ 생략가능 -->
+    <img src="puppy.jpg">
+
+    <br>
+
+    <!-- [상대경로] 내 상위 디렉토리에 있는 이미지 경로 -->
+    <img src="../images/puppy.jpg">    
+    
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form action="">
+
+        <!-- 
+            fieldset - 카테고리를 묶어주는 태그, 서버 전송과는 무관하지만 사용자에게 정보를 묶어서 보여주는 용도
+            legend - 필드셋의 제목
+            label - id, pw 등의 이름이 라벨이라는 것을 나타내는 태그. 아래처럼 인풋과 연동시킬 수 있음
+            label for & input id - 같게 설정하면 라벨만 클릭해도 인풋박스가 활성화되어 편리성 증가
+         -->
+
+        <fieldset>
+            <legend>로그인 정보</legend>
+            <label for="userid">id :</label> <input id="userid" type="text">
+            <br><br>
+            <label for="userpw">pw :</label> <input id="userpw" type="password">
+        </fieldset>
+        <br><br>
+        <input type="submit" value="로그인">
+
+    </form>
+
+</body>
+</html>
