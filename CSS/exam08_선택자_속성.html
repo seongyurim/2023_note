@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        /* type 속성의 값이 text인 input 태그에만 적용 */
+        input[type=text] {
+            color: rgb(245, 255, 224);
+            background-color: rgb(61, 90, 3);
+        }
+
+        input[type=password] {
+            background-color: rgb(223, 250, 170);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <form action="">
+
+        <input type="text">
+        <br>
+        <input type="password">
+        <br>
+
+        <!-- input은 속성 생략 가능. text가 default
+        아래 태그는 속성/속성값 문자열이 없으므로 적용에서 제외된다.
+        따라서 명시적으로 속성이 작성되어야 CSS가 적용된다. -->
+        <input>
+        
+    </form>
+    
+</body>
+</html>

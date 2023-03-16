@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1 + h2 {
+            /* h1 바로 옆에 있는 h2 하나를 선택 = 동위선택자 */
+            color: red;
+        }
+
+        h1 ~ h2 {
+            /* h1 바로 옆에 있는 모든 h2를 선택 = 이것도 동위선택자 */
+            background-color: rgb(255, 220, 220);
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Header-1</h1>
+    <h2>Header-2</h2>
+    <h2>Header-2</h2>
+    <h2>Header-2</h2>
+    <h2>Header-2</h2>
+    
+</body>
+</html>

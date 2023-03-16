@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div li {
+            /* 자식은 꺾쇠로, 후손은 공백으로 표현하므로 주의
+            li는 div의 후손, ol은 div의 자식 */
+            color: red;
+        }
+    </style>
+
+</head>
+<body>
+    <div>
+        <ol>
+            <li>개회사</li>
+            <li>본식</li>
+            <li>폐회사</li>
+        </ol>
+    
+        <ul>
+            <li>개회사</li>
+            <li>본식</li>
+            <li>폐회사</li>
+        </ul>
+    </div>
+    
+</body>
+</html>
