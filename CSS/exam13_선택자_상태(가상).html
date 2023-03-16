@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 속성선택자는 '속성의 문자열'을 비교해서 찾아내고 적용하지만,
+        상태(가상)선택자는 '활성화 상태'를 찾아내서 적용한다는 차이점이 있다. */
+        input:enabled { background-color: lightgreen; }
+        /* enabled(활성) - 활성하거나 포커스를 받을 수 있는 요소 */
+
+        input:disabled { background-color: limegreen; }
+        /* disabled(비활성) - 활성하거나 포커스를 받을 수 없는 요소 */
+
+        input:focus { background-color: darkolivegreen; }
+        /* focus - 클릭, 탭 등의 방식으로 양식의 입력 칸 등 포커스를 받은 요소 */
+    </style>
+</head>
+<body>
+
+    <input type="text">
+    <br><br>
+    <input type="text" disabled>
+    
+</body>
+</html>
