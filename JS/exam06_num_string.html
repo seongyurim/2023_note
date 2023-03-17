@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        let str1 = "abc";
+        let str2 = "def";
+        let str3 = str1 + str2
+
+        // 피연산자가 연산자의 성격을 정의하였다.
+        let str4 = "111" + "222";
+
+        // 연산(-)의 결과를 도출할 수 없을 때 NaN (Not a Number) 도출
+        // 결과 도출을 위해 노력했지만, 선 넘은 요청에는 이렇게 대응하는 자바스크립트
+        // 이런 오류가 뜨면 내가 잘못해도 한참 잘못했구나ㅠㅠ 생각하면 된다.
+        // JS왈: 네가 만든 식 자체는 이상한 건 아니야. 문법은 맞게 썼으니까.
+        //       근데 그 결과를 제대로 보장해 줄 수가 없겠어. 도저히 답을 모르겠다.
+        // 그래서 이것은 오류(빨간ⓧ)가 아니고 예외(exception)의 경우이다.
+        let str5 = str1 - str2;
+        console.log(str5);
+
+
+        console.log(str3);
+        console.log(str4);
+
+
+        let a1 = 40;
+        let a2 = 20;
+
+        console.log(a1 + a2);
+
+        // number는 오퍼레이터가 더하기, string은 오퍼레이터가 이어붙이기 기능을 한다.
+        // number와 string이 결합되니 오퍼레이터가 이어붙이기 기능을 하게 되었다.
+        // 둘이 레벨이 상이하므로 사실 다른 언어상에서는 이를 오류로 받아들인다.
+        // 하지만 자바스크립트는 어떻게 해서든지(이어붙여서) 결과를 도출해낸 것이다.
+        // 사실 실무에서는 이렇게 상이한 타입을 조합하지 않는다. 개념 이해만 하자.
+        // 40abc를 하고 싶다면 40을 "40"이라고 써야(string) 알맞을 것이다.
+        // 즉, 피연산자가 서로 다른 경우 한쪽의 타입을 자동변환하여 연산하였다.
+        console.log(a1 + str1);
+
+        </script>
+    
+</body>
+</html>
