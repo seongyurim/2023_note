@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 데이터를 메모리에 적재(allocation)하는 4가지 방법
+        // 쉽게 말해 30을 메모리에 넣는 방법이 4개가 있다는 의미이다.
+
+        // 1-1. var로 변수를 초기화(Init)
+        var a1 = 10;
+
+        // 1-2. var로 변수를 읽었음(Read)    
+        console.log("a1 : " + a1);
+
+        // 1-3. var 변수를 다른 값으로 변경(Write, Update)
+        a1 = 20;
+        console.log("a1 : " + a1);
+
+
+
+
+
+        // 2-1. let으로 변수를 초기화(Init)
+        let a2 = 20;
+
+        // 2-2. let으로 변수를 읽었음(Read)
+        console.log("a2 : " + a2);
+
+        // 2-3. let 변수를 다른 값으로 변경(Write, Update)
+        a2 = a2 + 10;
+
+        // var와 let은 '사용적 측면(Init-Read-Write)'에서만 보면 같다.
+        // var는 ES5 이하 버전이며 let에 비해 단점이 존재한다.
+        // 따라서 학습을 할 때에는 let을 사용할 것이다.
+        // 실무에서는 위처럼 var와 let을 절대 함께 쓰지 않으므로 주의한다.
+        // 예를 들어 실무 기존 프로젝트에 var만 있어왔다면 그 후 작업에 let이 아닌 var를 계속 사용하도록 한다.(통일 필요)
+        // 실무 프로젝트에 var, let이 혼용되어 있다면? 사직서 제출 or 리팩토링 제안
+
+
+
+
+        // 3-1. const로 변수를 초기화(Init) - 가능
+        const a3 = 30;
+
+        // const a3; // 이렇게도 불가능
+        // a3 = 30; // 초기화가 아니고 대입연산이므로 불가능한 것. 첫줄에 초기화해야 함
+
+        // 3-2. const로 변수를 읽었음(Read) - 가능
+        console.log("a3 : " + a3);
+
+        // 3-3. const 변수를 다른 값으로 변경(Write, Update) - 불가능
+        a3 = a3 + 1; // error
+
+        // const는 초기화가 반드시 필요하며, const로 선언된 변수는 read-only이다.
+        // const는 왜 필요한가? '강건성'. 실수의 가능성을 원천적으로 제거하기 위해서이다.
+        // 예를 들어 성별의 데이터타입을 var나 let으로 한다면? 실수(변경)의 여지가 발생한다.
+        // const를 사용하는 것은 소프트웨어를 더욱 강건하게 만든다.
+
+
+
+
+
+        a4 = 40;
+
+        console.log("a4 : " + a4);
+
+    </script>
+    
+</body>
+</html>
