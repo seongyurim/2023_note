@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        //모듈러 연산, mod 연산, 나머지 연산
+        // 특정한 문제 해결을 위해 사용하면 매우 유용한 연산방법이다.
+        // 5 % 3 = 2
+        // 5 % 2 = 1
+        // 5 % 5 = 0
+
+        // 어떤 수를 2로 나오면 무조건 0(짝수) 혹은 1(홀수)이 나온다.
+        let res = num % 2;
+
+        // if (res === 0) {
+
+        //     console.log("짝수");
+
+        // } else {
+
+        //     console.log("홀수");
+
+        // }
+
+        
+
+        switch(res) { // 이 한줄만 봐도 다음 내용이 무엇일지 눈치챌 수 있다. (if문과 다르게)
+            case 0:
+                console.log("짝수");
+                break;
+
+            case 1:
+                console.log("홀수");
+                break;
+
+            default:
+                console.log("숫자가 아닙니다.")
+                break;
+        }
+        // 문법구조가 어떻게 나오느냐에 따라 다음에 무엇이 올 지 
+        // 눈치채게 해줄 수 있는 직관력을 우리에게 제공한다.
+
+
+    </script>
+    
+</body>
+</html>

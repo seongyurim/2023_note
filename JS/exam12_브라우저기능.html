@@ -8,49 +8,42 @@
 </head>
 <body>
     <script>
+        // prompt = 사용자로부터 텍스트 입력을 받는 기능을 가진 함수
+        let radius = prompt("반지름 입력", "");
+        console.log(radius);
 
-        // // prompt = 사용자로부터 텍스트 입력을 받는 기능을 가진 함수
-        // let radius = prompt("반지름 입력", "");
-        // console.log(radius);
+        // 문자열을 숫자로 변환
+        let numRadius = Number(radius);
 
-        // // 문자열을 숫자로 변환
-        // let numRadius = Number(radius);
-
-        // console.log(numRadius);
-        // console.log(typeof(numRadius));
+        console.log(numRadius);
+        console.log(typeof(numRadius));
 
 
-        // // confirm = boolean(yes or no)
-        // let yesno = confirm("저장할까요?");
-        // console.log(yesno);
+        // confirm = boolean(yes or no)
+        let yesno = confirm("저장할까요?");
+        console.log(yesno);
         
-        // console.log(typeof(radius));
-        // console.log(radius);
+        console.log(typeof(radius));
+        console.log(radius);
 
 
-
-
-
-        
         
         // 사용자로부터 반지름을 입력받아 넓이를 출력(alert)하는 코드를 작성해보세요.
-
-
         
         // 프로그램 짜는 법!
         // 주석을 IPO 관점으로 작성한다. Input - Processing - Output
 
         // 1. 사용자로부터 반지름을 입력받는다.
-        let radius = prompt("반지름을 입력하세요.", "");
+        let user = prompt("반지름을 입력하세요.", "");
         console.log(radius);
 
         // 2. 반지름을 이용해서 넓이를 구한다.
         // 2-1. 입력 받은 반지름을 문자에서 숫자로 변환시킨다.
         const pi = 3.14;
-        let numRadius = Number(radius);
+        let numUser = Number(user);
 
         // 2-2. 반지름을 제곱한 뒤 파이값을 곱해서 넓이를 구한다.
-        let size = numRadius * numRadius * pi;
+        let size = numUser * numUser * pi;
 
         // 3. 넓이를 출력한다.
         alert("넓이는 " + size + " 입니다.");
