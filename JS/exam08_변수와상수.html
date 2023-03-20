@@ -55,7 +55,7 @@
         console.log("a3 : " + a3);
 
         // 3-3. const 변수를 다른 값으로 변경(Write, Update) - 불가능
-        a3 = a3 + 1; // error
+        // a3 = a3 + 1; // error
 
         // const는 초기화가 반드시 필요하며, const로 선언된 변수는 read-only이다.
         // const는 왜 필요한가? '강건성'. 실수의 가능성을 원천적으로 제거하기 위해서이다.
@@ -65,10 +65,19 @@
 
 
 
-
-        a4 = 40;
-
+        // 4. 결론부터 말하자면 아래는 부적절한 코드이다.
+        // Init, Read, Write가 모두 가능하게 출력은 된다.
+        a4 = 20;
+        a4 = a4 + 3;
         console.log("a4 : " + a4);
+
+        let name = "홍길동";
+        nama = "홍길돈";
+        console.log(name);
+        console.log(nama);
+        // 데이터타입 선언 없이 만드는 방식은 ES5 이전의 아주 옛날 방식이다.
+        // 위처럼 name, nama 데이터가 별개로 남기 때문에 좋지 못한 코딩인 것이다.
+        // 절대로 이렇게 코딩하지 말자!
 
     </script>
     

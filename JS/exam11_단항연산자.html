@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    let a = 10;
+
+    // 전위 단항 연산자
+    // 1) a를 증가시켜라.
+    // 2) a를 console.log의 파라미터로 넣어라.
+    console.log(++a); // a = a + 1;
+
+    // 후위 단항 연산자
+    // 1) a를 console.log의 파라미터로 넣어라.
+    // 2) a를 증가시켜라.
+    console.log(a++); // a = a + 1;
+    console.log(a);
+
+    //--> a == 12;
+    a++;
+    ++a;
+
+    --a;
+    a--;
+
+    let b = 20;
+
+    // 정말정말 말도 안되는 코드..
+    // 근데 정처기에 시험문제로 나옴...
+    console.log(b++ + a--);
+
+    // b를 하나 증가시키고, a를 하나 감소시킨 뒤 더하라는 의도로 위 코드를 만들었다면
+    // 아래 코드가 적절하고 리더빌리티가 우수함
+    // 위 코드는 show form일 뿐이다.
+    b = b + 1;
+    a = a - 1;
+    a + b;
+
+</script>
+
+</body>
+</html>
