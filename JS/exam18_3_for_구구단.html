@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>     
+
+        // 전체 구구단 만들기
+        // 아주 우수한 예제
+        // 변수를 적재적소에서만 사용함
+
+        // 루프변수를 구현부에서 쓰지 않는 이유?
+        // 루프변수를 구현부에서 쓰는 전형적인 코드가 있다. 그 때 사용하면 알맞다.
+        // 그것을 스스로 느낄 때 즈음 사용하자. 지금은 사용할 때가 아니다.
+
+        let dan = 2;
+        let gop = 1;
+        
+        for (let i = 0; i < 8; i++) {
+
+            for (let k = 0; k < 9; k++) {
+
+                console.log(dan + " * " + gop + " = " + (dan*gop));
+                gop++ // gop = gop + 1;
+                
+            }
+            
+            dan++; // dan = dan + 1;
+            gop = 1;
+
+        }
+
+
+
+        // 아래 배열 요소에 모두 10씩 더해보시오.
+        // 루프변수를 이용하는 전형적인 방법 = '선회'하는 경우에만
+        // 이외에는 루프변수를 구현부에서 사용하지 않는다.
+        let ar = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        for (let i = 0; i < ar.length; i++) { // length가 바뀌어도 코드를 수정하지 않아도 되는 이점
+
+            ar[i] = ar[i] + 10; // 여기서는 i가 순회용으로 쓰임 = 좋은 코드
+            // alert(i); 여기서는 i가 출력용으로 쓰임 = 나쁜 코드
+
+        }
+
+        console.log(ar);
+
+    </script>
+    
+</body>
+</html>

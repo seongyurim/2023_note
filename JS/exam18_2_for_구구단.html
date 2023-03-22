@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>     
+            // 사용자에게 받은 숫자 단수의 구구단 만들기
+            
+            // 1. 사용자에게 숫자를 받는다.
+            let dan = prompt("숫자를 입력해주세요", "1~9");
+            dan = Number(dan);
+
+
+            // 2. 구구단을 계산하여 출력한다.
+            // A) 1~9 - 구문이 비정형적이며 구현부 중심 코드('커피타기' 중심) BAD
+            for (let i = 1; i <= 9; i++)
+            {
+                // console.log(dan + " * " + i + " = " + (dan * i));
+
+            }
+
+
+            // B) 0~8 - 구문은 정형화(커피 '100번' 중심)되었으나 콘솔 연산이 복잡함 BAD
+            for (let i = 0; i < 9; i++)
+            {
+                // console.log(dan + " * " + (i + 1) + " = " + (dan * (i+1)));
+
+            }
+            // for문 첫줄에 루프변수로 쓰인 i를 구현부에서 다른 용도로 사용했기 때문에
+            // A, B식 모두 나쁜 코드이다. (키보드를 타이핑용 + 부채질용으로 같이 쓰는 것처럼)
+
+
+            // C) 가장 자연스럽고 정상적인 코드!
+            // '커피 100번 타기' = '커피 타기' + '100번 타기' 분리해서 생각하듯이
+            let gop = 1; // i를 구현부에서 재활용하지 말고 새로운 변수를 정의하자.
+                         // i는 이미 루프의 역할을 가지고 실행하고 있다.
+
+            for (let i = 0; i < 9; i++) {
+
+                console.log(dan + " * " + gop + " = " + (dan * gop));
+                gop = gop + 1;
+
+            }
+
+    </script>
+    
+</body>
+</html>
