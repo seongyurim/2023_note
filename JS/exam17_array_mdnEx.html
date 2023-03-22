@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // EXAMPLE 1
+        // 추가하기, 교체하기
+            const ex1 = ['Jan', 'March', 'April', 'June'];
+            ex1.splice(1, 0, 'Feb');
+            console.log(ex1);
+            // ["Jan", "Feb", "March", "April", "June"]
+
+            ex1.splice(4, 1, 'May');
+            console.log(ex1);
+            // ["Jan", "Feb", "March", "April", "May"]
+
+
+        // EXAMPLE 2
+        // 인덱스 2 앞의 0(영) 요소를 제거하고 "drum" 삽입
+            const ex2 = ["angel", "clown", "mandarin", "sturgeon"];
+            ex2.splice(2, 0, "drum");
+            console.log(ex2);
+            // ["angel", "clown", "drum", "mandarin", "sturgeon"]
+
+
+        // EXAMPLE 3
+        // 인덱스 2 앞의 0(영) 요소를 제거하고 "drum" 및 "guitar" 삽입
+            const ex3 = ["angel", "clown", "mandarin", "sturgeon"];
+            ex3.splice(2, 0, "drum", "guitar");
+            console.log(ex3);
+            // ["angel", "clown", "drum", "guitar", "mandarin", "sturgeon"]
+
+
+        // EXAMPLE 4
+        // 인덱스 3에서 1개 요소 제거
+            const ex4 = ["angel", "clown", "drum", "mandarin", "sturgeon"];
+            ex4.splice(3, 1);
+            console.log(ex4);
+            // ["angel", "clown", "drum", "sturgeon"]
+
+
+        // EXAMPLE 5
+        // 인덱스 2에서 1개의 요소를 제거하고 "트럼펫"을 삽입
+            const ex5 = ["angel", "clown", "drum", "sturgeon"];
+            ex5.splice(2, 1, "trumpet");
+            console.log(ex5);
+            // ["angel", "clown", "trumpet", "sturgeon"]
+
+
+        // EXAMPLE 6
+        // 인덱스 0에서 2개의 요소를 제거하고 "parrot", "anemone" 및 "blue"를 삽입
+            const ex6 = ["angel", "clown", "trumpet", "sturgeon"];
+            ex6.splice(0, 2, "parrot", "anemone", "blue");
+            console.log(ex6);
+            // ["parrot", "anemone", "blue", "trumpet", "sturgeon"]
+
+
+        // EXAMPLE 7
+        // 인덱스 2부터 시작하여 2개 요소 제거
+            const ex7 = ["parrot", "anemone", "blue", "trumpet", "sturgeon"];
+            ex7.splice(2, 2);
+            console.log(ex7);
+            // ["parrot", "anemone", "sturgeon"]
+
+
+        // EXAMPLE 8
+        // 인덱스 -2에서 1개 요소 제거
+            const ex8 = ["angel", "clown", "mandarin", "sturgeon"];
+            ex8.splice(-2, 1);
+            console.log(ex8);
+            // ["angel", "clown", "sturgeon"]
+            
+
+        // EXAMPLE 9
+        // 인덱스 2부터 시작하여 모든 요소 제거
+            const ex9 = ["angel", "clown", "mandarin", "sturgeon"];
+            ex9.splice(2);
+            console.log(ex9);
+            // ["angel", "clown"]
+
+    </script>
+    
+</body>
+</html>

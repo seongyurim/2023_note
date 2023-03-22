@@ -56,6 +56,64 @@
         console.log(ar);
         console.log(ar.length);
         // 7,8 없이 9를 바로 만들어도 메모리에는 7,8의 자리도 같이 만들어 둔 뒤 9의 자리에 77을 둔다.
+
+
+
+
+
+        // 다시 만들어보자
+        // 1. 배열 만들기 - 배열의 선언 및 초기화
+        let arr     = [5, 6, 7, 8, 9]; // 같은 데이터타입 가능, 실무의 60%는 이 형태
+        let date    = ["월", "화", "수", "목", "금", "토", "일", 34, false]; // 상이한 데이터타입도 가능, 사실 거의 쓰이지 않음
+        let mix     = [[1, 2, 3, 4], [4, 5], [7, 8, 9]] // 배열 속 배열도 가능, 실무에서 매우 많이 쓰이는 구조
+
+
+        // 2. 배열의 요소 읽기
+        console.log(arr[0]); // 5
+        console.log(arr[3]); // 8
+
+        console.log("길이: " + arr.length); // 5
+        console.log("길이: " + mix.length); // 3
+        console.log("길이: " + mix[0].length); // 4
+        
+        console.log(date);
+        console.log(mix);
+        console.log(mix[0][1]); // 2 mix의 첫번째 배열 속 두번째 요소 출력(배열 속 배열 접근방법)
+        console.log(mix[2][2]); // 9
+        console.log(mix[1][1]); // 5
+        
+
+        // 3. 배열의 요소 변경하기
+        // 1) 기존 요소 값 변경
+        mix[1][1] = 40;
+        console.log(mix[1]);
+
+        // 2) 새로운 요소 추가
+        arr.push(10); // push = 해당 요소를 기존 배열 끝에 추가
+        console.log(arr);
+
+        mix.push([10, 11, 12, 13]); // mix 배열 끝에 새로운 배열 추가
+        mix[2].push(99); // mix[2] 배열 꿑에 새로운 요소 추가
+        console.log(mix);
+        
+        // arr[6] = 11; // 원래의 인덱스를 초과해서 넣는 방법도 있음(위의 push와 동일한 결과)
+        arr[arr.length] = 11; // arr의 원래 인덱스는 6이었으므로 length로도 표현할 수 있음
+                              // 결국 length = 해당 배열의 '가장 마지막에 추가해라'
+        // console.log(arr);
+
+
+        // 4. 배열의 요소 삭제
+        // 요소의 변경이나 추가는 기존 배열 구조가 무너지는 것이 아니다. 기존 인덱스가 바뀌는 것이 아니기 때문이다.
+        // 하지만 삭제는 구조가 무너지기 때문에(인덱스 변경 야기) 변경/추가와는 방법이 전혀 다르다.
+        console.log(arr); // [5, 6, 7, 8, 9, 10, 11]
+        arr.splice(2, 1); // [5, 6, 8, 9, 10, 11] '2번째 인덱스로부터 1개를 지워라'
+                          // splice = 요소 추가, 변경, 삭제 모두 가능한 만능 메소드(함수)
+        console.log(arr);
+
+        // splice in MDN
+        // splice(start[, deleteCount[, item1[, item2[, itemN[, ...]]]])
+        let myFish = ["angel", "clown", "mandarin", "sturgeon"];
+        let removed = myFish.splice(2, 0, "drum"); // 데이터를 배열 중간에 추가
     </script>
     
 </body>
