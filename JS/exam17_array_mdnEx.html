@@ -9,6 +9,9 @@
 <body>
 
     <script>
+
+        // splice = 매우 자주 쓰이는 함수이므로 잘 익혀두자!
+        
         // EXAMPLE 1
         // 추가하기, 교체하기
             const ex1 = ['Jan', 'March', 'April', 'June'];
@@ -70,7 +73,7 @@
 
 
         // EXAMPLE 8
-        // 인덱스 -2에서 1개 요소 제거
+        // 인덱스 -2에서 1개 요소 제거?!
             const ex8 = ["angel", "clown", "mandarin", "sturgeon"];
             ex8.splice(-2, 1);
             console.log(ex8);
@@ -78,9 +81,12 @@
             
 
         // EXAMPLE 9
-        // 인덱스 2부터 시작하여 모든 요소 제거
+        // 인덱스 2부터 시작하여 모든 요소 제거?!
             const ex9 = ["angel", "clown", "mandarin", "sturgeon"];
             ex9.splice(2);
+                // ex9.splice(2, ex9.length - 2); 더 위 코드와 같은 의미
+                // 뒷 요소를 다 작성하고 싶은 경우는 이렇게(array.length-2)
+                // 'start부터 끝까지 다 제거한다.'
             console.log(ex9);
             // ["angel", "clown"]
 
