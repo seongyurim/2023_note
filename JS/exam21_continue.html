@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // let i = 0;
+        // while (i < 10) {
+
+        //     console.log(i);
+
+        //     if (i === 5) {
+
+        //         i = 7;
+        //         continue; // i =7 & continue = 바로 while로 올라감. continue를 만나는 순간 바로!
+
+        //     }
+
+        //     i++;
+
+        // }
+
+        // continue: break에 비해 쓸 일이 많지 않음(크게 좋은 코드가 아님)
+
+
+
+        
+
+        // 1~20까지의 숫자에서 짝수의 합과 홀수의 합을 구하세요.
+                
+        let num = 0;
+        let evenTotal = 0;
+        let oddTotal = 0;    
+
+        let i = 0;
+        while (i <= 20) {
+
+            if (num % 2 === 0) {
+    
+                evenTotal = evenTotal + num;
+    
+            } else {
+    
+                oddTotal = oddTotal + num;
+    
+            }
+
+            num++;
+            i++;            
+            
+        }
+        
+        console.log("짝수의 합은 " + evenTotal + " 입니다.");
+        console.log("홀수의 합은 " + oddTotal + " 입니다.");
+        
+    </script>
+    
+</body>
+</html>

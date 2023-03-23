@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 3. 사용자가 멈추라고 하면 루프를 빠져나가는 코드?
+        // 사용자의 id가 admin으로 입력되면 id 입력을 종료시키세요.
+
+        let id;
+
+        // A코드: 더 잘 쓴 것처럼 보이나 리더빌리티 낮음
+        // while(id !== 'admin') {
+
+        //     id = prompt("관리자 id를 입력하세요.", "");
+
+        // }
+
+        // alert("환영합니다 관리자님!");
+
+
+
+        // B코드: 리더빌리티 우수(break 덕분에)
+        while(true) { 
+
+            if (id === "admin"){
+
+                break;
+
+            }
+
+            id = prompt("관리자 id를 입력하세요.", "");
+
+        }
+
+        alert("환영합니다 관리자님!");
+
+        // 루프문을 쓸 때 for, while을 아무것이나 쓰는게 아니라
+        // break를 쓰기 적절한 ㄱ
+
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        // 1. 1~10까지의 합계를 구해보세요. (1+2+3+...+10)
+
+        let total = 0;
+        let value = 1;
+
+        for (let i = 0; i < 10; i++) {
+
+            total = total + value;
+            value++;
+            
+        }
+        
+        console.log(total);
+
+
+
+
+        // 2. 사용자에게 숫자를 하나 입력받고, 1부터 그 숫자까지 더하는 코드를 만들어보세요. (ex. 33 1+2+3+...+33)
+
+        let num = prompt("숫자를 입력해주세요.", "");
+        num = Number(num);
+
+        let total2 = 0;
+        let value2 = 1;
+
+
+        // for (let x = 0; x < num; x++) {
+
+        //     total2 = total2 + value2;
+        //     value2++
+
+        // }
+
+
+        let x = 0;
+        while(x < num){
+
+            total2 = total2 + value2;
+            value2++;
+
+            x++;
+
+        }
+
+        console.log(total2);
+
+    </script>
+    
+</body>
+</html>

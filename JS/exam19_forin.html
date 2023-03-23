@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 배열과 for문이 얽혀 있는 경우 사용. 그렇지 않은 경우는 전형적 3단계의 형태로만 사용
+        const job = ["세수", "일지검토", "선풍기청소", "병원가기"];
+        
+        // 1. for문으로 배열을 순회       
+        for (let i = 0; i <job.length; i++) {
+
+            console.log(job[i]);
+
+        }
+
+
+        console.log("-----------------------------");
+
+
+        // 2. for-in문으로 배열을 순회
+        // 데이터타입을 let이 아닌 const(read only) 사용
+        // 순환될 때마다 const 변수의 메모리가 무너졌다 새로 생기기 때문에 const가 가능함
+        // 배열 job의 '인덱스 값'이 j로 들어오는 것
+        // 보는 사람: for-in을 발견. "아, 배열이 나오는구나"
+        // 직관성을 주기 때문에 배열 관련 구문은 셋중 2를 사용하는게 일반적
+        // for도 가능하지만 for-in을 관행적으로 사용하는 코드가 있음. 그럴 때에는 꼭 for-in을 사용하자!
+        for (const j in job) {
+
+            console.log(job[j]);
+
+        }
+
+
+        console.log("-----------------------------");
+
+
+        // 3. for-of문
+        // job의 '데이터' 자체가 들어오는 것
+        // 많이 사용되지 않음
+        for (const todo of job) {
+
+        console.log(todo);
+
+        }
+
+    </script>
+    
+</body>
+</html>
