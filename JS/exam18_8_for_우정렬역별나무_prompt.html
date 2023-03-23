@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // **********
+        //  *********
+        //   ********
+        //    *******
+        //     ******
+        //      *****
+        //       ****
+        //        ***
+        //         **
+        //          *
+
+
+        // 1. 사용자에게 숫자를 입력 받는다.
+        let num = prompt("라인수를 입력해주세요.", "");
+        num = Number(num);
+
+        let line = "";
+        let starCount = num;
+        let spaceCount = 0;
+
+        // 2. 숫자만큼 라인을 출력한다.
+        for (let i = 0; i < num; i++) {
+
+            // 공백을 찍는다.
+            for (let k = 0; k < spaceCount; k++) {
+
+                line = line + " ";
+
+            }
+
+                //별을 찍는다.
+            for (let j = 0; j < starCount; j++) {
+                
+                line = line + "*";
+            }
+            
+            console.log(line);
+            
+            spaceCount++;
+            starCount--;
+            line = "";
+
+        }
+
+    </script>
+    
+</body>
+</html>

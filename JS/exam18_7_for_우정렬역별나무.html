@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // **********
+        //  *********
+        //   ********
+        //    *******
+        //     ******
+        //      *****
+        //       ****
+        //        ***
+        //         **
+        //          *
+
+        let line = "";
+        let starCount = 10;
+        let spaceCount = 0;
+
+        for (let i = 0; i < 10; i++) {
+
+            // 공백을 찍는다.
+            for (let k = 0; k < spaceCount; k++) {
+
+                line = line + " ";
+
+            }
+
+            spaceCount++;
+
+            //별을 찍는다.
+            for (let j = 0; j < starCount; j++) {
+
+                line = line + "*";
+            }
+
+            console.log(line);
+
+            starCount--;
+            line = "";
+
+        }
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

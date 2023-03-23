@@ -10,13 +10,36 @@
     
     <script>     
 
-        // 무엇을? 문자열
-        // 몇바퀴를? 9바퀴
+        // **********
+        // *********
+        // ********
+        // *******
+        // ******
+        // *****
+        // ****
+        // ***
+        // **
+        // *
 
-        let star = "";
+        // 무엇을? 문자열
+        // 몇바퀴를? 10바퀴
+
+        let s = "*";
+        let line ="";
+        let count = 10;
 
         for (let i = 0; i < 10; i++) {
-            
+
+            for (let k = 0; k < count; k++) {
+
+                line = line + s;
+
+            }
+
+            console.log(line);
+            line = "";
+            count = count - 1;
+
         }
 
     </script>
