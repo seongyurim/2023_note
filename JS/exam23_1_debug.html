@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>    
+
+        // 내가 원한 결과: [1, 2, 3, 4, 5]
+        // 실제 출력 결과: [1, 12, 23, 34, 45]
+        // 어디서 잘못되었는지 디버깅을 해보자
+        let arr = [11, 22, 33, 44, 55];
+        let value;
+        for (const i in arr) {
+
+            value = arr[i] - 10;
+            console.log(value);
+
+        }
+
+
+        const add = function(a, b) {
+            
+            let res = a * b;
+            return res;
+
+        }
+
+        let res = add(4,5);
+        console.log(res);
+
+
+    </script>
+    
+</body>
+</html>
