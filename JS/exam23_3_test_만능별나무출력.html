@@ -17,19 +17,21 @@
         num = Number(num);
         
         let type = prompt("원하는 삼각형의 타입은?", "");
-        numType = Number(type);    
+        type = Number(type);
 
 
 
 
 
-        const drawType1 = function(num){
+        // 2) 타입에 따라 삼각형을 그리는 함수를 호출한다.
+        const drawType1 = function(num) { // 타입1 삼각형 ------------------------------------------------
 
             let line = "";
             let starCount = 1;
-            
+
             for (let i = 0; i < num; i++) {
 
+                // 별만 찍는다.
                 for (let j = 0; j < starCount; j++) {
 
                     line = line + "*";
@@ -44,20 +46,87 @@
 
         }
 
+        const drawType2 = function(num) { // 타입2 삼각형 ------------------------------------------------
+
+            let line = "";
+            let spaceCount = 0;
+            let starCount = num;
+
+            for (let i = 0; i < num; i++) {
+
+                // 공백을 먼저 찍는다.
+                for (let k = 0; k < spaceCount; k++) {
+                    
+                    line = line + " ";
+                    
+                }
+
+                // 별을 찍는다.
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + "*";
+
+                }
+                
+                console.log(line);
+                spaceCount++;
+                starCount--;
+                line = "";
+
+            }
+
+        }
+
+            const drawType3 = function(num) {
+
+                let line = "";
+                let starCount = num;
+
+                for (let i = 0; i < num; i++) {
+
+                    // 별을 찍는다.
+                    for (let j = 0; j < starCount; j++) {
+
+                        line = line + "*";
+
+                    }
+
+                    console.log(line);
+                    starCount--;
+                    line = "";
+
+                }
+                
+            }
+
+
+
+        
         
 
 
-        // 2) 타입에 따라 삼각형을 그리는 함수를 호출한다.
-        switch(numType){
+        switch(type){
 
             case 1:
-                drawType1(line);
+                drawType1(num);
+                break;
+
+                case 2:
+                drawType2(num);
+                break;
+
+                case 3:
+                drawType3(num);
+                break;
+
+                case 4:
+                drawType4(num);
                 break;
             
         }
         
 
-
+        
     </script>
     
 </body>
