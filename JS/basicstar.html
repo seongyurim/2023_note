@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let num = prompt("라인수 입력", "");
+        num = Number(num);
+
+        let line = "";
+        let starCount = 1;
+
+        for (let i = 0; i < num; i++) {
+
+            for (let j = 0; j < starCount; j++) {
+
+                line = line + "*";
+
+            }
+
+            starCount++;
+            line = "";
+            console.log(line);
+
+        }
+
+
+
+    </script>
+    
+</body>
+</html>

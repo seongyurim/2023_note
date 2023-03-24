@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Test 2. 사용자로부터 숫자1, 타입1를 각각 입력받아 삼각형 모양을 만드시오.
+        
+        // 1) 사용자로부터 라인수, 타입을 입력받는다.
+        let num = prompt("원하는 삼각형의 크기는?", "");
+        num = Number(num);
+        
+        let type = prompt("원하는 삼각형의 타입은?", "");
+        numType = Number(type);    
+
+
+
+
+
+        const drawType1 = function(num){
+
+            let line = "";
+            let starCount = 1;
+            
+            for (let i = 0; i < num; i++) {
+
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + "*";
+
+                }
+
+                console.log(line);
+                starCount++;
+                line = "";
+
+            }
+
+        }
+
+        
+
+
+        // 2) 타입에 따라 삼각형을 그리는 함수를 호출한다.
+        switch(numType){
+
+            case 1:
+                drawType1(line);
+                break;
+            
+        }
+        
+
+
+    </script>
+    
+</body>
+</html>
