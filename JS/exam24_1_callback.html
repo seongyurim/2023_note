@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        const f1 = function() {
+
+            console.log("CALL f1()");
+
+        }
+
+        f1();
+
+
+        console.log("------------------------------------")
+
+
+        function add1(a, b) {
+
+            return a + b;
+            
+        }
+
+        const a = add1;
+
+        let res1 = a(3, 4);
+        let res2 = add1(4, 6);
+
+        console.log(res1); // 7 정상출력
+        console.log(res2); // 10 정상출력
+
+
+        console.log("------------------------------------")
+
+
+        const add2 = function(a, b) {
+
+            return a + b;
+
+        }
+        
+        console.log(add2(4, 5)); // 9 정상출력
+
+        const add_clone = add2;
+        console.log(add_clone(7, 5)); // 12 정상출력
+
+        // 앞에 'const add1 ='이 없었다면?
+        // add라는 함수명이 정의되지 않았으므로 메모리에 해당 함수의 주소를 정의할 수 없다.
+        // 메모리에서 찾아갈 수 없다.
+        // 0x1234라는 주소는 있겠지만 'add' 같은 함수명이 없는 상태
+        // 결국! 함수의 첫 구문 const add1는 함수의 시작값을 의미하는 것이었다!
+
+
+    </script>
+    
+</body>
+</html>
