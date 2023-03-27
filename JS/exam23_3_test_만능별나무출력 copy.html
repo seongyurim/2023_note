@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Test 2. 사용자로부터 숫자1, 타입1를 각각 입력받아 삼각형 모양을 만드시오.
+        
+        // 1) 사용자로부터 라인수, 타입을 입력받는다.
+        let lineCount = prompt("원하는 삼각형의 크기는?", "");
+        lineCount = Number(lineCount);
+        
+        let typeCount = prompt("원하는 삼각형의 타입은?", "");
+        typeCount = Number(typeCount);
+
+        let line = "";
+        let star = "*";
+        let starCount = lineCount;
+        let spaceCount = 0;
+        // 이 변수들 각 함수에 넣기(길어져도 상관 없음) - 수정전
+        // 맨 위 num을 lineCount 등으로 이름 수정하여 리더빌리티 개선 - 수정완료
+
+
+
+        // 2) 타입에 따라 삼각형을 그리는 함수를 호출한다.
+        const drawType1 = function(lineCount) { // 타입1 삼각형 ------------------------------------------------
+
+            let line = "";
+
+            for (let i = 0; i < lineCount; i++) {
+
+                // 별만 찍는다.
+                for (let j = 0; j < (spaceCount + 1); j++) {
+
+                    line = line + star;
+
+                }
+
+                console.log(line);
+                spaceCount++;
+                line = "";
+
+            }
+
+        }
+
+        const drawType2 = function(lineCount) { // 타입2 삼각형 ------------------------------------------------
+
+            let line = "";
+
+            for (let i = 0; i < lineCount; i++) {
+
+                // 공백을 먼저 찍는다.
+                for (let k = 0; k < spaceCount; k++) {
+                    
+                    line = line + " ";
+                    
+                }
+
+                // 별을 찍는다.
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + star;
+
+                }
+                
+                console.log(line);
+                spaceCount++;
+                starCount--;
+                line = "";
+
+            }
+
+        }
+
+        const drawType3 = function(lineCount) { // 타입3 삼각형 ------------------------------------------------
+
+            for (let i = 0; i < lineCount; i++) {
+
+                // 별을 찍는다.
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + star;
+
+                }
+
+                console.log(line);
+                starCount--;
+                line = "";
+
+            }
+            
+        }
+
+
+        const drawType4 = function(lineCount) { // 타입4 삼각형 ------------------------------------------------
+
+            for (let i = 0; i < lineCount; i++) {
+
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + " ";
+                    
+                }
+
+                spaceCount++;
+
+                for (let k = 0; k < spaceCount; k++) {
+                    
+                    line = line + star;
+                    
+                }
+                
+                console.log(line);
+                starCount--;
+                line = "";
+
+            }
+
+        }
+
+
+        const drawType5 = function(lineCount) { // 타입5 삼각형 ------------------------------------------------
+
+            for (let i = 0; i < lineCount; i++) {
+
+                for (let j = 0; j < starCount; j++) {
+
+                    line = line + " ";
+
+                } 
+
+                for (let k = 0; k < (spaceCount * 2) + 1; k++) {
+
+                    line = line + star;
+
+                }
+
+                console.log(line);
+                starCount--;
+                spaceCount++;
+                line = "";
+
+            }
+
+        }
+
+   
+        
+
+        switch(typeCount){
+
+            case 1:
+                drawType1(lineCount);
+                break;
+
+            case 2:
+                drawType2(lineCount);
+                break;
+
+            case 3:
+                drawType3(lineCount);
+                break;
+
+            case 4:
+                drawType4(lineCount);
+                break;
+
+            case 5:
+                drawType5(lineCount);
+                break;
+
+            default:
+                alert("값을 다시 입력해주세요.");
+                break;
+            
+        }
+        
+    </script>
+    
+</body>
+</html>

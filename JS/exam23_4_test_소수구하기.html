@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 1부터 100 사이의 숫자 중 소수를 구하는 코드를 작성하시오.(소수 Prime number)
+        // 소수를 console.log로 출력하고 소수의 개수도 출력하시오.
+
+
+        // 숫자가 소수인지 판별하는 함수를 만든다.
+        const isPrimeNumber = function(num) {
+
+            let m = 2;
+            for (let i = 0; i < (num - 2); i++) {
+
+                if ((num % m) === 0) {
+
+                    // 나머지가 생기지 않는다면 합성수이므로
+                    return false;
+
+                }
+
+                m++
+
+            }
+
+            // 여기까지 온 숫자는 소수가 맞으므로
+            return true;
+
+        }
+
+
+
+        let result = [];
+        let num = 1;
+
+        for (let i  = 0; i < 100; i++) {
+
+            if ( true === isPrimeNumber(num)) {
+
+                result.push(num);
+
+            }
+
+            num++;
+
+        }
+
+
+
+        // 소수 찍어보기
+        for (let j = 0; j < result.length; j++) {
+
+            console.log(result[j]);
+
+        }
+
+        console.log("소수의 개수 : " + result.length);
+     
+    </script>
+    
+</body>
+</html>
