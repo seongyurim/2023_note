@@ -11,13 +11,13 @@
     <script>
 
         // 1부터 100 사이의 숫자 중 소수를 구하는 코드를 작성하시오.(소수 Prime number)
-        // 소수를 console.log로 출력하고 소수의 개수도 출력하시오.
+        // 소수를 console.log로 출력하고 소수의 갯수도 출력하시오.
 
 
-        // 숫자가 소수인지 판별하는 함수를 만든다.
+        // 1) 숫자가 소수인지 판별하는 함수를 만든다.
         const isPrimeNumber = function(num) {
 
-            let m = 2;
+            let m = 2; // 1과 자기자신을 제외하고 2부터 계산해야 하므로
             for (let i = 0; i < (num - 2); i++) {
 
                 if ((num % m) === 0) {
@@ -37,13 +37,13 @@
         }
 
 
-
+        // 2) 소수만 추출된 배열을 만든다.
         let result = [];
         let num = 1;
 
         for (let i  = 0; i < 100; i++) {
 
-            if ( true === isPrimeNumber(num)) {
+            if (isPrimeNumber(num) === true) {
 
                 result.push(num);
 
@@ -54,15 +54,14 @@
         }
 
 
-
-        // 소수 찍어보기
+        // 3) 콘솔에 소수를 출력한다.
         for (let j = 0; j < result.length; j++) {
 
             console.log(result[j]);
 
         }
 
-        console.log("소수의 개수 : " + result.length);
+        console.log("소수의 갯수 : " + result.length);
      
     </script>
     
