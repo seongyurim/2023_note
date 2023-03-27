@@ -19,7 +19,12 @@
         let type = prompt("원하는 삼각형의 타입은?", "");
         type = Number(type);
 
-
+        let line = "";
+        let star = "*";
+        let starCount = num;
+        let spaceCount = 0;
+        // 이 변수들 각 함수에 넣기(길어져도 상관 없음)
+        // 맨 위 num을 lineCount라고 이름 변경하기
 
 
 
@@ -27,19 +32,18 @@
         const drawType1 = function(num) { // 타입1 삼각형 ------------------------------------------------
 
             let line = "";
-            let starCount = 1;
 
             for (let i = 0; i < num; i++) {
 
                 // 별만 찍는다.
-                for (let j = 0; j < starCount; j++) {
+                for (let j = 0; j < (spaceCount + 1); j++) {
 
-                    line = line + "*";
+                    line = line + star;
 
                 }
 
                 console.log(line);
-                starCount++;
+                spaceCount++;
                 line = "";
 
             }
@@ -49,8 +53,6 @@
         const drawType2 = function(num) { // 타입2 삼각형 ------------------------------------------------
 
             let line = "";
-            let spaceCount = 0;
-            let starCount = num;
 
             for (let i = 0; i < num; i++) {
 
@@ -64,7 +66,7 @@
                 // 별을 찍는다.
                 for (let j = 0; j < starCount; j++) {
 
-                    line = line + "*";
+                    line = line + star;
 
                 }
                 
@@ -77,17 +79,14 @@
 
         }
 
-            const drawType3 = function(num) {
-
-                let line = "";
-                let starCount = num;
+            const drawType3 = function(num) { // 타입3 삼각형 ------------------------------------------------
 
                 for (let i = 0; i < num; i++) {
 
                     // 별을 찍는다.
                     for (let j = 0; j < starCount; j++) {
 
-                        line = line + "*";
+                        line = line + star;
 
                     }
 
@@ -100,10 +99,60 @@
             }
 
 
+            const drawType4 = function(num) { // 타입4 삼각형 ------------------------------------------------
 
-        
-        
+                for (let i = 0; i < num; i++) {
 
+                    for (let j = 0; j < starCount; j++) {
+
+                        line = line + " ";
+                        
+                    }
+
+                    spaceCount++;
+
+                    for (let k = 0; k < spaceCount; k++) {
+                        
+                        line = line + star;
+                        
+                    }
+                    
+                    console.log(line);
+                    starCount--;
+                    line = "";
+
+                }
+
+            }
+
+
+            const drawType5 = function(num) { // 타입5 삼각형 ------------------------------------------------
+
+                for (let i = 0; i < num; i++) {
+
+                    for (let j = 0; j < starCount; j++) {
+
+                        line = line + " ";
+
+                    } 
+
+                    for (let k = 0; k < (spaceCount * 2) + 1; k++) {
+
+                        line = line + star;
+
+                    }
+
+                    console.log(line);
+                    starCount--;
+                    spaceCount++;
+                    line = "";
+
+                }
+
+            }
+
+   
+        
 
         switch(type){
 
@@ -111,21 +160,27 @@
                 drawType1(num);
                 break;
 
-                case 2:
+            case 2:
                 drawType2(num);
                 break;
 
-                case 3:
+            case 3:
                 drawType3(num);
                 break;
 
-                case 4:
+            case 4:
                 drawType4(num);
+                break;
+
+            case 5:
+                drawType5(num);
+                break;
+
+            default:
+                alert("값을 다시 입력해주세요.");
                 break;
             
         }
-        
-
         
     </script>
     
