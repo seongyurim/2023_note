@@ -11,13 +11,12 @@
     <script>
 
         // 구구단 n단을 콜백으로 만들어보세요.
-
         let dan = prompt("숫자를 입력해주세요.", "");
         dan = Number(dan);
 
         let gop = [1, 2, 3, 4, 5, 6, 7, 8, 9];
         
-        const gugu = function(value) {
+        const gugu = function(value, index) {
 
             console.log(dan + " * " + value + " = " + (dan * value));
 
@@ -26,8 +25,17 @@
         gop.forEach(gugu);
 
 
+        // 위 함수 gugu의 'gugu'라는 변수명을 없애기?!(임시변수로 만들기)
+        gop.forEach(function(value, index) {
 
+          console.log(dan + " * " + value + " = " + (dan * value));
 
+        }
+        );
+
+        // 이것은 마치
+        // console.log(add(4, 5)); 가 정상적으로 구동되는 것과 같은 이치이다.
+        // add(4,5)도 변수명이 지정되지 않은 임시변수였다는 의미이다.
 
 
 
