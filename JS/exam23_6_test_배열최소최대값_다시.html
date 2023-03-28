@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let arr = [22, 33, 1, 9, 102];
+        
+
+        // 배열의 최소값 구하기
+        const getMin = function(arr) {
+
+            let min = arr[0];
+            let minIndex = 1;
+
+            for (let i = 0; i < arr.length - 1; i++) {
+
+                if (min > arr[minIndex]) {
+
+                    min = arr[minIndex];
+
+                }
+
+                minIndex++;
+
+            }
+
+            return min;
+
+        }
+
+        let min = getMin(arr);
+        console.log(min);
+
+
+    </script>
+    
+</body>
+</html>
