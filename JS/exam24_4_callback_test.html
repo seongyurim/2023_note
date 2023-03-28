@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let res = 0;
+        function add(a, b) {
+
+            return a + b;
+
+        }
+
+
+        console.log("-------1. add 함수를 직접적으로 호출");
+        res = add(5, 6);
+        console.log(res);
+
+
+        console.log("-------2. add 함수를 간접적으로 호출. 예전에는 이렇게 간략하게 썼었음");
+        const k1 = add;
+        res = k1(4, 5);
+        console.log(res);
+
+
+        console.log("-------3. 2를 문법적으로 적합하게 작성한 코드");
+        const f1 = function(a, b) {
+
+            return a + b;
+
+        }
+        f1(2, 3);
+
+
+        console.log("-------4. add 함수를 간접적으로 호출");
+        const add_clone = add;
+        console.log(add_clone(4, 5));
+
+
+        console.log("-------5. add 함수를 간접적으로 호출");
+        const add_callback = function(func) {
+
+            console.log(func(1, 5));
+
+        }
+        add_callback(add);
+        // 리턴값이 접근되지 않고 끝났다.
+        // 하지만 리턴값을 메모리에 저장은 해둔다. 버리지 않는다는 의미이다.
+        // 메모리에 있으나 해당 리턴값에 이름만 정하지 않은 상태인 것이다.
+        // x4*Qxz43 같이 변수명을 요상하게 대충 지어둔다.
+        // 사용자가 명시적으로 접근할 일이 없기 때문이다.
+        // 개발자는 알 수 없으며 컴파일러(V8 엔진)만이 저 요상한 이름을 알고 있다.
+        // 이 변수명을 임시변수(Temporary Variable)라고 칭한다.
+
+        // 임시변수라는 메커니즘이 없었다면?
+        let res0 = a + b + 23 + 5; // 이 식을 아래처럼..
+
+        let res1 = a + b;
+        let res2 = res1 + 23;
+        let res3 = res2 + 5; // 연산을 이렇게 하나씩 작성해야 하는 것이다.
+
+
+        console.log("-------6. 배열도 가능");
+        const ar = [add];
+        console.log(ar[0](4, 50));
+
+        
+        console.log("-------7.");
+        let arr = [11, 22, 33, 44, 55];
+        
+        const f2 = function(value, index) {
+
+            console.log(value);
+            console.log(index);
+        }
+        arr.forEach(f2);
+
+        
+        console.log("-------8.");
+        for (const i in arr) {
+            
+            console.log(arr[i]);
+            console.log(i);
+            
+        }
+
+        // 사실 7번의 forEach보다는 8번처럼 for문을 돌리는 것이 더 많이 쓰인다.
+        // 그런데 굳이 forEach를 배우는 이유는?
+        // 콜백을 이해하기 위한 기본 함수이므로 배우는 것(학습용)
+
+
+
+
+
+    </script>
+    
+</body>
+</html>
