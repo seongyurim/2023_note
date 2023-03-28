@@ -36,20 +36,6 @@
 
         }
         f1(2, 3);
-
-
-        console.log("-------4. add 함수를 간접적으로 호출");
-        const add_clone = add;
-        console.log(add_clone(4, 5));
-
-
-        console.log("-------5. add 함수를 간접적으로 호출");
-        const add_callback = function(func) {
-
-            console.log(func(1, 5));
-
-        }
-        add_callback(add);
         // 콘솔창에 아무 결과가 나타나지 않았다.
         // 즉, 리턴값이 접근되지 않고 끝났다.
         // 하지만 리턴값을 메모리에 저장은 해둔다. 버리지 않는다는 의미이다.
@@ -67,6 +53,20 @@
 
         // 자바스크립트는 임시변수의 메커니즘을 마치 지우개를 아주 끝까지 남김없이 사용하는 모양새처럼
         // 끝까지 악착같이 사용하는 성질을 가지고 있다.
+
+
+        console.log("-------4. add 함수를 간접적으로 호출");
+        const add_clone = add;
+        console.log(add_clone(4, 5));
+
+
+        console.log("-------5. add 함수를 간접적으로 호출");
+        const add_callback = function(func) {
+
+            console.log(func(1, 5));
+
+        }
+        add_callback(add);
 
 
         console.log("-------6. 배열도 가능");
