@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 요소로 배열이 들어와도, 숫자가 들어와도
+        // 데이터를 하나의 배열로 만들어 최소값을 구할 수 있는 함수 만들기
+
+        const getMin = function(first, ...ar) {
+
+            let target;
+            // 배열명을 target으로 통일함으로써 아래에 함수 로직을 하나로 맞출 수 있게 되었다.
+
+            if (Array.isArray(first)) {
+
+                // first  : [1, 2, 6, 8, 1]
+                // ar     : []
+                target = first;
+
+            } else {
+                // = else if (typeof(first) === "number") 가 조금 더 정확한 정의
+
+                // first  : 10
+                // ar     : [20, 30, 4, 8]
+                target = ar;
+                target.unshift(first); // 앞에 붙이기
+                // target.push(first); // 뒤에 붙이기
+                // 최소값을 구하는 중이므로 어디에 붙여도 무관하다.
+
+            }
+
+            let min = target[0];
+            let idx = 1;
+
+            for (let i = 0; i <target.length - 1; i++) {
+
+                if (min > target[idx]) {
+
+                    min = target[idx];
+
+                }
+
+                idx++;
+
+            }
+
+            return min;
+
+        }
+
+        console.log(getMin([10, 3, 6, 8, 1]));        
+        console.log("----------------------");        
+        console.log(getMin(10, 20, 30, 4, 8));
+
+    </script>
+</body>
+</html>
