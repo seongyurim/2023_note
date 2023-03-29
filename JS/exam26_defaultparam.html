@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 향수와 같은 파라미터
+        // 은은하면 너무 좋지만, 과하면 안뿌리느니만 못한 성격
+
+        // Default Parameter
+        // 입력을 못받는 파라미터도 있을 수 있다.
+        // 이를 위해 함수를 두개를 만들기란 매우 비효율적이다.
+        // 함수 하나에 디폴트 파라미터를 끝에 추가하면 된다.
+        // 디폴트 파라미터는 '뒤쪽부터 채워져야 한다.' (함수호출규약에 의해서)
+        // 중간에만 있으면 안된다.
+
+        // 과도하게 사용하면 최악이 되는 이유?
+        // 1) 소스코드가 지저분해진다. if문의 향연
+        // 2) regMember 함수를 regMember() 라고 의미 없이 호출할 수 있게 되었다.
+        //    더이상 의미가 없는 함수가 되어버린 것이다.
+
+        const regMember = function(id, pw, name, job="nojob") {
+
+            console.log("DB에 아이디 저장 " + id);
+            console.log("DB에 패스워드 저장 " + pw);
+            console.log("DB에 이름 저장 " + name);
+
+            if (job !== "nojob") {
+
+                console.log("DB에 직업 저장 " + job);
+
+            }
+
+
+        }
+
+        regMember("hkd", "1111", "홍길동", "의사");
+        console.log("-------------------------");
+        regMember("ksj", "2233", "김수지");
+
+    </script>
+    
+</body>
+</html>

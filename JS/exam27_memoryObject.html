@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let a = 10;
+        let b = a;
+        
+        console.log(a); // 예상 및 결과 10
+        console.log(b); // 예상 및 결과 10
+        b = 30;
+
+        console.log(b); // 예상 및 결과 30
+
+
+        console.log("---------------------------------------")
+
+
+        let ar = [10, 20];
+        let br = ar;
+
+        br[0] = 30;
+
+        console.log(ar[0]); // 예상 10 / 결과 30 ?!!!!!!!!!!??????????????????????????????
+        console.log(br[0]); // 예상 30 / 결과 30
+        // 왜 30-30이 나왔는지 그 이유를 오늘 이론적으로 이해해야 한다.
+
+
+        console.log("---------------------------------------")
+
+
+        let c = 10;
+        let d = 20;
+
+        // console.log(res); // 이 시점에 전역영역에 존재는 함! 초기화되어 있지 않아 아직 접근할 수 없을 뿐
+
+        function add(c, d) {
+
+            let res = c + d;
+            return res;
+
+        }
+
+        let res = add(c, d);
+        console.log(res);
+
+
+        console.log("---------------------------------------")
+
+
+        
+
+
+    </script>
+    
+</body>
+</html>

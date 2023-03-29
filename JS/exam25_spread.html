@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        const printMember = function(id, name, age) {
+
+            console.log("id = " + id);
+            console.log("name = " + name);
+            console.log("age = " + age);
+
+        }
+
+        const member = ["mshong", "홍길동", "22"];
+
+        // printMember(member[0], member[1], member[2]); 대신에 아래처럼 작성할 수 있다.
+        printMember(...member);
+
+        // rest parameter가 아님! 별개의 개념
+        // 파라미터가 아니라 호출단에 붙어 있다.
+        // spread operator, spread syntax, 전개구문, 전개연산자
+        // spread(전개)를 한다는 것은, 전개 전에는 이들이 묶여 있었다는 것을 의미한다.
+        // 따라서 스프레드는 항상 배열과 함께한다는 특징을 갖는다.
+        // 리더빌리티가 우수하고 세련되었다.
+
+
+
+        const add = function(a, b, c, d) {
+
+            return a + b + c + d;
+
+        }
+
+        const num = [10, 20, 30, 40];
+
+        console.log(add(...num));
+
+    </script>
+    
+</body>
+</html>
