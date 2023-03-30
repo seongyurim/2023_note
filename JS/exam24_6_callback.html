@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let ar = [11, 22, 33, 44, 55];
+
+        // const func = function(value, index) {
+
+        //     console.log(value);
+        //     console.log(index);
+
+        // }
+
+        // ar.forEach(func);
+        // forEach : func 함수의 참조값(시작정보)을 가지고 ( ) 실행하는 것
+
+
+        // 위 코드를 임시변수화한 것
+        ar.forEach(
+            function(value, index) {
+
+                console.log(value);
+                console.log(index);
+
+            }
+        );
+
+    </script>
+    
+</body>
+</html>

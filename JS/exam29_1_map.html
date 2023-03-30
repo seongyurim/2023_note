@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        let ar = [11, 22, 33, 44, 55];
+
+        let arr = ar.map(function(value)
+        {
+
+            return value + 10;
+
+        });
+
+        // map은 forEach처럼 5번 호출된다.
+        // 함수에 의해 도출된 값 21, 32, 43, 54, 65를 map은 열심히 모은다.
+        // 새로운 작업으로 배열에 데이터를 추가하는 것이 맵이다.
+        // 예를 들어 원가 배열을 기반으로 할인가 배열을 만드는 경우
+
+        console.log(ar);
+        console.log(arr);
+
+    </script>
+    
+</body>
+</html>

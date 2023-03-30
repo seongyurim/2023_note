@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // Filter
+        // 필터링 과정이 있기 때문에 map과 다르게 복제된 배열의 갯수가 더 적어질 수도 있다.
+
+        let ar = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+        let res = ar.filter(function(value) {
+
+            if (value % 2 === 0) {
+
+                return true;
+
+            } else {
+
+                return false;
+            }
+        });
+
+        console.log(res);
+
+        // filter, map, forEach
+        // 콜백 메커니즘으로 작동한다는 점은 같음
+        // forEach - 리턴값이 없음. 구동하고 끝
+        // map - 리턴값이 있음. 기존 배열의 갯수만큼 리턴
+        // filter - 리턴값이 있음. 경우에 따라 기존 배열의 갯수보다 적어짐
+
+
+
+        console.log("-------------------------------------------")
+
+
+
+        // 위 배열의 홀수 요소들을 추출해서 두 배로 곱해보자.
+
+        // 위와 다르게 임시변수 개념을 활용하여 필터와 맵을 연결했다.(function chaining, method chaining)
+        // 메소드 체이닝의 핵심은 임시변수이다.
+        // 임시변수의 향연.. 무식한 방법이다.
+        // '메소드를 연결해서 쓸 수 있습니다.'' 라고 배우는 것이 아니다.
+        // 저런 코드를 보면 해석할 줄 알아야 하기 때문에 배우는 것이지, 저렇게 쓰지는 말자.
+        console.log(ar.filter(function(value) {
+
+            if (value % 2 === 1) {
+
+                return true;
+
+            } 
+                return false;
+        }).map(function(value) {
+
+            return value * 2;
+
+        }))
+
+
+
+        console.log("-------------------------------------------")
+
+
+        
+        // 화살표 함수 표현(Arrow Function Expression)
+        // 새로운 함수가 아니라 기존 함수를 화살표로 색다르게 '표현'한 것임
+        // function이라는 구문 대신 화살표를 넣음.. '매개변수를 넣으면 => 이렇게 된다!'라는 의미
+        // mdn 설명 '간편한 대안입니다.' = 슈가코드라는 의미
+        // 슈가코드 중 하나(정상적인 문법은 아니지만 많이들 쓰게 되자 끝내 인정된 문법)
+        // 머리 자르러 간다! 머리카락 자르러 간다?
+
+        // 1) 화살표 함수는 일반 함수와 성격이 약간 다르다. (나중에 설명)
+        // 2) 화살표 함수는 요소를 지금보다도 더 없앨 수 있다. (그때부터는 문법 이해가 힘들어짐; JS가 조금 더 익숙해지면 나중에 배울 것)
+
+        let k = ar.filter((value) => {
+
+            if (value % 2 === 1) {
+
+                return true;
+
+            } 
+                return false;
+        })
+
+        console.log(k);
+
+    </script>
+    
+</body>
+</html>
