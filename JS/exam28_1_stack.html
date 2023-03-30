@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 1. 변수선언은 let을 사용하자.
+        // 2. 선언되지 않은 변수는 사용하지 말자.
+
+
+        console.log("1--------------------------------------------");
+
+
+        const f1 = function() {
+
+            // console.log(i);
+            // 이게 정상이다? 변수 선언은 아래에 했는데 대체 왜일까?
+            // 이 윗줄에 var i; 이라고 자바스크립트가 미리 정의한 것(호이스팅)
+            // 호이스팅(함수 레벨 스코프)은 개발자들에게 비난 받았다. 
+
+            let i = 0;
+            for (let i = 0; i < 5; i++) {
+
+                console.log(i);
+
+            }
+
+            console.log("--------");
+            console.log(i); // 5
+            // for문 안에서 i를 만들었으나, i를 접근할 수 있는 범위가 함수를 벗어났다.
+
+        }
+
+        f1();
+
+
+        console.log("2--------------------------------------------");
+
+
+        const f2 = function() {
+
+            let a = 10;
+
+            if (a === 10) {
+
+                let k = 10;
+                console.log(k);
+
+            }
+
+            // console.log(k); // not defined
+
+        }
+
+        f2();
+
+
+        console.log("3--------------------------------------------");
+
+
+        const myFunction = function(func) { // 스택 영역으로 복사한 것
+
+            func();
+            // 이것은 f3의 주소인 0x1234(); 와 같은 뜻
+            // func(); = 0x1234();
+
+        }
+
+        const f3 = function() {
+
+            let a = 10;
+            console.log("f3");
+            // 위 두 줄은 아직 실행된 게 아니라 명령어 그 자체일 뿐이다.
+            // 그래서 이 명령어들은 전역영역으로 들어간다..
+
+        }
+
+        const f4 = f3;
+
+        f3();
+        f4();
+
+        myFunction(f3);
+
+        
+        console.log("4--------------------------------------------");
+
+
+        const myFunction2 = function(func) {
+
+            const f5 = function() {
+    
+                console.log("f5");
+    
+            }
+
+        }
+
+
+        console.log("5--------------------------------------------");
+
+
+        let arr = [1, 2, 3];
+
+        function a1() {
+
+            let a = [1, 2, 3]; // a = stack, [1, 2, 3] = heap
+            
+            a = function() { // 익명함수 a = heap
+
+                console.log("abc");
+
+            }
+
+            a();
+
+        }
+
+        a1();
+
+        
+        console.log("6--------------------------------------------");
+
+        function b1() {
+
+            const b = function() {
+
+                console.log("abc");
+
+            }
+
+            return b;
+
+        }
+
+        let ff = b1();
+        ff();
+
+
+    </script>
+</body>
+</html>
