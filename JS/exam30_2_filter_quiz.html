@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 주어진 배열에서
+        // 1) 홀수만 추출
+        // 2) 100 이하의 수만 추출
+        // 3) 5로 나눈 나머지가 0인 수만 추출하는 코드를
+        // 4) 즉시호출함수로
+        // 5) filter를 이용해서 구현해보세요.
+
+        let data = [230, 25, 75, 50, 103, 24, 5, 77, 60];
+      
+        // 선생님 답안
+        // let res = data.filter((value) => (value % 2 === 1))
+        //               .filter((value) => (value < 100))
+        //               .filter((value) => (value % 5 === 0));
+        
+        // console.log(res);
+             
+        
+        // 내 답안
+        (function() {
+            let result = data.filter(function(value) {
+            if ((value % 2 === 1) && (value < 100) && (value % 5 === 0)) 
+
+                return true;
+            })
+            console.log(result);
+        })();
+        
+
+    </script>
+    
+</body>
+</html>
