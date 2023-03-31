@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+
+        (function() {
+
+            const getSum = function() {
+
+                console.log(this.korean + this.english + this.math);
+
+            }
+
+            const getAverage = function() {
+
+               console.log((this.korean + this.english + this.math) / 3);
+
+            }
+  
+            const student1 = {
+        
+                name : "김서울",
+                school : "상봉고등학교",
+                grade : 3,
+                korean : 80,
+                english : 90,
+                math: 60,
+                sum : getSum,
+                average : getAverage
+        
+            }
+        
+            const student2 = {
+        
+                name : "이경기",
+                school : "수원고등학교",
+                grade : 3,
+                korean : 95,
+                english : 80,
+                math: 85,
+                sum : getSum,
+                average : getAverage        
+        
+            }
+        
+            const student3 = {
+        
+                name : "박인천",
+                school : "송도고등학교",
+                grade : 3,
+                korean : 70,
+                english : 100,
+                math: 90,
+                sum : getSum,
+                average : getAverage        
+        
+            }
+        
+            const student4 = {
+        
+                name : "최강원",
+                school : "양양고등학교",
+                grade : 3,
+                korean : 90,
+                english : 95,
+                math: 100,
+                sum : getSum,
+                average : getAverage        
+        
+            }
+        
+            const student5 = {
+        
+                name : "정충청",
+                school : "대전고등학교",
+                grade : 3,
+                korean : 95,
+                english : 95,
+                math: 90,
+                sum : getSum,
+                average : getAverage
+        
+            }
+
+            student1.sum();
+            student1.average();
+
+        })();
+
+    </script>
+    
+</body>
+</html>

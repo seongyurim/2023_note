@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+
+        (function() {
+
+            // grade : 학년
+            // 리턴값 : 학년의 국영수 총점
+            const getTotal = function(grade) {
+
+                // 학년 성적 배열을 가지고 온다.
+                let sc = this.score[grade - 1];
+
+                // 국어, 영어, 수학 성적을 더한다.
+                let total = sc[0] + sc[1] + sc[2];
+
+                return total;
+
+            }
+
+            const getAverage = function(grade) {
+
+                // 학년 성적 배열을 가지고 온다.
+                let sc = this.score[grade - 1];
+
+                // 국어, 영어, 수학 성적을 더한다.
+                let total = sc[0] + sc[1] + sc[2];
+
+                return total / 3;
+
+            }
+
+
+            const stu1 = {
+
+                name : "김서울",
+                grade : 3,
+                school : "상봉고등학교",
+                score : [[80, 75, 93], [78, 100, 98], [76, 98, 69]],
+                getTotal : getTotal,
+                getAverage : getAverage
+
+            };
+
+            console.log(stu1.getTotal(1));
+            console.log(stu1.getTotal(2));
+            console.log(stu1.getTotal(3));
+
+            console.log(stu1.getAverage(1));
+            console.log(stu1.getAverage(2));
+            console.log(stu1.getAverage(3));
+            
+
+
+            // const stu2 = {
+
+            //     name : "이경기",
+            //     grade : 2,
+            //     school : "수원고등학교",
+            //     score : [[88, 100, 98], [76, 98, 80]]
+
+            // };
+
+
+        })();
+
+        // 주의사항(객체의 최대 단점)
+        // 속성은 모두 다른데, 메소드는 모두 겹친다. 그래서 객체마다 메소드를 
+        // 속성마다 만들어 쓰기는 좋은데, 그 안에 메소드를 넣는 순간! 메소드 설계가 매우 복잡해진다.
+        // 속성이 오브젝트마다 다르기 때문이다. (2학년 학생은 배열이 2개, 3학년 학생은 배열이 3개 인 것처럼)
+        // 특히 성격이 같은 오브젝트가 여러개 있는 경우에는 오브젝트가 어울리지 않는다.
+        // 오브젝트는 그래서 이런 상황이 아니라 싱글톤(Singleton)인 경우에 유용하다.
+        // 예를 들어 동영상 플레이어의 설정 화면처럼(폰트 설정을 변경하면 창을 여러개 띄워도 모든 창에 적용된다.)
+        // 예를 들어 학원 정보 데이터(학원 전화번호, 원장 정보 등)는 오브젝트를 사용하기에 좋다.
+
+    </script>
+    
+</body>
+</html>

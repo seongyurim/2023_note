@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        
+        <script>
+
+        (function() {
+
+            const getSum = function() {
+
+                return this.score[0][0] + this.score[1][0] + this.score[2][0];
+
+            }
+
+            const getAvg = function() {
+
+                return (this.score[0][0] + this.score[1][0] + this.score[2][0]) / 3;
+
+            }
+  
+            const student1 = {
+        
+                name : "김서울",
+                school : "상봉고등학교",
+                grade : 3,
+                score : [ [80, 90, 60], [70, 85, 90], [95, 95, 90] ]
+        
+            }
+        
+            const student2 = {
+        
+                name : "이경기",
+                school : "수원고등학교",
+                grade : 2,
+                score : [ [60, 70, 60], [75, 80, 75] ]     
+        
+            }
+        
+            const student3 = {
+        
+                name : "박인천",
+                school : "송도고등학교",
+                grade : 1,
+                score1 : [90, 60, 80]
+        
+            }
+        
+            const student4 = {
+        
+                name : "최강원",
+                school : "양양고등학교",
+                grade : 3,
+                score : [ [100, 60, 85], [100, 70, 85], [100, 80, 80] ]     
+        
+            }
+        
+            const student5 = {
+        
+                name : "정충청",
+                school : "대전고등학교",
+                grade : 2,
+                score : [ [80, 90, 80], [80, 95, 100] ]
+        
+            }
+
+            getSum(student1);
+            getAvg(student1);
+
+        })();
+
+    </script>
+    
+</body>
+</html>

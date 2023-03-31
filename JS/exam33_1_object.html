@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        console.log("----- 예시1 -----------------------------------------------------------");
+
+        // 오브젝트 타입: 뭔가 부족함
+        let kcs = ["김철수", 40, true, 2, "서울 동대문구"];
+        console.log(typeof(a));
+        
+
+
+        // 오브젝트: Key-Value 형식의 정보
+        const kyh = {
+            
+            name : "김영희",
+            age : 35,
+            married : true,
+            'child count' : 2,
+            "living address" : "서울 성동구"
+
+        };
+        console.log(kyh); // 오브젝트 전체 정보
+        console.log(typeof(kyh)); // object
+        console.log(kyh.name); // 김영희
+        console.log(kyh['name']); // 김영희
+        console.log(kyh[name]); // undefined // 따옴표를 꼭 사용하자
+        console.log(kyh.age); // 35
+        console.log(kyh['child count']); // 2
+        console.log(kyh["living address"]); // 서울 성동구 // 따옴표 종류는 무관
+
+
+
+        console.log("----- 예시2 -----------------------------------------------------------");
+
+        // 내 정보로 오브젝트 만들어보기
+        // 이름, 나이, 주소, 키, 성별(남T/여F), +2개 추가
+
+        const syr = {
+
+            name : "성유림",
+            age : 32,
+            address : "서울 중랑구",
+            height : 165,
+            gender : false,
+            sibling : 1,
+            pet : "dog",
+            job : false
+
+        };
+
+        console.log(syr);
+        console.log(typeof(syr));
+        console.log(syr.name);
+        console.log(syr['height']);
+        console.log(syr.gender);
+        console.log(syr['pet']);
+
+
+
+        console.log("----- 예시3 -----------------------------------------------------------");
+
+        (function(){
+   
+            let data = [11, 22, 33, 44];
+
+            const f1 = function() {
+
+                console.log("f1");
+
+            }
+
+            let obj = {
+
+                data1 : data,
+                data2 : [10, 20, 30],
+                func : f1
+
+            };
+            
+            obj.data1[2] = 77;
+            console.log(obj.data1[2]); // 77
+
+            obj.func(); // f1
+            
+        })();
+
+
+
+        console.log("----- 예시4 -----------------------------------------------------------");
+
+        (function(){
+
+            let data = [11, 22, 33, 44];
+
+            let obj = {
+
+                data1 : data,
+                data2 : [10, 20, 30], // attribute(특성, 속성) // member varible(멤버 변수)
+                func : function() { // method // member function(멤버 함수)
+                        console.log("f1");              
+                        },
+
+                obb : {
+                    name : "aaa"
+                }
+            
+            }
+            
+            obj.data1[2] = 77;
+            console.log(obj.data1[2]); // 77
+
+            // 오브젝트에 함수도 들어갈 수 있다.
+            obj.func(); // f1
+
+            // 오브젝트에 오브젝트도 들어갈 수 있다.
+            console.log(obj.obb.name); // aaa
+
+            // 결국은 오브젝트에 모든 요소가 들어갈 수 있는 것이다.
+            // 이것보다 중요한 사실은, 아무 것이나 들어갈 수 있다고 해서 아무 것이나 넣는 게 아니라 오브젝트와 '관련된' + '중요' 데이터만 들어가야 한다는 것이다.
+            // let patient 라면 환자와 관련된 정보만 들어가야 할 것이다. 환자의 냉장고 소유 여부? 부적절하다!
+
+        })();
+
+        
+
+        console.log("----- 예시5 -----------------------------------------------------------");
+
+        let patient =  {
+
+            name : "김철수",
+            age : 30
+
+        }
+
+        console.log(patient); // 30
+        patient.age = 31; // age 기존값 변경
+        patient.blood = "A"; // blood 신규생성
+
+        console.log(patient);
+
+        delete patient.age;
+        console.log(patient);
+
+
+
+        console.log("----- 예시6 -----------------------------------------------------------");
+
+        const patient1 = {
+
+            name : "김영희",
+            disease : "감기",
+
+            getDiseaseName : function () {
+
+                return this.disease; // this = disease가 속해 있는 객체(patient1)
+
+            }
+
+        };
+
+        console.log(patient1.getDiseaseName());
+
+    </script>
+    
+</body>
+</html>
