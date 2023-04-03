@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        // 얕은 복사(Shallow Copy)
+        // '참조값만' 복사해온 것
+        // 두 개 이상의 참조변수가 하나의 대상을 가리키는 상황
+        const ar1 = [11, 22, 33, 44, 55];
+        const ar2 = ar1;
+
+
+        // 깊은 복사(Deep Copy)
+        const br1 = [11, 22, 33, 44, 55];
+
+        const deepCopy = function(org) {
+
+            // // 0. 빈 배열을 생성한다.
+            // const newArr = [];
+
+            // 1. 원배열의 요소들을 읽는다.
+            // 2. 새로운 배열에 추가한다.
+            // 3. 1, 2를 반복한다.
+
+
+            // 1) for문으로 만들기 ------------------------------------------------------
+            // for (let i = 0; i < org.length; i++) {
+
+            //     newArr[i] = org[i];
+
+
+            // }
+
+            // return newArr;
+
+
+            // 2) for-of문으로 만들기 ---------------------------------------------------
+            // const newArr = [];
+            // for (const value of org) {
+
+            //     newArr.push(value);
+
+            // }
+
+            // return newArr;
+
+
+            // 3) map으로 만들기 --------------------------------------------------------
+            // const newArr = br1.map(function(value)
+            // {
+            //     return value;
+
+            // });
+
+            // return newArr;
+
+
+            // 4) filter와 화살표 함수로 만들기 -----------------------------------------
+            return org.filter((value) => true);
+            
+
+        }
+
+        // 5) 전개연산자로 만들기 -------------------------------------------------------
+        const br3 = [...br1];
+
+
+        
+
+        const br2 = deepCopy(br1);
+        console.log(br2);
+
+
+    </script>
+    
+</body>
+</html>

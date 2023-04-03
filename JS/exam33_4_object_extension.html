@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // 1. 변수의 선언 (with 초기화)
+        // let a = 10;
+        // let b = 20;
+
+        let [a, b] = [10, 20];
+        // 이것은 배열이 아니다. 배열의 이름이 없으므로.
+        // 확장된 문법(슈가코드의 일종)이다.
+        // 실무에서 은근히 많이 사용된다.
+
+
+        console.log(a); // 10
+        console.log(b); // 20
+        console.log(typeof(a)); // number
+        console.log(typeof(b)); // number
+
+
+        [a, b] = [30, 40];
+        console.log(a); // 30
+        console.log(b); // 40
+        // a, b를 FM대로 선언해도, [a, b]로 선언해도 가능하다.
+        // react, node.js에서도 이런 코드가 자주 보인다.
+        // 다른 언어에는 전혀 존재하지도 않는다.
+
+
+
+        console.log("---------------------------------------------");
+
+
+
+        // 2. 두 수를 서로 바꾸고 싶다. (Swap Algorithm의 기본원리)
+        // 이 외에 다른 스왑 방법은 없다.
+
+        let n1 = 10;
+        let n2 = 20;
+        let temp; // 중간변수 추가
+
+        // 이것이 기본원리
+        // temp = n1;
+        // n1 = n2;
+        // n2 = temp;
+
+        // 자바스크립트는 이것을 더욱 간단하게 성공시킨다'-';
+        [n1, n2] = [n2 , n1];
+        // 좌변(l-value)은 변수로서의 역할, 우변(r-value)은 값으로서의 역할을 하므로
+        // 좌변의 n1과 우변의 n1은 다르다.
+
+        console.log(n1);
+        console.log(n2);
+
+
+
+        console.log("---------------------------------------------");
+
+
+
+        // 3. 객체를 이용해서 변수와 다중선언을 만들 수 있다.
+        const obj = {
+            name : "김철수",
+            age : 26
+        }
+
+        // A코드
+        // let name = obj.name;
+        // let age = obj.age;
+
+        // B코드
+        // let [name, age] = [obj.name, obj.age];
+
+        // C코드
+        let {name, age} = obj;
+        // name, age가 이름이 같으므로 위처럼 생략할 수도 있다.
+        // A, B, C코드는 완전히 같다.
+        // C코드는 여러 개의 내용을 한번에 변경해야 할 때 편리하다. 자주 쓰이므로 잘 알아두자.
+        // C코드의 단점: obj의 필드명과 변수명이 같아야 한다.
+        // 따라서 가급적이면 이름을 통일하여 사용한다.
+        // 프론트엔드나 디자인 영역에서도 주어진 이름을 그대로 사용하는 것이 관례이다. 굳이 바꾸지 말자.
+
+        // D코드
+        // 외부변수명과 오브젝트의 속성명이 다른 경우
+        // let user_name = obj.name;
+        // let user_age = obj.age;
+
+        // E코드
+        // D코드마저 아래처럼 간소화시킬 수 있다.
+        // D, E는 중요하지 않다.
+        // let {user_name=obj.name, user_age=obj.age} = obj;
+        
+        console.log(name); // 김철수
+        console.log(age); // 26
+        console.log(typeof(name)); // string
+        console.log(typeof(age)); // number
+
+
+
+    </script>
+
+
+</body>
+</html>

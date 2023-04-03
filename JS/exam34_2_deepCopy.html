@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        const obj1 = {
+
+            name : "김철수",
+            age : 28,
+            address : "인왕산 기슭"
+
+        };
+
+        const obj2 = {
+
+            code : "0001",
+            product : "milk"
+
+        };
+
+
+        // 얕은 복사
+        // const obj2 = obj1;
+        // const obj3 = deepCopy(obj2);
+
+
+        // 깊은 복사
+        // let newObject = {};
+        // for (const key in obj1) {
+
+        //     newObject[key] = obj1[key];
+
+        // };
+
+        
+        // 위의 깊은 복사를 함수로 만들기
+        const deepCopyObject = function(orgRef) {
+
+            const newObject = {};
+
+            for (const key in orgRef) {
+
+                newObject[key] = orgRef[key];
+
+            }            
+
+            return newObject;
+
+        };
+
+        // let newObject = deepCopyObject(obj1);
+
+
+
+    </script>
+    
+</body>
+</html>
