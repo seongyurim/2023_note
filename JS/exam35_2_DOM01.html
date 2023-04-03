@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+    
+    <button>Turn Red</button>
+
+    <script>
+
+        const onLoaded = function() {
+
+            
+        }
+
+        document.addEventListener('DOMContentLoaded', onLoaded);
+
+
+        // 1. document
+        // '인터페이스는 브라우저가 불러온 웹 페이지를 나타내며, 페이지 콘텐츠(DOM 트리)의 진입점 역할을 수행합니다.'
+        // 중간부터 찾아 들어가는 방법은 없다. 항상 시작점부터 출발해서 찾아간다.
+        // 결국 document는 최상위 객체라는 의미이다.
+        // 여유 되면 '자료구조' 공부해보기
+
+        // 2. addEventListener
+        // '지정한 유형의 이벤트를 대상이 수신할 때마다 호출할 함수를 설정합니다.'
+        // 'document에 'DomContentLoad'라는 이벤트가 발생하면 () => { } 이 함수를 호출시켜주세요.' 라고 건네주는 것
+        // '문이 열리면 사이렌을 울려주세요' - '문이 열리면'이 DomContentLoad, 사이렌 울리기가 함수
+        // 최상위 객체인 document의 메소드
+
+        // 3. ('DOMContentLoaded', () => { });
+        // DOMContentLoaded = 셋 중 가장 중요한 요소
+
+    </script>
+
+</body>
+</html>

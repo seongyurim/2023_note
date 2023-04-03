@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+    
+    <button>Turn Red</button>
+
+    <script>
+
+        // 대상을 찾는 코드
+        const h1Element = document.querySelector("h1");
+        const btnElement = document.querySelector("button");
+
+        // 콜백 매커니즘으로 동작을 명령하는 코드
+        btnElement.addEventListener("click", function() {
+
+            h1Element.style.color = "red";
+
+        });
+
+        // 1. 자바스크립트로 정보를 바꿀 수 있구나
+        // 2. '찾기-명령하기'라는 2스텝이 있구나
+
+    </script>
+
+</body>
+</html>
