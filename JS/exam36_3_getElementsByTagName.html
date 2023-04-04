@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+    <h1>Welcome</h1>
+    <h1>Welcome</h1>
+    <h1>Welcome</h1>
+    <h1>Welcome</h1>
+    <h1>Welcome</h1>
+
+
+
+    <script>
+
+        // Element가 아니고 Elements
+        // 특수기호를 사용하여 엘리먼트의 '집합'을 가져온다.
+        // 참고로 엘리먼트의 집합은 W3C는 NodeList라고 지정했지만 IE는 HTML Collection이라고 불렀다. 노드리스트라고 알아두자.
+        // 집합(elements)을 가져온다는 것을 쉽게 인식시키기 위해 앞에 $를 붙였다.(강사님 회사)
+        // 외국회사는 저 $h1Element를 보통 h1Elements라고 표기한다.
+
+        // const $h1 = document.getElementsByTagName("h1");
+        // $h1[0].style.color = "red";
+
+
+        // h1 집합 전체 색상 바꾸기 ------------------------------------------------------------------
+        (function(){
+
+            const h1Elements = document.getElementsByTagName("h1");
+
+            for (let i = 0; i <h1Elements.length; i++) {
+
+                h1Elements[i].style.color = "red";
+
+            }
+            
+        })();
+
+
+        // 콜백(forEach) 사용하기 ---------------------------------------------------------------------
+        (function(){
+
+            const h1Elements = document.getElementsByTagName("h1");
+            // 위에서 만들어진 h1 집합은 배열은 아니다. 그래서 아래에 배열로 복제하였다.
+
+            const $h1Elements = [...h1Elements];
+
+            [...h1Elements].forEach(function(value){
+                value.style.color = "red";
+            });
+
+        })();
+
+
+        // 위 코드에서 임시변수와 화살표 함수 사용하기 ------------------------------------------------
+        // 해당 코드를 구현하려면 알아야 할 다섯 가지: 배열, 임시변수, 스프레드연산, 콜백, 화살표
+        (function(){
+
+            const h1Elements = document.getElementsByTagName("h1");
+
+            [...h1Elements].forEach((value) => {value.style.color = "red";});
+
+        })();
+
+    </script>
+
+</body>
+</html>

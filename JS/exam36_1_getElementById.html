@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1 id="msg" class="cls_msg">Hello</h1>    
+    <!-- <button>Turn Red</button> -->
+
+    <script>
+
+        (function(){
+
+            // querySelector(범용적, 속도가 미세하게 느림)
+            // const h1Elem = document.querySelector("h1");
+            // // 도큐먼트가 찾으러 가서 만나는 '가장 첫번째 h1 태그'의 참조값을 리턴
+
+            // console.log(h1Elem);
+            // // 콘솔로그는 h1Elem의 참조값을 통해 중요한 정보를 가지고 온다.
+            // // h1Elem의 중요 정보는 태그와 컨텐츠이므로 <h1>Hello</h1>을 그대로 가져왔다.
+
+            // h1Elem.style.color = "aqua";
+
+            // getElementById(id 전용, 속도가 미세하게 빠름)
+            const h1Elem = document.getElementById("msg");
+            console.log(h1Elem);
+
+            h1Elem.style.color = "red";
+
+
+        })();
+
+    </script>
+
+</body>
+</html>

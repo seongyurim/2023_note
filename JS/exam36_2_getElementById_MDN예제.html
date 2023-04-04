@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="para">MDN의 예제를 적용시켜보자!</p>
+
+    <!-- 아래 button 코드는 사실 가장 적절한 방식은 아니다.
+    하지만 현업에서는 아래 코드 같은 '레거시 코드'가 즐비하므로
+    반드시 알아둘 필요가 있다! 신기술만 좇는 것이 답이 아니다! -->
+
+    <!-- ES5 ver. 
+    <button onclick="changeColor('blue');">blue</button>
+    <button onclick="changeColor('red');">red</button> -->
+
+    <!-- ES6 ver. 이렇게 쓰지 말자.  -->
+    <button onclick="buttonColor('blue');">blue</button>
+    <button onclick="buttonColor('red');">red</button>
+
+    <script>
+
+        // 자바스크립트에서는 'para'처럼 홑따옴표를 쓰는 것이 일반적이다.
+        // 위의 onclick="buttonColor('blue');" 구문 안 'blue'에 쌍따옴표를 쓰면 어색해지기 때문이다.
+        // 둘다 써도 출력은 되지만 홑따옴표를 사용하도록 하자.
+
+        // ES5 ver.
+        // function changeColor(newColor) {
+
+        //     var elem = document.getElementById('para');
+        //     elem.style.color = newColor;
+
+        // }
+
+        // ES6 ver.
+        let buttonColor = function(newColor) {
+
+            let elem = document.getElementById('para');
+            elem.style.color = newColor;
+
+        }
+
+    </script>
+
+</body>
+</html>
