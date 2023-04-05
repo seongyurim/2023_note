@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Hello</h1>
+
+    <ul>
+
+    </ul>
+    <button>insert li</button>
+
+    <script>
+
+        // 버튼을 클릭하면 과일 목록이 나타나는 코드를 작성해보세요.
+        
+
+        // 1. 기존 오브젝트를 가져온다.
+        const $ul = document.querySelector("ul");
+        const $btn = document.querySelector("button");
+
+        // 2. 추가할 과일들을 배열로 만든다.
+        const fruit = ["apple", "banana", "orange", "melon", "strawberry", "grape", "peach"]
+
+        // 3. 반복할 내용을 포함한 함수를 만든다.
+        const callbackInsert = function()
+        {
+            let $newElement;
+            fruit.forEach((value) => {
+
+                // a. 생성
+                $newElement = document.createElement("li");
+
+                // b. 설정
+                $newElement.textContent = value;
+
+                // c. 추가
+                $ul.appendChild($newElement);
+
+            });
+
+            $btn.removeEventListener("click", callbackInsert);
+
+        }
+
+        $btn.addEventListener("click", callbackInsert);
+
+
+
+
+        // h1 Hello 삭제하기 -----------------------------------------------------------------------------------------
+        // h1을 삭제하고 싶으면 당사자에게 가지 않고 부모에게 가서 부탁해야 한다.
+        $btn.addEventListener("click", function(){
+
+            // 1. 삭제를 원하는 대상을 데려온다.
+            const $h1 = document.querySelector("h1");
+
+            // 2. 대상의 부모에게 가서 부탁한다.
+            $h1.parentNode.removeChild($h1);
+
+        });
+
+    </script>
+    
+</body>
+</html>

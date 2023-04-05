@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <ul>
+
+    </ul>
+    <button>insert li</button>
+
+    <script>
+
+        // 버튼을 클릭하면 과일 목록이 나타나는 코드를 작성해보세요.
+
+        
+
+        // 1. 기존 오브젝트를 가져온다.
+        const $ul = document.querySelector("ul");
+        const $btn = document.querySelector("button");
+
+        // 2. 추가할 오브젝트를 만들고 설정한다.
+        const $li1 = document.createElement("li");
+        const $li2 = document.createElement("li");
+        const $li3 = document.createElement("li");
+
+        $li1.textContent = "Strawberry";
+        $li2.textContent = "Watermelon";
+        $li3.textContent = "Grape";
+        
+        // 3. 버튼을 누르면 오브젝트가 추가된다.
+        const callbackInsert = function(){
+            
+            console.log("insert!")
+            $ul.appendChild($li1);
+            $ul.appendChild($li2);
+            $ul.appendChild($li3);
+
+            $btn.removeEventListener("click", callbackInsert);
+            
+        }
+
+        $btn.addEventListener("click", callbackInsert);
+
+    </script>
+    
+</body>
+</html>
