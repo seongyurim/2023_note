@@ -25,57 +25,36 @@
             // console.log("getAttribute --------------------------------------------------------------------------");
 
             // const $img = document.querySelector(".cat");
-            // console.log($img);
+            // console.log($img); // <img class="cat" src="https://placekitten.com/200/200" alt="cat1">
             
             // const srcAttr = $img.getAttribute("src");
-            // console.log(srcAttr);
+            // console.log(srcAttr); // https://placekitten.com/200/200
 
             // const classAttr = $img.getAttribute("class");
-            // console.log(classAttr);
+            // console.log(classAttr); // cat
 
             // const altAttr = $img.getAttribute("alt");
-            // console.log(altAttr);
+            // console.log(altAttr); // cat1
 
 
 
             // console.log("setAttribute --------------------------------------------------------------------------");
 
             // $img.setAttribute("alt", "kitten");
-            // console.log($img);
+            // console.log($img); // <img class="cat" src="https://placekitten.com/200/200" alt="kitten">
 
             // $img.setAttribute("class", "kitten");
-            // console.log($img);
+            // console.log($img); // <img class="kitten" src="https://placekitten.com/200/200" alt="cat1">
 
 
 
             // 버튼으로 border 색이 토글되는 코드를 만들어보세요.
-
-            // 내가 작성한 코드
-            // const catImg = document.querySelector("img");
-            // const btnChange = document.querySelector("button");
-
-            // btnChange.addEventListener("click", () => {
-
-            //     if (blingbling === true) {
-    
-            //         $box.setAttribute("class", "kitten");                
-    
-            //     } else {
-    
-            //         $box.setAttribute("class", "cat");
-            //     }
-
-            // });
-
 
             // 답안1
 
             // // 1. 오브젝트를 가지고 온다.
             // const $img = document.querySelector(".cat");
             // const $btn = document.querySelector(".btn_change");
-            // console.log($img);
-            // console.log($btn);
-
             
             // // 2. 버튼 이벤트리스너를 등록한다.
             // let bClassCat = true;
@@ -99,27 +78,27 @@
 
             // 답안2 (답안1에서 getAttribute 사용)
 
-            // 1. class의 속성값을 가지고 온다.
-            const $img = document.querySelector(".cat");
-            const $btn = document.querySelector(".btn_change");
+            // // 1. class의 속성값을 가지고 온다.
+            // const $img = document.querySelector(".cat");
+            // const $btn = document.querySelector(".btn_change");
             
             
-            // 2. class의 속성값이 cat인가?
-            $btn.addEventListener("click", () => {
+            // // 2. class의 속성값이 cat인가?
+            // $btn.addEventListener("click", () => {
 
-                const classAttr = $img.getAttribute("class");
+            //     const classAttr = $img.getAttribute("class");
 
-                if (classAttr === "cat") {
+            //     if (classAttr === "cat") {
 
-                    $img.setAttribute("class", "kitten");
+            //         $img.setAttribute("class", "kitten");
 
-                } else {
+            //     } else {
 
-                    $img.setAttribute("class", "cat");
+            //         $img.setAttribute("class", "cat");
 
-                }
+            //     }
 
-            });
+            // });
 
 
 
