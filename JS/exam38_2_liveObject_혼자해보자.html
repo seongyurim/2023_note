@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .gray {color: gray;}
+
+        .green {color: green;}
+
+    </style>
+</head>
+<body>
+
+<ul>
+    <li class="gray">Spring</li>
+    <li class="gray">Summer</li>
+    <li class="gray">Fall</li>
+    <li class="gray">Winter</li>
+</ul>
+
+    <script>
+
+        // HTML Collection ---------------------------------------------------------------------
+        // const $season = document.getElementsByClassName('gray');
+
+        // for (let i = $season.length - 1; i >= 0; i--) {
+
+        //     $season[i].className = 'green';
+            
+        // }
+
+        const $season = document.querySelectorAll('gray');
+
+        for (let i = 0; i < $season.length; i++) {
+
+            $season[i].className = "green";
+
+        }
+
+
+
+
+        // console.log($season);
+
+    </script>
+    
+</body>
+</html>

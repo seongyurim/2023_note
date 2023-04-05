@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main_title">
+
+    </div>
+
+    <div class="sub_title">
+
+    </div>
+
+    <script>
+
+        // innerHTML, textContent의 차이를 배워보자.
+
+
+        // innerHTML : 새로운 하위 노드(정보)로써 해석해서 DOM 구조를 생성한다.
+        // textContent : 순수한 텍스트 그 자체만 기입된다.
+
+        // <div class="main_title"> </div> → 이 구조를 알면 이해하기 쉽다.
+        // 위 코드의 tag는 div, content는 비어있음 상태이기 때문이다.
+
+        (function(){
+
+            // 1. main_title 오브젝트를 가지고 온다.
+            const $title = document.querySelector('.main_title');
+
+
+            // 2. main_title 오브젝트 안에 <h1>Hello</h1>를 작성한다.
+            $title.innerHTML += "<h1>Hello</h1>"; // Hello
+            // $title.innerHTML = $title.innerHTML + "<h1>Hello</h1>"; 라는 의미(추가)
+            // $title.innerHTML = "<h1>Hello</h1>"; 는 기존 전체 내용을 hello로 대체해버린다는 의미
+            $title.innerHTML += "<h1>Welcome</h1>"; // Welcome
+
+
+
+            const $subTitle = document.querySelector('.sub_title');
+
+            $subTitle.textContent = "<h2>Korea</h2>"; // <h2>Korea</h2>
+
+        })();
+
+    </script>
+
+</body>
+</html>
