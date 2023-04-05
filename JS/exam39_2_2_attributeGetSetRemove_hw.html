@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .gray {border: 5px gray solid;}
+        .plum {border: 5px plum solid;}
+
+    </style>
+</head>
+<body>
+
+    <img class="gray" src="https://placekitten.com/200/200" alt="cat photo"></p>
+    <button class="btnChange">Change Border</button>
+
+    <script>
+
+        // 버튼을 클릭하면 보더 컬러가 바뀌는 토글 기능을 만들어보자.
+
+        // 1. 오브젝트들을 가져온다.
+        const $img = document.querySelector(".gray");
+        const $btn = document.querySelector(".btnChange");
+
+        // 2. 컬러가 바뀌는 함수를 만든다.
+        const btnClick = function(){
+
+            const classAttr = $img.getAttribute("class");
+
+            if (classAttr === "gray") {
+
+                $img.setAttribute("class", "plum");
+
+            } else {
+
+                $img.setAttribute("class", "gray");
+
+            }
+
+        };
+
+        // 3. 이벤트를 등록한다.
+        $btn.addEventListener("click", btnClick);
+
+    </script>
+    
+</body>
+</html>
