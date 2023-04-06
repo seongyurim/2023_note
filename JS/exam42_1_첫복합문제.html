@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body id="body">
+
+    <!-- 
+        아래 데이터는 제품의 원가를 나타냅니다.
+        제품의 원가를 10% 낮춘다고 했을 때
+        제품의 가격을 계산하고 이를 화면에 출력하세요.
+        (단 1원단위는 절삭합니다.)
+        (제품코드와 원가는 변경할 수 있어요.)
+     -->
+
+     <table border="1">
+        <thead>
+            <tr>
+                <th>제품코드</th>
+                <th>원가</th>
+                <th>할인가</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td class="A001"></td>
+                <td class="A001"></td>
+                <td class="A001"></td>
+            </tr>
+
+            <tr>
+                <td class="A002"></td>
+                <td class="A002"></td>
+                <td class="A002"></td>
+            </tr>
+
+            <tr>
+                <td class="B001"></td>
+                <td class="B001"></td>
+                <td class="B001"></td>
+            </tr>
+
+            <tr>
+                <td class="B002"></td>
+                <td class="B002"></td>
+                <td class="B002"></td>
+            </tr>
+        </tbody>
+     </table>
+
+<script>
+
+    // Adoptive Code 만들기
+
+    // 2. 원가와 할인율을 파라미터로 갖는 함수를 만든다.
+    const discountRate = 0.1;
+    const getDiscountPrice = function(price, rate) {
+
+        let dp = price * (1 - rate);
+        return Math.floor(dp/10) * 10; // 1원 단위를 절삭하는 전통적인 알고리즘
+
+    }
+
+    // 1. 데이터를 메모리에 올린다.
+    const product = [
+        {
+            code : "A001",
+            price : 33740,
+            discount : getDiscountPrice(33740, discountRate)
+        },
+        {
+            code : "A002",
+            price : 24500,
+            discount : getDiscountPrice(24500, discountRate)
+        },
+        {
+            code : "B001",
+            price : 8030,
+            discount : getDiscountPrice(8030, discountRate)
+        },
+        {
+            code : "B002",
+            price : 6500,
+            discount : getDiscountPrice(6500, discountRate)
+        }
+
+    ];
+
+
+    // 3. 오브젝트의 데이터를 표에 올리는 반복문을 만든다.
+    const Objects = [
+        document.querySelectorAll(".A001"),
+        document.querySelectorAll(".A002"),
+        document.querySelectorAll(".B001"),
+        document.querySelectorAll(".B002")
+    ];
+
+
+    // A) for문
+    // for (let i = 0; i < product.length; i++) {
+
+    //     Objects[i][0].textContent = product[i].code;
+    //     Objects[i][1].textContent = product[i].price;
+    //     Objects[i][2].textContent = product[i].discount;
+
+    // }
+
+    // B) forEach
+    product.forEach((value, index) => {
+
+        Objects[index][0].textContent = value.code;
+        Objects[index][1].textContent = value.price;
+        Objects[index][2].textContent = value.discount;
+
+    });
+
+
+
+
+
+
+
+
+
+    
+    // let productName = ["A001", "A002", "B001"];
+    // let orgPrice = [24500, 33740, 8030];
+
+
+
+    // // 2. 할인가 배열을 생성한다.
+    // let salePrice = orgPrice.map(function(value) {
+
+    //     return value * 0.9;
+
+    // });
+
+    // console.log(salePrice);
+
+
+
+    // 3. 테이블 구조를 만든다.
+    // const $table = document.createElement('table');
+    // const $thead = document.createElement('thead');
+    // const $tbody = document.createElement('tbody');
+
+    // $table.appendChild($thead);
+    // $table.appendChild($tbody);
+
+    // document.querySelector('body').appendChild($table);
+
+
+
+
+    // 4. 
+
+
+
+
+
+    // // 3. 제품코드 배열을 테이블로 만든다.
+
+    // // 1) 기존 오브젝트를 가져온다.
+    // const $table = document.querySelector(".productTable");
+
+    // // 2) 제품코드 배열을 추가할 함수를 만든다.
+    // const getList = function(){
+
+    //     let $td = document.createElement("td");
+
+    // };
+
+    // // 4. 할인가 배열을 테이블로 만든다.
+
+    // // 5. 이벤트를 등록한다.
+
+
+
+
+
+</script>
+    
+</body>
+</html>
