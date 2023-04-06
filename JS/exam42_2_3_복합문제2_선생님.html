@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1~45사이의 랜덤번호를 만든다.
+        const getLNumber = function()
+        {
+            return Math.floor(Math.random() * 45) + 1;
+        }
+
+        
+        const result = [
+            [],
+            [],
+            [],
+            [],
+            []];
+        
+        const makeLottoArray = function(target)
+        {
+            let pos = 0; //집어넣을 위치
+            let rn;
+            let bExist = false;
+            while(pos < 6)
+            {
+                bExist = false;
+                
+                //1. 랜덤번호를 하나 만든다.                
+                rn = getLNumber();
+
+                //2. 랜덤번호가 target에 있는지를 본다.
+                for (let i = 0; i < 6; i++) {
+                    if (target[i] === rn) {
+                        bExist = true;
+                        break;
+                    }                        
+                }
+
+                if (bExist === true) 
+                {                    
+                    continue;
+                }
+                
+                //3. 랜덤번호가 target에 없다면 추가한다.
+                //4. 추가가 된다면 pos증가
+                target[pos] = rn;
+                pos++;
+                
+            }
+            
+        }
+
+        
+        makeLottoArray(result[0]);
+    </script>
+    
+</body>
+</html>
