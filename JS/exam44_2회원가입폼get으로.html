@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!-- 
+        사용자 회원가입을 하려 합니다.
+        사용자의 아래 정보를 get 방식으로 보내보세요. (그러면 안되지만)
+        - id
+        - email
+        - password
+        - 회원구분(일반회원, 미성년회원, 관리자) -> select
+        - 성별(남자, 여자) -> radio button
+     -->
+
+     <form action="/regmember/" method="get">
+         <label for="user_id">아이디 </label> <input type="text" name="user_id" id="user_id"> <br>
+         <label for="user_email">이메일 </label> <input type="email" name="user_email" id="user_email"> <br>
+         <label for="user_pw">비밀번호 </label> <input type="password" name="user_pw" id="user_pw"> <br><br>
+    
+         <select name="user_type">
+            <option>어떤 회원이신가요?</option>
+            <option value="normal">일반회원</option>
+            <option value="teenager">미성년회원</option>
+            <option value="admin">관리자</option>
+        </select><br><br>
+    
+        <input type="radio" name="user_gender" value="male" id="id_male" checked>
+        <label for="id_male">남성</label>
+        <input type="radio" name="user_gender" value="female" id="id_female">
+        <label for="id_female">여성</label>
+
+        <br><br>
+        <button type="submit">회원가입</button>
+
+        <!-- name-backend / id-frontend 사용. 보통 서로 건들이지 않음  -->
+
+        <!-- 
+            입력완료 후 주소
+            file:///C:/regmember/?user_id=syr&user_email=my%40gmail.com&user_pw=2222&user_type=normal&user_gender=female
+            %40 - @
+         -->
+
+     </form>
+
+</body>
+</html>

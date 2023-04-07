@@ -1,0 +1,192 @@
+@charset 'utf-8';
+
+html {
+    /*
+    웹폰트
+        1. 구글 폰트에서 Noto Sans검색
+        2. 적당한 폰트 선택 (R400, B600)
+        3. 폰트를 html에서 link태그를 통해 포함.
+        4. 포함된 폰트를 CSS의 html 태그에서설정
+    */
+    font-size : 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: white;
+    
+}
+
+body {
+    /* 수평 스크롤을 없앤다.*/
+    overflow-x: hidden;
+    /* 글간격을 5%정도 좁힌다.*/
+    letter-spacing: -0.05em;
+    background-color: black;
+
+
+}
+
+
+a {
+    /*언더라인을 없앤다.*/
+    text-decoration: none;
+    color: white;
+
+}
+
+footer {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 4em;
+    width: 100%;
+    background-color: darkgray;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    color: black;
+
+
+}
+
+.global-nav {
+    position: absolute;
+    
+    width: 100%;
+    height : 44px;
+    left : 0;
+    top : 0;
+
+}
+
+.local-nav {
+    position: absolute;
+    width: 100%;
+    height: 52px;
+    left: 0;
+    top: 45px;
+    
+}
+
+.global-nav-links {    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    height: 100%;
+    max-width: 1000px;
+    margin : 0 auto;
+
+}
+
+.local-nav-links {    
+    display: flex;              /* 디스플레이 모드를 flex로 설정 */
+    align-items: center;        /* 내부 아이템을 세로 중앙정렬 */
+    justify-content: right;     /* 내부 아이템을 가로 우측정렬 */
+
+    height: 100%;
+    max-width: 1000px;
+    margin : 0 auto;
+
+    border-bottom: 1px solid gray;
+    
+}
+
+.local-nav-product-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: auto;
+
+}
+
+/*Overview Compare Buy*/
+.local-nav-link {
+    margin-left: 2em;
+}
+
+
+.product-name {
+    font-size: 7.5rem;
+    text-align: center;
+
+    margin-top: 2em;
+
+}
+
+.sticky-element {
+    display: none;
+    position: fixed;
+
+}
+
+.section0-message {
+    opacity: 0;
+    font-size: 4.5rem;
+    font-weight: bold;
+
+    width: 100%;
+    height : 6rem;
+
+    left : 0;
+    top: 5em; 
+
+    text-align: center;
+
+}
+
+#show-section0 .sticky-element {
+    display: block;
+}
+
+
+
+.section0-canvas { 
+    left: 0;
+    top: 0;
+    width: 100%;
+
+    text-align: center;
+    z-index: -5;
+
+
+}
+
+.section1-message {
+    /*<div class="section1-message">*/
+    
+    text-align: center;
+
+}
+
+.section1-description {
+    font-size: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 3em;
+}
+
+.section1-description > strong {
+
+    float: left;   
+    font-size: 4.5rem;
+
+}
+
+.local-nav-sticky .local-nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    border-bottom: 1px solid gray;
+
+    -webkit-backdrop-filter: saturate(180%) blur(15px);
+	-moz-backdrop-filter: saturate(180%) blur(15px);
+	-o-backdrop-filter: saturate(180%) blur(15px);
+	backdrop-filter: saturate(180%) blur(15px);
+
+}
+
+.local-nav-sticky .local-nav-links {
+    border: none;
+
+}
