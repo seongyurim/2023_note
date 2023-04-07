@@ -7,22 +7,23 @@
     <title>Document</title>
 </head>
 <body>
+
+    <h1 class="lnumber"></h1>
+    <h1 class="lnumber"></h1>
+    <h1 class="lnumber"></h1>
+    <h1 class="lnumber"></h1>
+    <h1 class="lnumber"></h1>
+
     <script>
-        //1~45사이의 랜덤번호를 만든다.
+        // 1~45사이의 랜덤번호를 만든다.
         const getLNumber = function()
         {
             return Math.floor(Math.random() * 45) + 1;
         }
-
         
-        const result = [
-            [],
-            [],
-            [],
-            [],
-            []];
-        
-        const makeLottoArray = function(target)
+        // parameter : 배열
+        // 배열에 로또번호를 채워넣는다.
+        const makeLottoArray = function(target, bSort = true) // bSort 디폴트 파라미터
         {
             let pos = 0; //집어넣을 위치
             let rn;
@@ -33,7 +34,7 @@
                 
                 //1. 랜덤번호를 하나 만든다.                
                 rn = getLNumber();
-
+                
                 //2. 랜덤번호가 target에 있는지를 본다.
                 for (let i = 0; i < 6; i++) {
                     if (target[i] === rn) {
@@ -41,7 +42,7 @@
                         break;
                     }                        
                 }
-
+                
                 if (bExist === true) 
                 {                    
                     continue;
@@ -54,10 +55,33 @@
                 
             }
             
+            if (bSort === true) {
+                
+                target.sort((a, b) => (a - b));
+                
+            }
+            
         }
 
+        const $h1s = document.querySelectorAll(".lnumber");
+
+        // 최종적으로 로또번호가 들어갈 배열
+        const result = [[], [], [], [], []];
         
-        makeLottoArray(result[0]);
+        // 로또번호를 만들어서 result에 채운다.
+        result.forEach((value) => {makeLottoArray(value);});
+        
+        // result를 h1 태그에 넣는다.
+        result.forEach((value, index) => {
+
+            // 1. value를 문자열로 바꾼다. [1, 2, 3, 4, 5, 6] ==> "1, 2, 3, 4, 5, 6"
+            let content = value.join(", ");
+
+            // 2. h1에 textContent로 넣어준다.
+            $h1s[index].textContent = content;
+
+        });
+
     </script>
     
 </body>

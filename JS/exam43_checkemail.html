@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="text" id="email">
+    <!-- <h1>이메일 형식이 아닙니다.</h1> -->
+    <pre>
+        1. @는 하나가 있어야 한다. - 존재하는지
+        2. @ 앞에 문자가 있어야 한다. - 몇 개 있는지
+        3. @ 뒤에도 문자가 있어야 한다. 
+        4. @ 문자 뒤에 문자 중에 .이 있어야 한다.
+        5. . 뒤에 문자열이 있어야 한다.
+        - email이 정상적인지 확인하는 함수
+    </pre>
+
+    <script>
+
+        // 이메일 형식을 검사하는 함수를 만든다.
+        // name : checkEmail
+        // parameter : 체크할 이메일 리스트
+        // return : 이메일이 형식이 맞으면 true, 아니면 false
+        const checkEmail = function(email) {
+            
+            // 1. @는 하나가 있어야 한다.
+            const token = email.split("@");            
+            if ((token.length - 1) !== 1) { // 1과 비교하는 것이 목적이므로 !== 2 보다 !== 1로 쓰는 것이 리더빌리티가 좋다.
+
+                return false;
+
+            }
+
+            // 2. @ 앞에 문자가 있어야 한다.
+            if (token[0].length <= 0) {
+
+                return false;
+            }
+
+            // 3. @ 뒤에도 문자가 있어야 한다.
+            if (token[1].length <= 0) {
+
+                return true;
+            }
+
+            // 4. 문자 뒤에 문자 중에 .이 있어야 한다.
+            if (token[1].includes(".") === false) {
+
+                return false;
+            }
+
+            // 5. . 뒤에 문자열이 있어야 한다.
+            const smallToken = token[1].split(".");
+            if (smallToken[1] <= 0) {
+
+                return false;
+            }
+
+        };
+
+        checkEmail("@naver.com");
+
+
+
+
+
+        
+                // const $email = document.getElementById("email");
+        
+                // $email.addEventListener('keyup', (event) => {
+        
+                //     // console.log($email.value, $email.value.length);
+                //     // console.log(event.currentTarget.value);
+                //     // $email = event.currentTarget 완전히 같은 의미이나 후자 사용을 권고
+        
+                //     const $h1 = document.createElement("h1");
+        
+                //     let text = event.currentTarget.value; 
+        
+        
+                //     // 1. 주어진 값이 이메일인지 체크한다.
+                    
+                //     if (checkEmail(text) === true) {
+        
+                //         // 2. 이메일이라면 h1에 "이메일입니다."
+        
+                //     } else {
+        
+                //         // 그렇지 않다면 h1에 "이메일이 아닙니다." 
+        
+                //     }
+                // });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        
+
+    </script>
+    
+</body>
+</html>
