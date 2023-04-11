@@ -1,34 +1,27 @@
 html {
-
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
-    color: #292929;
+    background-color: #000;
+    color: #fff;
 }
 
 body {
     overflow-x: hidden;
-    /* 수평스크롤 없애기 */
-
     letter-spacing: -0.05rem;
-    /* 글 간격 줄이기 */
-    /* root em : 부모의 5%를 줄인다. */
-
 }
 
 a {
     text-decoration: none;
-    /* 밑줄 등 기본속성 없애기 */
+    color: #fff;
 }
 
 .global-nav {
     position: absolute;
-    /* 상위태그가 body이므로 기준점 삼기에 좋음 */
-
     width: 100%;
     height: 44px;
     left: 0;
     top: 0;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 .local-nav {
@@ -37,7 +30,7 @@ a {
     height: 52px;
     left: 0;
     top: 45px;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
 }
 
 .global-nav-links {
@@ -47,25 +40,61 @@ a {
     height: 100%;
     margin: 0 auto;
     align-items: center;
-    background-color: chartreuse;
+    /* background-color: lightpink; */
 }
 
 .local-nav-links {
     display: flex;
-    align-items: center;
     justify-content: right;
-
     max-width: 1000px;
     height: 100%;
     margin: 0 auto;
-
+    align-items: center;
+    border-bottom: 1px solid #fff;
+    /* background-color: lightblue; */
 }
 
 .local-nav-product-link {
     margin-right: auto;
-    /* 우측마진을 내가 가질 수 있는 최대값으로 가진다. */
+    font-size: 1.5rem;
+    font-weight: bold;
 }
 
 .local-nav-link {
-    margin-left: 2em;
+    margin-left: 1em;
+}
+
+.section-0-product-name {
+    font-size: 7.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.section0-message {
+    font-size: 4.5rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.section1-message {
+    font-size: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    line-height: 3em;
+}
+
+.section1-message > p > strong {
+    font-size: 4.5rem;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4em;
+    width: 100%;
+    background-color: rgb(243, 139, 11);
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
 }
