@@ -26,7 +26,7 @@ footer {
     background-color: orange;
     color: #292929;
     width: 100%;
-    height: 7rem;
+    height: 5em;
 }
 
 .global-nav {
@@ -114,4 +114,8 @@ footer {
 
 .section1-message strong {
     font-size: 4.5rem;
+}
+
+.scroll-section {
+    border: 3px solid yellow;
 }
