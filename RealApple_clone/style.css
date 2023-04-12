@@ -15,6 +15,20 @@ a {
     color: #fff;
 }
 
+/* 태그끼리 위에 먼저 코딩하므로
+맨아래가 아니라 이곳에 위치시키자 */
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+    background-color: orange;
+    color: #292929;
+    width: 100%;
+    height: 7rem;
+}
+
 .global-nav {
     position: absolute;
     width: 100%;
@@ -65,36 +79,39 @@ a {
 }
 
 .section-0-product-name {
+    margin-top: 20rem;
+}
+
+.product-name {
     font-size: 7.5rem;
     font-weight: bold;
     text-align: center;
 }
 
+/* sticky 관련 요소 */
+.sticky-element {
+    position: fixed;
+}
+
+/* 폰트, 위치, 마진 등 디자인 요소 */
 .section0-message {
+    opacity: 0;
     font-size: 4.5rem;
     font-weight: bold;
+    width: 100%;
+    height: 6em;
+    left: 0;
+    top: 8em;
     text-align: center;
 }
 
-.section1-message {
+.section1-message > p {
     font-size: 2.5rem;
     max-width: 1000px;
     margin: 0 auto;
     line-height: 3em;
 }
 
-.section1-message > p > strong {
+.section1-message strong {
     font-size: 4.5rem;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 4em;
-    width: 100%;
-    background-color: rgb(243, 139, 11);
-    font-size: 2rem;
-    font-weight: bold;
-    color: black;
 }
