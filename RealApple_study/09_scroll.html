@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 2300px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            position: fixed;
+            left: 0;
+            top: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- <button>TEST</button> -->
+
+    <h1>온전히 빠져들게 하는 빛깔</h1>
+
+    <script>
+
+        let yOffset = 0;
+
+        const $h1 = document.querySelector("h1");
+        // const $btn = document.querySelector("button");
+
+
+        // 스크롤 범위를 구한다. (1902)
+        const $height = document.body.scrollHeight - window.innerHeight;
+        console.log($height);
+
+
+
+        // 버튼을 클릭해서 위치 변경이 잘 되는지 확인하기 ------------------------
+        // let bReset = false;
+        // $btn.addEventListener("click", () => {
+
+        //     if (bReset === false) {
+        //         $h1.style.transform = "translateY(-70%)";
+        //     } 
+        //     else {
+        //         $h1.style.transform = "translateY(0%)";
+        //     }
+        //     bReset = !bReset;
+        // });
+        
+
+
+        window.addEventListener("scroll", () => {
+
+            // 글자 fade-out 시키기 -----------------------------------------------
+            let ratio = 0;
+            yOffset = window.scrollY;
+
+            let startValue = 1;
+            let endValue = 0;
+            let range = endValue - startValue;
+
+            // ratio를 구한다.
+            // '스크롤 길이($height)'를 기준으로 얼만큼 스크롤 되었는지
+            ratio = yOffset / $height;
+
+            let opacityValue = (range * ratio) + startValue;
+            $h1.style.opacity = opacityValue;
+
+            
+
+            // 글자를 위로 올라가게 하기 -------------------------------------------
+
+            let startY = 0;
+            let endY = -80;
+            let rangeY = endY - startY;
+            let transYValue = (rangeY * ratio) + startY;
+            $h1.style.transform = `translateY(${transYValue}%)`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            
+            
+            // KSH님 코드 -----------------------------------------------------------------------------
+            // let rate = 0;
+            // let maxScroll = document.body.scrollHeight - window.innerHeight;
+            // rate = yOffset / maxScroll;
+            // console.log(rate);
+            // $h1.style.opacity = 1 - rate;
+            
+            
+            // 내가 생각한 코드 -----------------------------------------------------------------------
+            // 주석을 달아보자
+            // 1. yOffset이 0이면 opacity는 1이다.
+            // 2. yOffset이 점점 증가하면 opacity는 점점 감소해서 0이 된다.
+
+            // let opacity = $h1.style.opacity;
+
+            // if (yOffset === 0) {
+
+            //     opacity = 1.0;
+                
+            // } else if (yOffset !== 0) {
+                
+            //     let realScroll = document.body.scrollHeight - window.innerHeight;
+                
+            //     for (let i = 0; i <= realScroll; i++) {
+                    
+            //         yOffset++;
+                    
+            //     }
+                
+            //     for (let j = 0; j < 100; j++) {
+                    
+            //         opacity--;
+
+            //     }
+
+            // }
+
+        });
+
+    </script>
+    
+</body>
+</html>
