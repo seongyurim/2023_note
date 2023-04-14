@@ -8,6 +8,9 @@
     // 현재 섹션
     let currentSection = 0;
 
+    // yOffset의 스크롤값을 섹션별로 초기화
+    let sectionYOffset = 0;
+
 
 
 
@@ -19,8 +22,20 @@
         {
             height : 0,
             hMultiple : 5,
-            objs : {container : document.querySelector("#section-0")}
+            objs : {container : document.querySelector("#section-0"),
+                    messageA : document.querySelector(".section0-message.a"), //클래스를 두개 가져올 때(붙여서 가져옴)
+                    messageB : document.querySelector(".section0-message.b"),
+                    messageC : document.querySelector(".section0-message.c"),
+                    messageD : document.querySelector(".section0-message.d"),
+            },   
+
+            vals : {    
+                messageA_fade_in :  [0, 1, {start: 0.03, end: 0.12}], 
+                messageA_fade_out : [1, 0, {start: 0.13, end: 0.23}],
+    
+            },
         },
+
 
         // section-1의 정보
         {
@@ -31,7 +46,7 @@
     ];
 
 
-    ////// 각 섹션의 높이를 정하는 함수 생성 -----------------------------------------------------
+    ////// 각 섹션의 높이를 정하는 함수 ---------------------------------------------------------
     const setLayout = function() {
 
         let height = 0;
@@ -61,7 +76,7 @@
     // 따라서 크기가 변경될 때마다 함수가 호출되어야 하겠다.
 
 
-    /////// 스크롤된 시점의 섹션명을 도출하는 함수 생성 -------------------------------------------------
+    /////// 스크롤된 시점의 섹션명을 도출하는 함수 -----------------------------------------------------
     const getCurrentSection = function(){
 
         let segment = [
@@ -91,7 +106,8 @@
     }
 
 
-    ////// body ID를 section0에서 section1로 변경하는 함수(sticky-element를 보이게-안보이게 전환시키기 위해) ------------
+    ////// body ID를 section0에서 section1로 변경하는 함수 ---------------------------------------------------------
+    ////// sticky-element를 보이게-안보이게 전환시키기 위해
     const setBodyID = function(section) {
 
         document.body.setAttribute("id", `show-section${section}`);
@@ -116,7 +132,56 @@
         }
 
     }
+
+
+
+    ////// 이전 섹션의 높이를 구하는 함수 -------------------------------------------------------------------------
+    const getPrevSectionHeight = function() {
+
+        let prevHeight = 0;
+
+        for (let i = 0; i < currentSection; i++) {
+
+            prevHeight = prevHeight + sectionSet[i].height;
+
+        }
+        
+        return prevHeight;
+
+    }
     
+
+
+    ////// 섹션별로 애니메이션을 실행하는 함수 -------------------------------------------------------------------
+    const playAnimation = function() {
+
+        let scrollRate = sectionYOffset / sectionSet[currentSection].height; // 0~1 사이의 값이 나온다.
+
+        switch(currentSection) {
+
+            case 0:
+
+                if (scrollRate <= 0.25) {
+
+                    
+
+                }
+
+                console.log("0번 섹션의 애니메이션이 돌고 있어요.");
+                break;
+
+            case 1:
+                console.log("1번 섹션의 애니메이션이 돌고 있어요.");
+                break;
+
+            default:
+                console.error("[ERROR] playAnimation()");
+                break;
+
+        }
+
+    }
+
 
 
 
@@ -127,17 +192,28 @@
 
     window.addEventListener('scroll', () => {
 
+        // 1. 스크롤 값을 설정한다.
         yOffset = window.scrollY;
+
+        // 2. 현재 섹션값을 가지고 온다.
         currentSection = getCurrentSection();
+
+        // 섹션별 스크롤값을 초기화해보자.
+        sectionYOffset = yOffset - getPrevSectionHeight();
+        // console.log("sectionYOffset = " + sectionYOffset);
+
+        // CSS 변경..
         setBodyID(currentSection);
         setLocalnavMenu();
         // console.log(`yOffset = ${yOffset}, section = ${currentSection}`);
 
+        // 
+        playAnimation();
+
     });
     
 
-    // 결국 setLayout() 호출을 위해 두가지 이벤트를 추가해야 한다.
-
+    // setLayout() 호출을 위해서는 두가지 이벤트를 추가해야 한다.
     // 1. 처음 로딩될 때 setLayout()를 호출해준다.
     window.addEventListener('load', () => {
         // 1) 레이아웃을 다시 잡는다.

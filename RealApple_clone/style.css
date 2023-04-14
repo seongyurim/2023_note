@@ -93,7 +93,7 @@ footer {
 
 /* 폰트, 위치, 마진 등 디자인 요소 */
 .section0-message {
-    opacity: 1;
+    opacity: 0;
     font-size: 4rem;
     font-weight: bold;
     width: 100%;

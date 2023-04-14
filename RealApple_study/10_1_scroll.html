@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 2300px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            position: fixed;
+            left: 0;
+            top: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>온전히 빠져들게 하는 빛깔</h1>
+
+    <script>
+
+        let yOffset = 0; // 절대치
+        let sectionYOffset = 0; // 상대치
+        let bodyHeight = 0;
+
+        let partStart = 0;
+        let partEnd = 0;
+        let partHeight = 0;
+        let currentHeight = 0;
+
+        let rate = 0;
+        let range = 0;
+
+        let $h1 = document.querySelector("h1");
+
+        // ////// 이전 섹션의 높이를 구하는 함수
+        // const getPrevSectionHeight = function() {
+
+        //     let prevHeight = 0;
+
+        //     for (let i = 0; i < currentSection; i++) {
+        //         prevHeight = prevHeight + sectionSet[i].height;
+        //     }
+        //     return prevHeight;
+        // }
+
+
+        ////// 0.2 ~ 0.23
+        let opacity_fadeout = [1, 0, {start : 0.02, end : 0.23}];
+        // console.log("CSS의 시작값(opacity): " + opacity_fadeout[0]);
+        // console.log("CSS의 끝값(opacity): " + opacity_fadeout[1]);
+        // console.log("애니메이션의 시작위치: " + opacity_fadeout[2].start);
+        // console.log("애니메이션의 끝위치: " + opacity_fadeout[2].end);
+
+
+        const seeFadeOut = function(){
+            bodyHeight = document.body.scrollHeight;
+
+            partStart = bodyHeight * opacity_fadeout[2].start;
+            partEnd = bodyHeight * opacity_fadeout[2].end;
+            partHeight = partEnd - partStart;
+            // console.log(partStart, partEnd, partHeight);
+
+            currentHeight = sectionYOffset - partStart;
+            rate = currentHeight / partHeight;
+            range = opacity_fadeout[1] - opacity_fadeout[0];
+        }
+
+        
+        window.addEventListener("scroll", () => {
+
+            yOffset = window.scrollY;
+            // sectionYOffset = yOffset - getPrevSectionHeight();
+            sectionYOffset = yOffset; // yOffset - 0
+            console.log("sectionYOffset : " + sectionYOffset);
+
+            seeFadeOut();
+            
+            let opacityValue = (range * rate) + opacity_fadeout[0];
+            $h1.style.opacity = opacityValue;
+            console.log("opacityValue : " + opacityValue);
+
+
+        });
+
+
+
+    </script>
+    
+</body>
+</html>

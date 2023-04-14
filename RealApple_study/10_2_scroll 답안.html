@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body {
+            height: 2300px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            position: fixed;
+            left: 0;
+            top: 200px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>온전히 빠져들게 하는 빛깔</h1>
+
+    <script>
+
+        let yOffset = 0; // 절대치
+        let sectionYOffset = 0; // 상대치
+        let bodyHeight = 0;
+
+        let partStart = 0;
+        let partEnd = 0;
+        let partHeight = 0;
+        let partOffset = 0;
+
+        let rate = 0;
+        let range = 0;
+
+        let $h1 = document.querySelector("h1");
+
+        ////// 0.2 ~ 0.23
+        let opacity_fadeout = [1, 0, {start : 0.02, end : 0.23}];
+
+        bodyHeight = document.body.scrollHeight;
+        partStart = bodyHeight * opacity_fadeout[2].start;
+        partEnd = bodyHeight * opacity_fadeout[2].end;
+        partHeight = partEnd - partStart;
+
+        
+        window.addEventListener("scroll", () => {
+
+            let partOffset = 0;
+            let ratio = 0;
+            let opacityValue = 0;
+            yOffset = window.screenY;
+            sectionYOffset = yOffset;
+
+            if ((sectionYOffset >= partStart) && (sectionYOffset <= partEnd)) {
+
+                partOffset = sectionYOffset - partStart;
+                console.log(partOffset);
+                ratio = partOffset / partHeight;
+                opacityValue = ((opacity_fadeout[1] - opacity_fadeout[0]) * ratio) + opacity_fadeout[0];
+        
+            }
+
+        });
+
+
+
+    </script>
+    
+</body>
+</html>
