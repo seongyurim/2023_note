@@ -23,16 +23,15 @@
             height : 0,
             hMultiple : 5,
             objs : {container : document.querySelector("#section-0"),
-                    messageA : document.querySelector(".section0-message.a"), //클래스를 두개 가져올 때(붙여서 가져옴)
+                    messageA : document.querySelector(".section0-message.a"), //클래스 두개를 같이 가져올 때(붙여서 가져오기! 공백이 있으면 하위 선택자라는 뜻이므로)
                     messageB : document.querySelector(".section0-message.b"),
                     messageC : document.querySelector(".section0-message.c"),
                     messageD : document.querySelector(".section0-message.d"),
-            },   
+            },
 
-            vals : {    
+            vals : {
                 messageA_fade_in :  [0, 1, {start: 0.03, end: 0.12}], 
-                messageA_fade_out : [1, 0, {start: 0.13, end: 0.23}],
-    
+                messageA_fade_out : [1, 0, {start: 0.13, end: 0.23}],    
             },
         },
 
@@ -150,28 +149,81 @@
 
     }
     
+    
+
+
+    //////
+    const calcValue = function(values) {
+
+        let result = 0;
+
+        // [0, 1, {start: 0.03, end: 0.12}]
+        let partStart = 0;
+        let partEnd = 0;
+        let partHeight = 0;
+        let ratio = 0;
+        
+        // 현재 섹션의 높이
+        const curHeight = sectionSet[currentSection].height;
+
+        partStart   = values[2].start * curHeight;
+        partEnd     = values[2].end * curHeight;
+        partHeight  = partEnd - partStart;
+        
+        if (sectionYOffset < partStart) {
+
+            result = values[0];
+
+        } else if (sectionYOffset > partEnd) {
+
+            result = values[1];
+
+        } else { // 이 두 줄이 핵심코드
+
+            ratio = (sectionYOffset - partStart) / partHeight;
+            result = (values[1] - values[0]) * ratio + values[0];
+
+        }
+
+        return result;
+
+    }
+
 
 
     ////// 섹션별로 애니메이션을 실행하는 함수 -------------------------------------------------------------------
     const playAnimation = function() {
 
+        let opacity = 0;
         let scrollRate = sectionYOffset / sectionSet[currentSection].height; // 0~1 사이의 값이 나온다.
 
+        let values = sectionSet[currentSection].vals;
+        let objects = sectionSet[currentSection].objs;
+
         switch(currentSection) {
+        // 현재 스크롤된 위치가 sec-0인지 sec-1인지
 
             case 0:
 
-                if (scrollRate <= 0.25) {
+                if (scrollRate < 0.13) {
 
-                    
+                    // 1. fade-in 처리를 한다.
+                    opacity = calcValue(values.messageA_fade_in);
+                    objects.messageA.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.13) && (scrollRate < 0.25)) {
+
+                    // 2. fade-out 처리를 한다.
+                    opacity = calcValue(values.messageA_fade_out);
+                    objects.messageA.style.opacity = opacity;
 
                 }
 
-                console.log("0번 섹션의 애니메이션이 돌고 있어요.");
+                // console.log("0번 섹션의 애니메이션이 돌고 있어요.");
                 break;
 
             case 1:
-                console.log("1번 섹션의 애니메이션이 돌고 있어요.");
+                // console.log("1번 섹션의 애니메이션이 돌고 있어요.");
                 break;
 
             default:
@@ -207,7 +259,7 @@
         setLocalnavMenu();
         // console.log(`yOffset = ${yOffset}, section = ${currentSection}`);
 
-        // 
+        // 애니메이션 실행
         playAnimation();
 
     });
