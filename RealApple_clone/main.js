@@ -30,8 +30,25 @@
             },
 
             vals : {
-                messageA_fade_in :  [0, 1, {start: 0.03, end: 0.12}], 
-                messageA_fade_out : [1, 0, {start: 0.13, end: 0.23}],    
+                messageA_fade_in :       [0, 1, {start: 0.03, end: 0.12}], 
+                messageA_fade_out :      [1, 0, {start: 0.13, end: 0.23}],
+                messageA_transY_in :     [0, -30, {start: 0.03, end: 0.12}],
+                messageA_transY_out :    [-30, -60, {start: 0.13, end: 0.23}],
+
+                messageB_fade_in :       [0, 1, {start: 0.27, end: 0.37}], 
+                messageB_fade_out :      [1, 0, {start: 0.38, end: 0.48}],
+                messageB_transY_in :     [0, -30, {start: 0.27, end: 0.37}],
+                messageB_transY_out :    [-30, -60, {start: 0.38, end: 0.48}],
+
+                messageC_fade_in :       [0, 1, {start: 0.52, end: 0.61}], 
+                messageC_fade_out :      [1, 0, {start: 0.62, end: 0.73}],
+                messageC_transY_in :     [0, -30, {start: 0.52, end: 0.61}],
+                messageC_transY_out :    [-30, -60, {start: 0.62, end: 0.73}],
+
+                messageD_fade_in :       [0, 1, {start: 0.77, end: 0.86}], 
+                messageD_fade_out :      [1, 0, {start: 0.87, end: 0.98}],
+                messageD_transY_in :     [0, -30, {start: 0.77, end: 0.86}],
+                messageD_transY_out :    [-30, -60, {start: 0.87, end: 0.98}]
             },
         },
 
@@ -152,36 +169,54 @@
     
 
 
-    //////
+    ////// 애니메이션 영역을 지정하는 함수 -------------------------------------------------------------------------
     const calcValue = function(values) {
 
-        let result = 0;
+        let result = 0;     // 결과(CSS값)
+        let ratio = 0;      // 비율
 
+        // 부분 애니메이션 계산 시 사용하는 변수
         // [0, 1, {start: 0.03, end: 0.12}]
         let partStart = 0;
         let partEnd = 0;
         let partHeight = 0;
-        let ratio = 0;
         
         // 현재 섹션의 높이
         const curHeight = sectionSet[currentSection].height;
 
-        partStart   = values[2].start * curHeight;
-        partEnd     = values[2].end * curHeight;
-        partHeight  = partEnd - partStart;
+
+        // [1, 0] => 이것은 [1, 0, {start: 0, end: 1}]과 같은 의미
+        if (values.length === 2) {
+
+            // 1. 비율을 구한다.
+            ratio = sectionYOffset / curHeight;
+
+            // 2. 비율에 따른 CSS값을 구한다.
+            result = ((values[1] - values[0]) * ratio) + values[0];
+        }
         
-        if (sectionYOffset < partStart) {
+        // [1, 0, {start, end}]
+        else if (values.length === 3) {
 
-            result = values[0];
+            partStart   = values[2].start * curHeight;
+            partEnd     = values[2].end * curHeight;
+            partHeight  = partEnd - partStart;
+            
+            if (sectionYOffset < partStart) {
+    
+                result = values[0];
+    
+            } else if (sectionYOffset > partEnd) {
+    
+                result = values[1];
+    
+            } else { // 이 두 줄이 핵심코드
+    
+                ratio = (sectionYOffset - partStart) / partHeight;
+                result = (values[1] - values[0]) * ratio + values[0];
+    
+            }
 
-        } else if (sectionYOffset > partEnd) {
-
-            result = values[1];
-
-        } else { // 이 두 줄이 핵심코드
-
-            ratio = (sectionYOffset - partStart) / partHeight;
-            result = (values[1] - values[0]) * ratio + values[0];
 
         }
 
@@ -195,6 +230,7 @@
     const playAnimation = function() {
 
         let opacity = 0;
+        let translateY = 0;
         let scrollRate = sectionYOffset / sectionSet[currentSection].height; // 0~1 사이의 값이 나온다.
 
         let values = sectionSet[currentSection].vals;
@@ -205,17 +241,83 @@
 
             case 0:
 
+                // opacity = calcValue([1, 0]);
+                // objects.messageA.style.opacity = opacity;
+                // console.log(opacity);
+
+
+                objects.messageA.style.opacity = 0;
+                objects.messageB.style.opacity = 0;
+                objects.messageC.style.opacity = 0;
+                objects.messageD.style.opacity = 0;  
+
                 if (scrollRate < 0.13) {
 
-                    // 1. fade-in 처리를 한다.
+                    // fade-in 처리를 한다.
                     opacity = calcValue(values.messageA_fade_in);
                     objects.messageA.style.opacity = opacity;
 
+                    // transY-in을 처리한다.
+                    translateY = calcValue(values.messageA_transY_in);
+                    objects.messageA.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.13) && (scrollRate < 0.25)) {
 
-                    // 2. fade-out 처리를 한다.
+                    // fade-out 처리를 한다.
                     opacity = calcValue(values.messageA_fade_out);
                     objects.messageA.style.opacity = opacity;
+
+                    // transY-out을 처리한다.
+                    translateY = calcValue(values.messageA_transY_out);
+                    objects.messageA.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.25) && (scrollRate < 0.38)) {
+
+                    opacity = calcValue(values.messageB_fade_in);
+                    objects.messageB.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageB_transY_in);
+                    objects.messageB.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.38) && (scrollRate < 0.5)) {
+
+                    opacity = calcValue(values.messageB_fade_out);
+                    objects.messageB.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageB_transY_out);
+                    objects.messageB.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.5) && (scrollRate < 0.62)) {
+
+                    opacity = calcValue(values.messageC_fade_in);
+                    objects.messageC.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageC_transY_in);
+                    objects.messageC.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.62) && (scrollRate < 0.75)) {
+
+                    opacity = calcValue(values.messageC_fade_out);
+                    objects.messageC.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageC_transY_out);
+                    objects.messageC.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.75) && (scrollRate < 0.87)) {
+
+                    opacity = calcValue(values.messageD_fade_in);
+                    objects.messageD.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageD_transY_in);
+                    objects.messageD.style.transform = `translateY(${translateY}%)`;
+
+                } else if ((scrollRate >= 0.87) && (scrollRate < 1)) {
+
+                    opacity = calcValue(values.messageD_fade_out);
+                    objects.messageD.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageD_transY_out);
+                    objects.messageD.style.transform = `translateY(${translateY}%)`;
 
                 }
 
