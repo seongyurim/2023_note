@@ -30,25 +30,25 @@
             },
 
             vals : {
-                messageA_fade_in :       [0, 1, {start: 0.03, end: 0.12}], 
-                messageA_fade_out :      [1, 0, {start: 0.13, end: 0.23}],
-                messageA_transY_in :     [0, -30, {start: 0.03, end: 0.12}],
+                messageA_fade_in :       [0, 1,     {start: 0.03, end: 0.12}], 
+                messageA_fade_out :      [1, 0,     {start: 0.13, end: 0.23}],
+                messageA_transY_in :     [0, -30,   {start: 0.03, end: 0.12}],
                 messageA_transY_out :    [-30, -60, {start: 0.13, end: 0.23}],
 
-                messageB_fade_in :       [0, 1, {start: 0.27, end: 0.37}], 
-                messageB_fade_out :      [1, 0, {start: 0.38, end: 0.48}],
-                messageB_transY_in :     [0, -30, {start: 0.27, end: 0.37}],
+                messageB_fade_in :       [0, 1,     {start: 0.27, end: 0.37}], 
+                messageB_fade_out :      [1, 0,     {start: 0.38, end: 0.48}],
+                messageB_transY_in :     [0, -30,   {start: 0.27, end: 0.37}],
                 messageB_transY_out :    [-30, -60, {start: 0.38, end: 0.48}],
 
-                messageC_fade_in :       [0, 1, {start: 0.52, end: 0.61}], 
-                messageC_fade_out :      [1, 0, {start: 0.62, end: 0.73}],
-                messageC_transY_in :     [0, -30, {start: 0.52, end: 0.61}],
+                messageC_fade_in :       [0, 1,     {start: 0.52, end: 0.61}], 
+                messageC_fade_out :      [1, 0,     {start: 0.62, end: 0.73}],
+                messageC_transY_in :     [0, -30,   {start: 0.52, end: 0.61}],
                 messageC_transY_out :    [-30, -60, {start: 0.62, end: 0.73}],
 
-                messageD_fade_in :       [0, 1, {start: 0.77, end: 0.86}], 
-                messageD_fade_out :      [1, 0, {start: 0.87, end: 0.98}],
-                messageD_transY_in :     [0, -30, {start: 0.77, end: 0.86}],
-                messageD_transY_out :    [-30, -60, {start: 0.87, end: 0.98}]
+                messageD_fade_in :       [0, 1,     {start: 0.77, end: 0.86}], 
+                messageD_fade_out :      [1, 0,     {start: 0.87, end: 0.90}],
+                messageD_transY_in :     [0, -30,   {start: 0.77, end: 0.86}],
+                messageD_transY_out :    [-30, -60, {start: 0.87, end: 0.90}]
             },
         },
 
@@ -217,7 +217,6 @@
     
             }
 
-
         }
 
         return result;
@@ -245,12 +244,13 @@
                 // objects.messageA.style.opacity = opacity;
                 // console.log(opacity);
 
-
+                // 스크롤을 다시 올렸을 때 잔상이 남는 현상을 없애기 위해 초기화
                 objects.messageA.style.opacity = 0;
                 objects.messageB.style.opacity = 0;
                 objects.messageC.style.opacity = 0;
                 objects.messageD.style.opacity = 0;  
 
+                
                 if (scrollRate < 0.13) {
 
                     // fade-in 처리를 한다.
@@ -311,7 +311,7 @@
                     translateY = calcValue(values.messageD_transY_in);
                     objects.messageD.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.87) && (scrollRate < 1)) {
+                } else if ((scrollRate >= 0.87) && (scrollRate < 0.92)) {
 
                     opacity = calcValue(values.messageD_fade_out);
                     objects.messageD.style.opacity = opacity;
