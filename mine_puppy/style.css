@@ -5,26 +5,46 @@ html {
 }
 
 body {
+    width: 100%;
     overflow-x: hidden;
     letter-spacing: -0.05rem;
 }
 
 .sec0_video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
     z-index: -99;
+    filter: brightness(50%);
 }
 
 .sec0_txt {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    display: table;
+    position: relative;
+    table-layout: fixed;
+    width: 575px;
+    height: 90vh;
+    z-index: 500;
+    margin: 0 0 0 90px;
     color: #fff;
 }
 
-.sec0_txt_title{
+.sec0_txt_inner {
+    display: table-cell;
+    vertical-align: bottom;
+    padding: 170px 20px 90px 0;
+}
+
+.sec0_txt_inner_title{
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.25em;
     font-size: 7rem;
 }
 
-.sec0_txt_subtitle{
-    font-size: 1.8rem;
+.sec0_txt_inner_subtitle{
+    line-height: 1.8em;
+    font-size: 1.3rem;
+    font-weight: 300;
 }
