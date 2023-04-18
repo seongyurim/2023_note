@@ -1,0 +1,30 @@
+html {
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
+}
+
+body {
+    overflow-x: hidden;
+    letter-spacing: -0.05rem;
+}
+
+.sec0_video {
+    z-index: -99;
+}
+
+.sec0_txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.sec0_txt_title{
+    font-size: 7rem;
+}
+
+.sec0_txt_subtitle{
+    font-size: 1.8rem;
+}

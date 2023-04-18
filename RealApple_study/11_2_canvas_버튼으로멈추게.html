@@ -18,7 +18,9 @@
         // 1. 캔버스 및 컨텍스트를 가지고 온다.
         const canvas = document.querySelector("#canvas");
         const button = document.querySelector("button");
-        const ctx = canvas.getContext('2d');
+        const ctx = canvas.getContext('2d'); // 핵심코드. context란 무엇인가?
+        // 화면에 무언가를 그리기 위해서는 수많은 정보가 필요한데 이를 일일히 설정하기가 어렵다.
+        // 2d 컨텍스트라는 것을 만들어 미리 만들어져 있는걸 통째로 가져다 사용하는 것이다.
 
         // 2. 이미지를 불러온다.
         const imgCount = 570;
@@ -28,7 +30,7 @@
         // 3. 이미지를 불러와서 배열에 넣는다.
         for (let i = 0; i < imgCount; i++) {
 
-            imgElement = new Image();
+            imgElement = new Image(); // 이미지 객체 만들기
             imgElement.src = `./image/apple${i}.png`;
             console.log(`./image/apple${i}.png`);
 
@@ -37,7 +39,8 @@
         }
 
 
-        imgElement.addEventListener('load', () => {
+        imgElement.addEventListener('load', () => { // 현재 imgElement에는 무엇이 들어가 있을까?(for문이 다 돌고 나서)
+                                                    // imgElement = 가장 마지막으로 로딩된 이미지의 참조값을 가지고 있는 노드
 
             ctx.drawImage(imgArray[imgIndex], 0, 0);
 

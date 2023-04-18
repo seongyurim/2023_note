@@ -1,15 +1,18 @@
 html {
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
+    color: #fff;
 }
 
 body {
     overflow-x: hidden;
     letter-spacing: -0.05rem;
+    background-color: #000;
 }
 
 a {
     text-decoration: none;
+    color: #fff;
 }
 
 /* 태그끼리 위에 먼저 코딩하므로
@@ -91,15 +94,21 @@ footer {
     position: fixed;
 }
 
+.section-0-canvas {
+    left: 0;
+    top: 0;
+    z-index: -99;
+}
+
 /* 폰트, 위치, 마진 등 디자인 요소 */
 .section0-message {
     opacity: 0;
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: bold;
     width: 100%;
     height: 6em;
     left: 0;
-    top: 8em;
+    top: 5em;
     text-align: center;
 }
 

@@ -22,33 +22,43 @@
         {
             height : 0,
             hMultiple : 5,
-            objs : {container : document.querySelector("#section-0"),
-                    messageA : document.querySelector(".section0-message.a"), //클래스 두개를 같이 가져올 때(붙여서 가져오기! 공백이 있으면 하위 선택자라는 뜻이므로)
-                    messageB : document.querySelector(".section0-message.b"),
-                    messageC : document.querySelector(".section0-message.c"),
-                    messageD : document.querySelector(".section0-message.d"),
+            objs : {
+                container : document.querySelector("#section-0"),
+                messageA : document.querySelector(".section0-message.a"), //클래스 두개를 같이 가져올 때(붙여서 가져오기! 공백이 있으면 하위 선택자라는 뜻이므로)
+                messageB : document.querySelector(".section0-message.b"),
+                messageC : document.querySelector(".section0-message.c"),
+                messageD : document.querySelector(".section0-message.d"),
+
+                canvas : document.querySelector("#main-canvas"),
+                ctx : document.querySelector("#main-canvas").getContext("2d")
             },
-
+                
             vals : {
-                messageA_fade_in :       [0, 1,     {start: 0.03, end: 0.12}], 
-                messageA_fade_out :      [1, 0,     {start: 0.13, end: 0.23}],
-                messageA_transY_in :     [0, -30,   {start: 0.03, end: 0.12}],
-                messageA_transY_out :    [-30, -60, {start: 0.13, end: 0.23}],
+                imageCount : 500, // 사과이미지 폴더 속 이미지 갯수
+                canvasImages : [], // for문으로 돌려서 나온 모든 사과이미지가 들어가는 배열
+                imageIndex : [0, 499], // index2에 {start: 0, end: 1}이 생략된 것
+                canvas_fade_out :        [1, 0,     {start: 0.68, end: 0.87}],
 
-                messageB_fade_in :       [0, 1,     {start: 0.27, end: 0.37}], 
-                messageB_fade_out :      [1, 0,     {start: 0.38, end: 0.48}],
-                messageB_transY_in :     [0, -30,   {start: 0.27, end: 0.37}],
-                messageB_transY_out :    [-30, -60, {start: 0.38, end: 0.48}],
+                messageA_fade_in :       [0, 1,     {start: 0.02, end: 0.09}], 
+                messageA_fade_out :      [1, 0,     {start: 0.11, end: 0.18}],
+                messageA_transY_in :     [0, -30,   {start: 0.02, end: 0.09}],
+                messageA_transY_out :    [-30, -60, {start: 0.11, end: 0.18}],
 
-                messageC_fade_in :       [0, 1,     {start: 0.52, end: 0.61}], 
-                messageC_fade_out :      [1, 0,     {start: 0.62, end: 0.73}],
-                messageC_transY_in :     [0, -30,   {start: 0.52, end: 0.61}],
-                messageC_transY_out :    [-30, -60, {start: 0.62, end: 0.73}],
+                messageB_fade_in :       [0, 1,     {start: 0.20, end: 0.27}], 
+                messageB_fade_out :      [1, 0,     {start: 0.29, end: 0.36}],
+                messageB_transY_in :     [0, -30,   {start: 0.20, end: 0.27}],
+                messageB_transY_out :    [-30, -60, {start: 0.29, end: 0.36}],
 
-                messageD_fade_in :       [0, 1,     {start: 0.77, end: 0.86}], 
-                messageD_fade_out :      [1, 0,     {start: 0.87, end: 0.90}],
-                messageD_transY_in :     [0, -30,   {start: 0.77, end: 0.86}],
-                messageD_transY_out :    [-30, -60, {start: 0.87, end: 0.90}]
+                messageC_fade_in :       [0, 1,     {start: 0.38, end: 0.45}], 
+                messageC_fade_out :      [1, 0,     {start: 0.47, end: 0.54}],
+                messageC_transY_in :     [0, -30,   {start: 0.38, end: 0.45}],
+                messageC_transY_out :    [-30, -60, {start: 0.47, end: 0.54}],
+
+                messageD_fade_in :       [0, 1,     {start: 0.56, end: 0.63}], 
+                messageD_fade_out :      [1, 0,     {start: 0.65, end: 0.72}],
+                messageD_transY_in :     [0, -30,   {start: 0.56, end: 0.63}],
+                messageD_transY_out :    [-30, -60, {start: 0.65, end: 0.87}]
+
             },
         },
 
@@ -165,6 +175,30 @@
         return prevHeight;
 
     }
+
+
+
+    ////// 캔버스에 이미지를 로딩하고 0번 이미지를 호출하는 함수 --------------------------------------------------
+    const setCanvas = function() {
+
+        let imgElement;
+        const imgCount = sectionSet[0].vals.imageCount;
+        const canvasImages = sectionSet[0].vals.canvasImages;
+        const ctx = sectionSet[0].objs.ctx;
+
+        for (let i = 0; i < imgCount; i++) {
+            imgElement = new Image();
+            imgElement.src = `./../RealApple/image/apple_${i}.png`;
+            canvasImages.push(imgElement);
+
+        }
+
+        imgElement.addEventListener("load", () => {
+
+            ctx.drawImage(canvasImages[0], 0, 0);
+
+        });
+    }
     
     
 
@@ -240,18 +274,19 @@
 
             case 0:
 
-                // opacity = calcValue([1, 0]);
-                // objects.messageA.style.opacity = opacity;
-                // console.log(opacity);
+                // 이미지 인덱스를 구한다. (정수로 바꾼다.)
+                let imgIndex = Math.floor(calcValue(values.imageIndex));
+
+                // 이미지 인덱스에 해당하는 이미지를 ctx에 출력한다.
+                objects.ctx.drawImage(values.canvasImages[imgIndex], 0, 0);
 
                 // 스크롤을 다시 올렸을 때 잔상이 남는 현상을 없애기 위해 초기화
                 objects.messageA.style.opacity = 0;
                 objects.messageB.style.opacity = 0;
                 objects.messageC.style.opacity = 0;
-                objects.messageD.style.opacity = 0;  
-
-                
-                if (scrollRate < 0.13) {
+                objects.messageD.style.opacity = 0;
+               
+                if (scrollRate < 0.1) {
 
                     // fade-in 처리를 한다.
                     opacity = calcValue(values.messageA_fade_in);
@@ -261,7 +296,7 @@
                     translateY = calcValue(values.messageA_transY_in);
                     objects.messageA.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.13) && (scrollRate < 0.25)) {
+                } else if ((scrollRate >= 0.11) && (scrollRate < 0.2)) {
 
                     // fade-out 처리를 한다.
                     opacity = calcValue(values.messageA_fade_out);
@@ -271,7 +306,7 @@
                     translateY = calcValue(values.messageA_transY_out);
                     objects.messageA.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.25) && (scrollRate < 0.38)) {
+                } else if ((scrollRate >= 0.2) && (scrollRate < 0.29)) {
 
                     opacity = calcValue(values.messageB_fade_in);
                     objects.messageB.style.opacity = opacity;
@@ -279,7 +314,7 @@
                     translateY = calcValue(values.messageB_transY_in);
                     objects.messageB.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.38) && (scrollRate < 0.5)) {
+                } else if ((scrollRate >= 0.29) && (scrollRate < 0.38)) {
 
                     opacity = calcValue(values.messageB_fade_out);
                     objects.messageB.style.opacity = opacity;
@@ -287,7 +322,7 @@
                     translateY = calcValue(values.messageB_transY_out);
                     objects.messageB.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.5) && (scrollRate < 0.62)) {
+                } else if ((scrollRate >= 0.38) && (scrollRate < 0.47)) {
 
                     opacity = calcValue(values.messageC_fade_in);
                     objects.messageC.style.opacity = opacity;
@@ -295,7 +330,7 @@
                     translateY = calcValue(values.messageC_transY_in);
                     objects.messageC.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.62) && (scrollRate < 0.75)) {
+                } else if ((scrollRate >= 0.47) && (scrollRate < 0.56)) {
 
                     opacity = calcValue(values.messageC_fade_out);
                     objects.messageC.style.opacity = opacity;
@@ -303,7 +338,7 @@
                     translateY = calcValue(values.messageC_transY_out);
                     objects.messageC.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.75) && (scrollRate < 0.87)) {
+                } else if ((scrollRate >= 0.56) && (scrollRate < 0.65)) {
 
                     opacity = calcValue(values.messageD_fade_in);
                     objects.messageD.style.opacity = opacity;
@@ -311,16 +346,22 @@
                     translateY = calcValue(values.messageD_transY_in);
                     objects.messageD.style.transform = `translateY(${translateY}%)`;
 
-                } else if ((scrollRate >= 0.87) && (scrollRate < 0.92)) {
+                } else if ((scrollRate >= 0.65) && (scrollRate < 0.89)) {
 
                     opacity = calcValue(values.messageD_fade_out);
                     objects.messageD.style.opacity = opacity;
 
                     translateY = calcValue(values.messageD_transY_out);
                     objects.messageD.style.transform = `translateY(${translateY}%)`;
+                }
+                
+                // canvas 관련 애니메이션
+                if ((scrollRate >= 0.68) && (scrollRate < 0.87)) {
+                    
+                    opacity = calcValue(values.canvas_fade_out);
+                    objects.canvas.style.opacity = opacity;
 
                 }
-
                 // console.log("0번 섹션의 애니메이션이 돌고 있어요.");
                 break;
 
@@ -351,6 +392,10 @@
 
         // 2. 현재 섹션값을 가지고 온다.
         currentSection = getCurrentSection();
+        // 그냥 getCurrentSection();만 쓰지 않고 currentSection 변수에 대입해서 사용한 이유? 리더빌리티 향상을 위해
+        // = getCurrentSection 함수에서 currentSection이 아니라 section을 리턴한 이유?
+        // getCurrentSection(); 이렇게만 해도 구현상의 문제는 하나도 없다.
+        // 다만 이렇게 해두어야, 이것만 봐도 '현재 섹션을 구해서 저 변수에 넣는구나'를 직관적으로 알 수 있기 때문에
 
         // 섹션별 스크롤값을 초기화해보자.
         sectionYOffset = yOffset - getPrevSectionHeight();
@@ -378,13 +423,27 @@
 
         // 3) 현재 섹션값을 가지고 온다.
         currentSection = getCurrentSection();
+
+        // 4) 캔버스에 이미지를 로딩하고 0번 이미지를 출력하는 함수
+        setCanvas();
+
+        // CSS 변경..
         setBodyID(currentSection);
         setLocalnavMenu();
     });
 
     // 2. 사이즈가 변경되면 setLayout() 다시 호출해준다.
     window.addEventListener('resize', () => {
+
+        // 레이아웃 재설정
         setLayout();
+        currentSection = getCurrentSection();
+        sectionYOffset = yOffset - getPrevSectionHeight();
+
+        // CSS 변경..
+        setBodyID(currentSection);
+        setLocalnavMenu();
+
     });
 
 
