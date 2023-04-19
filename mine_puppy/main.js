@@ -95,6 +95,47 @@
 
     }
 
+    ////// 섹션0의 타이틀에 트랜지션 부여 ---------------------------------------------------------------------
+    const setTitleTransY = function() {
+
+        const $titleTransY = document.querySelector(".sec0_txt_inner");
+        $titleTransY.setAttribute('class', 'sec0_txt_inner_transY');
+
+    }
+
+
+    ////// 화살표 버튼을 클릭하면 최상단으로 스크롤 -----------------------------------------------------------
+    const $scrollBtn = document.querySelector('.scrollToTop');
+    const backToTop = function() {
+        
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
+
+    }
+
+    ////// 화살표 버튼이 섹션0(탑)에 있을 때만 안보이게 --------------------------------------------------------
+    const HideScrollBtn = function() {
+
+        if (yOffset > 0) {
+
+            $scrollBtn.style.opacity = 1;
+
+        } else {
+
+            $scrollBtn.style.opacity = 0;
+
+        }
+
+    }
+
+
+
+
+
+
 
 
 
@@ -107,6 +148,9 @@
 
         // 로컬 내비게이션을 특정 위치부터 고정
         makeLocalNavFixed();
+
+        // 스크롤 버튼이 섹션0(탑)에서만 안보이게
+        HideScrollBtn();
 
     });
 
@@ -122,6 +166,8 @@
         // 로컬 내비게이션을 특정 위치부터 고정
         makeLocalNavFixed();
 
+        setTitleTransY();
+
     });
 
 
@@ -134,6 +180,10 @@
         makeLocalNavFixed();
 
     });
+
+    // 화살표 버튼을 클릭하면 최상단으로 스크롤
+    $scrollBtn.addEventListener('click', backToTop);
+    
 
 
 
