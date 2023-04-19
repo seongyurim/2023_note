@@ -4,7 +4,7 @@
 html {
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
-    /* color: #fff; */
+    background-color: #000;
 }
 
 body {
@@ -44,7 +44,7 @@ section {
 .local_nav {
     position: absolute;
     width: 100%;
-    height: 44px;
+    height: 60px;
     left: 0;
     top: 45px;
 }
@@ -52,7 +52,7 @@ section {
 .global_nav_links{
     display: flex;
     justify-content: space-between;
-    max-width: 1000px;
+    max-width: 70em;
     height: 100%;
     margin: 0 auto;
     align-items: center;
@@ -61,7 +61,7 @@ section {
 .local_nav_links{
     display: flex;
     justify-content: right;
-    max-width: 1000px;
+    max-width: 70em;
     height: 100%;
     margin: 0 auto;
     align-items: center;
@@ -79,10 +79,31 @@ section {
     margin-left: 1em;
 }
 
+.local_nav_fixed > .local_nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #fff;
+    
+    /* 애플공홈에서 누군가가 따온 코드를 그대로 사용 */
+    -webkit-backdrop-filter: saturate(180%) blur(15px);
+	-moz-backdrop-filter: saturate(180%) blur(15px);
+	-o-backdrop-filter: saturate(180%) blur(15px);
+	backdrop-filter: saturate(180%) blur(15px);
+}
+
+.local_nav_fixed .local_nav_links {
+    border: none;
+}
+
 
 
 
 /* 섹션0 영역 ******************************************************************/
+
+#section_0 {
+    position: relative;
+}
 
 .sec0_video {
     position: absolute;
@@ -97,31 +118,30 @@ section {
 }
 
 .sec0_txt {
-    position: relative;
-    /* width: 575px; */
-    height: 100%;
-    z-index: 500;
-
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70em;
+    height: inherit;
     color: #fff;
 }
 
 .sec0_txt_inner {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+    left: 0;
+    bottom: 20%;
+    /* transform: translate(-50%, -50%); */
 }
 
 .sec0_txt_inner_title{
     font-family: 'Raleway', sans-serif;
-    text-align: center;
     margin-bottom: 0.25em;
-    font-size: 7rem;
+    font-size: 5.5rem;
 }
 
 .sec0_txt_inner_subtitle{
-    text-align: center;
     line-height: 1.8em;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 300;
 }
