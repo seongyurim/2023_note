@@ -4,7 +4,7 @@
 html {
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
-    color: #fff;
+    /* color: #fff; */
 }
 
 body {
@@ -93,6 +93,7 @@ section {
     overflow: hidden;
     z-index: -99;
     filter: brightness(50%);
+    color: #fff;
 }
 
 .sec0_txt {

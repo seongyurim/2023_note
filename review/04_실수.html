@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 실수는 '근사치'이다. 이를 절대 잊지 말자.
+        // 1과 1.0은 bit 배열 자체가 다르다.
+        let aa = 1.0;
+        console.log(aa + 0.2, aa + 0.2 === 1.2); // 1.2 true
+
+
+        let ab = 0.25;
+        console.log(ab + 0.2, ab + 0.2 === 0.45); // 0.45 true
+
+
+        let ac = 0.25 * 10;
+        let total1 = 0.0;
+        for (let i = 0; i < 10; i++) {
+
+            total1 = total1 + 0.25;
+
+        }
+        console.log(total1 === ac); // true
+
+
+        let ad = 0.0025 * 11;
+        let total2 = 0.0;
+        for (let i = 0; i < 10; i++) {
+
+            total2 = total2 + 0.0025;
+
+        }
+        console.log(total2 === ad); // false
+        console.log(total2, ad); // 0.24999999 0.0275
+        console.log(total2 < ad); // true
+        // total과 ad는 같아야 하는데 이렇게 오차가 발생하였다.
+
+        
+
+        // 따라서 실수끼리는 비교하는 것이 위험하다.
+        // 실수는 근사치에 진입하면 오차가 발생하게 되어 있다.
+        // 그래서 개발자는 오차의 허용범위를 생각하면서 코딩해야 한다.
+        // 소수점 두자리까지는 괜찮지만 세자리부터는 위처럼 위험해진다.
+        // 정밀한 소수점 계산을 할 때에는 자바스크립트의 연산시스템을 사용하지 않고,
+        // 계산을 위한 라이브러리를 따로 사용한다.
+
+    </script>
+    
+</body>
+</html>
