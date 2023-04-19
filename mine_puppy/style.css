@@ -5,6 +5,7 @@ html {
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
     background-color: #000;
+    color: #fff;
 }
 
 body {
@@ -85,7 +86,6 @@ section {
     top: 0;
     border-bottom: 1px solid #fff;
     
-    /* 애플공홈에서 누군가가 따온 코드를 그대로 사용 */
     -webkit-backdrop-filter: saturate(180%) blur(15px);
 	-moz-backdrop-filter: saturate(180%) blur(15px);
 	-o-backdrop-filter: saturate(180%) blur(15px);

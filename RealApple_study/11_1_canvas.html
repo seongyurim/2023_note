@@ -34,7 +34,7 @@
         const ctx = canvas.getContext('2d');
 
         // 2. 이미지를 불러온다.
-        const imgCount = 570;
+        const imgCount = 500;
         let imgElement;
         let imgArray = [];
 
@@ -45,8 +45,8 @@
             // new = '이미지 객체를 heap에 할당한다'
             // HTML에서 img 태그로 DOM에 생성하는 이미지와 new Image()로 만드는 이미지는 완전히 같다.
             imgElement = new Image();
-            imgElement.src = `./image/apple${i}.png`;
-            console.log(`./image/apple${i}.png`);
+            imgElement.src = `./../RealApple/image/apple_${i}.png`;
+            console.log(`./../RealApple/image/apple_${i}.png`);
 
             imgArray.push(imgElement);            
 
