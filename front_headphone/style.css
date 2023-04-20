@@ -1,0 +1,174 @@
+
+/* 태그 영역 *******************************************************************/
+
+html {
+    font-size: 14px;
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    letter-spacing: -0.03rem;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    /* z-index: 999; */
+}
+
+nav {
+    font-family: 'Raleway', sans-serif;
+    z-index: 999;
+}
+
+section {
+    border: 2px solid magenta;
+}
+
+
+
+
+/* 내비게이션 영역 *************************************************************/
+
+.global_nav {
+    position: absolute;
+    width: 100%;
+    height: 44px;
+    left: 0;
+    top: 0;
+}
+
+.local_nav {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    top: 45px;
+}
+
+.global_nav_links{
+    display: flex;
+    justify-content: space-between;
+    max-width: 70em;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+}
+
+.local_nav_links{
+    display: flex;
+    justify-content: right;
+    max-width: 70em;
+    height: 100%;
+    margin: 0 auto;
+    align-items: center;
+    border-bottom: 1px solid #fff;
+
+}
+
+.local_nav_product_link {
+    margin-right: auto;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.local_nav_link {
+    margin-left: 1em;
+}
+
+.local_nav_fixed > .local_nav {
+    position: fixed;
+    left: 0;
+    top: 0;
+    border-bottom: 1px solid #fff;
+    
+    -webkit-backdrop-filter: saturate(180%) blur(15px);
+	-moz-backdrop-filter: saturate(180%) blur(15px);
+	-o-backdrop-filter: saturate(180%) blur(15px);
+	backdrop-filter: saturate(180%) blur(15px);
+}
+
+.local_nav_fixed .local_nav_links {
+    border: none;
+}
+
+.scrollToTop {
+    position: fixed;
+    width:70px;
+    height: 70px;
+    right: 2%;
+    bottom: 3%;
+    z-index: 999;
+    background: url(./image/scrollToTop_mono.png);
+    border: none;
+    outline: none;
+    opacity: 0;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+
+.scrollToTop:hover {
+    background: url(./image/scrollToTop_color.png);
+}
+
+
+
+
+/* 섹션0 영역 ******************************************************************/
+
+#section_0 {
+    position: relative;
+}
+
+.sec0_video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -99;
+    filter: brightness(70%);
+    color: #fff;
+}
+
+.sec0_txt {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 70em;
+    height: inherit;
+    color: #fff;
+}
+
+.sec0_txt_inner {
+    position: absolute;
+    left: 0;
+    bottom: 10%;
+    opacity: 0;
+}
+
+.sec0_txt_inner_transY {
+    position: absolute;
+    left: 0;
+    bottom: 20%;
+    opacity: 1;
+    transition: all 1s ease 0.2s;
+}
+
+.sec0_txt_inner_title{
+    font-family: 'Raleway', sans-serif;
+    margin-bottom: 0.25em;
+    font-size: 5.5rem;
+}
+
+.sec0_txt_inner_subtitle{
+    line-height: 1.8em;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
