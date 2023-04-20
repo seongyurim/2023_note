@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 객체의 값을 조회/추가/삭제/변경(CRUD)
+
+
+        // 객체 기본(리터럴)으로 만드는 방법
+        const obj1 = {
+            name : '이순신',
+            job : '군인',
+            age : 40,
+            married : true,
+            fight : function() {
+
+                console.log("FIGHT!");
+
+            },
+            arr : [1, 2, 3]
+        };
+        console.log(obj1.name); // 이순신
+        console.log(obj1['age']); // 40
+
+
+        // value 변경하기
+        obj1.job = '영웅';
+        obj1['job'] = '가장';
+
+        // key 삭제하기(잘 쓰지 않음)
+        delete obj1.job;
+
+        // 오브젝트에 함수도 넣을 수 있다.
+        obj1.fight();
+
+        // 오브젝트 속 배열의 참조값을 새로운 변수에 넣었다.
+        let newArr = obj.arr;
+
+        // 배열의 0번째 값을 변경하였다.
+        newArr[0] = 3;
+
+
+        let a = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+        // 배열에 배열이 들어가 있네? NO
+
+    </script>
+    
+</body>
+</html>

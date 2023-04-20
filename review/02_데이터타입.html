@@ -42,14 +42,16 @@
 
         let aa = 'abc'; // 자바스크립트에서는 이렇게 쓰는 것이 적합
         let ab = "abc"; // 하지만 왜 이렇게들 쓰는가? 다른 메이저 언어들이 이렇게 사용하므로
-        let ac = 'src="./test.jpg" ' // 이렇게 문자열 안에 쌍따옴표를 써야 할 일이 있기 때문에 자바스크립트의 문자열에는 홑따옴표를 쓰는 것이 적합하다.
+
+        let ac = 'src="./test.jpg" '
+        // 이렇게 문자열 안에 쌍따옴표를 써야 할 일이 있기 때문에 자바스크립트의 문자열에는 홑따옴표를 쓰는 것이 적합하다.
 
 
 
         // 스트링의 형태
-        let ba = "abc"; // abc                      // 1. 일반문자열
+        let ba = "abc";              // abc         // 1. 일반문자열
         let bb = "ab" + "cd" + true; // abcdtrue    // 2. 연산문자열
-        let bc = `test_${ba}`; // test_abc          // 3. 템플릿 문자열
+        let bc = `test_${ba}`;       // test_abc    // 3. 템플릿 문자열
 
 
 
@@ -63,8 +65,8 @@
         //     <li>b</li>
         // </ul>
 
-        // 위 코드는 이런 의미: "<ul>한줄띄기탭<li>a</li>한줄띄기탭<li>b</li>한줄띄기</ul>"
-        let ul = "<ul>\n\t<li>a</li>\n\t<li>b</li>\n</ul>";
+        // 위 코드는 이런 의미 = "<ul>한줄띄기탭<li>a</li>한줄띄기탭<li>b</li>한줄띄기</ul>"
+        let ul                 = "<ul>\n\t<li>a</li>\n\t<li>b</li>\n</ul>";
         console.log(ul);
 
 

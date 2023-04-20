@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        (function(){
+
+            let a = 10;     // block-level scope - 블럭{ } 안에서만 접근 가능
+            var b = 20;     // function-level scope - 함수 안에 있다면 어디서든 접근 가능
+
+        })();
+
+
+
+        // 블럭 레벨 스코프
+        if (1) {
+            let a = 10;
+        }
+        console.log(a); // not defined
+
+        // 함수 레벨 스코프
+        if (1) {
+            var b = 10;
+        }
+        console.log(b); // 10 정상출력
+
+        
+
+
+
+        // 스코프 체이닝 예시
+        // 조금 이상하지만 이해는 할 수 있는 코드
+
+        let a = 100;
+
+        const f1 = function() {
+
+            let a = 10; // 여기에서도 a 정의를 안했으면 또 올라간다.
+
+            const f2 = function() {
+
+                let a = 20; // 여기에서 a 정의를 안했으면 위로 올라가서 찾는다.
+                console.log(a);
+
+            }
+
+            f2();
+
+        }
+
+        f1();
+        
+    </script>
+    
+</body>
+</html>

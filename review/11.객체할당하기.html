@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 객체를 Heap에 할당하는 방법
+
+        //// 오브젝트 만들기--------------------------------------------------------------------
+
+        // 1. 리터럴 방식
+        let product1 = {
+            name : 'mouse',
+            color : 'red',
+            getColor : function() {
+                return this.color;  // = product1.color
+            }
+        };
+        // - 2보다 직관적이다.
+        // - 속도도 10% 정도 빠르다고 한다(?). 사실 너무 적은 차이라 의미가 없기는 하다.
+
+
+
+
+        // 2. new를 통한 생성
+        // 생성자(Constructor, 객체를 초기화하는 함수)를 통해
+        let product2 = new Object();
+        product2.name = 'keyboard';
+        product2.color = 'black';
+
+
+        // 1, 2는 완전히 같은 객체를 만들어낸다.
+        console.log(product1);
+        console.log(product2);
+
+
+
+        //// 배열 만들기 ---------------------------------------------------------------------
+
+        // 1. 리터럴 방식
+        let arr1 = [1, 2, 3];           // 초기화
+
+        // 2. new를 통한 생성
+        let arr2 = new Array();         // 빈 배열을 만드는 것 뿐. 초기화가 된 것은 아님
+        arr2[0] = 1;                    // 대입
+        arr2[1] = 2;
+        arr2[2] = 3;
+
+        // 따라서,
+        let arr3 = new Array(1, 2, 3);  // 이렇게 초기화한다.
+        // MDN array() 생성자 검색해보기
+
+        let arr4 = new Array(10);       // 빈 배열에 10개의 공간만 만듦
+                                        // 콘솔: (10) [비어 있음 x 10]
+
+        console.log(arr1);
+        console.log(arr2);
+        console.log(arr3);
+        console.log(arr4);
+
+
+        let a = 10;
+        a = 20;
+        // 다른 모든 언어는 a 자리를 할당해서 그 자리에 10을 넣고, 그 뒤에 20을 다시 넣는다.
+        // 그런데 자바스크립트는 a 자리를 할당해서 10을 넣고, 다른 a 자리를 할당해서 20을 넣는다.(-_-;)
+
+
+
+
+
+
+
+
+
+        /////////////////////////////////////////////////////////////////////////////////////
+        //// 오브젝트, 배열 모두 포함 -------------------------------------------------------
+
+        // 3. 함수로 만들기
+        const Product = function(name, color) {
+
+            this.name = name;           // this = 현재 함수가 소속되어 있는 객체
+            this.color = color;
+            // console.log(this);
+
+        }
+        Product();      // 위 함수 구현부 없애고 콘솔만 넣으면 window 객체 정보가 나옴
+        // 객체를 만드는 함수에는 변수명 앞자에 대문자를 쓴다.
+
+        const pp = new Product("keyboard", "black");
+        console.log(pp);
+
+        const kb1 = new Product("keyboard-model1", "black");
+        const kb2 = new Product("keyboard-model2", "white");
+        console.log(kb1);
+        console.log(kb2);
+
+
+    </script>
+    
+</body>
+</html>

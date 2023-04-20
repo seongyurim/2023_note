@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 논리연산: 결과가 true, false로 나오는 연산
+
+        // 1. 참(true): 거짓이 아닌 것
+        // 2. 거짓(false): 거짓인 것
+        // 3. 논리연산자(>, <, >=, <=, ==, ===, !, &&, ||) !는 토글
+
+        let a = true;
+        console.log(a); // true
+
+        a = !a; // a = !true
+        console.log(a); // false
+
+        let a1 = !false;
+        console.log(a1); // true
+
+        let a2 = !!false;
+        console.log(a2); // false
+
+
+
+        // Short Circuit (단축회로)
+
+        // ( a ) && ( b ) 어디를 먼저 계산할까? a부터 한다.
+        // ( false ) && ( b ) 라면? 첫연산이 false였으니 다음연산을 진행하지 않는다.
+
+        let err = false;
+        err = false;
+        err && console.error("에러발생");   // 윗줄이 true면 에러발생
+        err || console.log("정상");         // 윗줄이 false면 정상
+        // 위의 두 줄 코드를 한 줄로 이어붙여 사용하기도 한다.
+        // 위의 두 줄 코드는 자바스크립트의 전형적 코드 중 하나이므로 기억해두면 좋다.
+        // 위의 에러 코드는 아래의 if문과 같은 의미이다.
+
+        // if (err === true) {
+
+        //     console.error("에러발생");
+
+        // } // 에러발생
+
+
+
+        // // 강사님은 위를 아래처럼 코딩하신다.
+        // // 위의 두 줄 코드와 속도 차이가 전혀 없다.
+        // // 리더빌리티가 더욱 우수하다.
+        // if (err) {
+
+        //     err && console.error("에러발생");
+
+        // } else {
+
+        //     err || console.log("정상");
+
+        // }
+
+
+        // 삼항연산자
+        // 연산자가 ?, : 두 개가 사용되었음
+        // 첫번째 항 - err가 true인가?
+        // 두번째 항 - false
+        // 세번째 항 - true
+        err ? console.error("에러발생") : console.log("정상");
+
+        (a > 10) ? console.error("에러발생") : console.log("정상"); // 정상
+        // 이렇게 간단한 연산은 if문 대신 삼항연산자를 사용할 수 있다.
+
+
+
+        if (1 == true) {
+
+            console.log("1은 true입니다.");
+
+        } // 1은 true입니다. 정상리턴
+        // 1을 boolean으로 바꾼다? 그 자체가 넌센스
+        // 참 같은 값(truthy)로 여기기 때문에 리턴된 것
+        // 1은 true로(truthy), 0은 false로(falsy) 고려된다(considered).
+        // truthy, falsy 용어를 알아두자.
+
+
+        if (1 === true) {
+
+            console.log("1은 true입니다.");
+
+        } // 리턴되지 않음
+
+
+        // truthy를 이용해서 이렇게 많이 쓰임
+        while(1) {
+
+            // 무한루프를 돌겠다는 의미
+
+        }
+
+        
+        if (new Data()) {};
+        // = 'data가 힙 영역에 잘 할당이 되었다면'
+        
+        
+        let ar1 = [1, 2, 3];            // null이 나올 확률이 비교적 있음
+        let ar2 = new Array(1, 2, 3);   // null이 나올 확률이 비교적 적음
+        // 두 코드는 완전히 같은 의미
+
+        if (ar2) {
+
+            console.log("메모리 할당이 잘 되었어요.");
+
+        } else {
+
+            console.error("메모리 할당을 실패했어요.");
+        }
+
+
+        // null이면 무한반복하도록 만들기
+        while (ar2 == null) {
+
+            ar2 = new Array(1, 2, 3);
+        }
+
+
+
+
+        let b1 = 0;
+        let b2 = 1;
+    
+        // 위 코드를 이렇게도 표현할 수 있다.
+        // 새로 생긴 기능
+        let c1 = 0, c2 = 1;
+
+    </script>
+    
+</body>
+</html>
