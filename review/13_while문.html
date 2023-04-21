@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 1. 루프카운트가 결정되지 않는 경우에 사용한다.
+        // 2. 조건(boolean expression, condition)이 참이면 무조건 작동한다.
+        // 우선 돌아라! 그런데~(조건 달기)
+        // 실제 개발자들은 A코드 형식을 더 많이 사용한다.
+
+        // A코드
+        let r = 0;
+        while(true) {
+            if (r >= 10) {
+                break;
+            }            
+            console.log(r);
+            r++;
+        }
+
+        console.log("---------------------------------");
+
+
+        // B코드
+        let w = 0;
+        while (w < 10) {
+            console.log(w);
+            w++;
+        }
+
+
+
+        console.log("---------------------------------");
+
+        // do-while
+        // while: 조건을 본 뒤 true이면 실행
+        // do-while: 실행을 먼저 한 뒤에 조건 확인
+        // 사용자에게 뭔가 물어봐야 한다. 그 값에 따라 움직여야 한다.
+        // ex: do {사용자에게 물어보는 코드. 답이 yes로 나왔다} while(yes면 실행한다 no면 다시 메뉴를 띄워준다);
+        // 실제로 잘 사용하지는 않는다. (옛날 linux, dos 프로그램에서만 많이 썼었다.)
+
+        let a = 10;
+        do {
+
+            console.log(a);
+
+        } while(a < 0); // 10이 정상출력됨
+
+
+        let b = 10;
+        do {
+
+            let b = 5;
+            console.log(b); // 독립된 공간(블록 레벨 스코핑)을 구성할 때 유용(꼼수;;)
+
+        } while(false); // 5 한번만 실행되고 바로 종료됨(false가 보이면 꼼수구나! 감지)
+        
+
+    </script>
+    
+</body>
+</html>

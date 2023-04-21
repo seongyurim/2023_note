@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 세 수를 제곱으로 만들기
+        const add = function(a, b, c) {
+            return Math.pow(a + b + c, 2);
+        }
+
+        // yOffset = window.scrollY; // 윈도우의 스크롤Y 값을 yOffset에다가 대입하는구나.
+        // setYOffset(window.scrollY); // 윈도우의 스크롤Y 값을 설정하는구나.
+
+
+
+
+        // 3.2. 함수는 어떻게 만들어야 하나?
+
+        // 두 수를 더해서 제곱하는 함수
+        const AddnSquare = function(val1, val2) {
+
+            let result = 0;
+
+
+
+
+            return result;
+
+        }
+
+        // 문자열에서 숫자의 갯수를 구하는 함수
+        const getNumCount = function(str) { // 파라미터 자리에는 string보다 str가 낫다.
+
+            let numCount = 0;
+            let arr = [...str];
+
+            for (let i = 0; i < arr.length; i++) {
+
+                if (arr[i] === Number) {
+
+                    arr.push(arr[i]);
+                }
+
+                i++;
+
+            }
+
+            numCount = arr.length;
+
+            return numCount;
+
+        }
+        getNumCount("ab123fde3f");
+
+        // 문자열에서 HTTP가 있는지 확인하는 함수(true or false)
+        // 강사님이라면
+        const findString = function(strTarget, strSource="http") { // 디폴트값까지 부여하면 더욱 좋겠다.
+
+
+        }
+        findString("http://www.naver.com", "https");
+
+
+
+
+
+
+        // ------ 함수객체? --------------------------------------------------------------------------------
+
+        const f = function(a) { // f에는 함수객체의 참조값을 대입한다.
+
+            console.log("hello!");
+
+        }
+
+        // 위 함수의 참조값을 파라미터로 넘겼다.
+        const func = function(callback) {
+
+            callback();
+
+        }
+
+        func(f);
+
+
+        // 배열의 참조값을 리턴시켰다.
+        const ffff = function() {
+
+            let a = [1, 2, 3];
+
+            return a;
+
+        }
+        console.log(ffff());
+
+        // 함수객체가 리턴되었다.
+        const fff2 = function() {
+
+            let a = function() {
+
+                console.log("그래 나는 함수객체야");
+            }
+
+            return a;
+
+        }
+        console.log(fff2());
+
+
+        function sayHello() {
+
+            return function() {
+
+                console.log("Hello!");
+
+            }
+
+        }
+        sayHello();
+
+
+
+
+
+
+
+    </script>
+    
+</body>
+</html>

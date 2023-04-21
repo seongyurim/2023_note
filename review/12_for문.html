@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        (function(){
+            
+            let ar = [1, 2, 3, 4, 5];
+
+            // 기본 for문
+            for (let i = 0; i < ar.length; i++) {
+
+                console.log(ar[i]);
+
+            }
+
+            console.log("---------------------------------");
+
+            // for-in문: key로 찍는다.
+            for (const key in ar) {
+
+                console.log(key);
+
+            }
+
+            console.log("---------------------------------");
+
+            // for-of문: value로 찍는다.
+            for (const value of ar) {
+
+                console.log(value);
+
+            }
+
+
+
+            // 오브젝트를 for문으로 순회하려면 애매해진다. key가 정수값이 아니기 때문에
+            // 따라서 for-in이나 for-of가 더 적절하다.
+            // for-of를 했더니 iterable 오류메세지가 떴다. (나중에 설명)
+            let mouse = {
+                name : 'logi-mouse',
+                button : 3,
+                color : 'black',
+                wireless : false
+            }
+
+
+            for (const key in mouse) {
+
+                console.log(mouse[key]);
+
+            }
+
+
+
+        })();
+
+    </script>
+    
+</body>
+</html>
