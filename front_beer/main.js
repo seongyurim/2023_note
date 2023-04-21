@@ -32,7 +32,7 @@
         // section_1
         {
             height : 0,
-            hMultiple : 3,
+            hMultiple : 1,
             objs : {
                 container : document.querySelector("#section_1"),
 
@@ -43,7 +43,7 @@
         // section_2
         {
             height : 0,
-            hMultiple : 2,
+            hMultiple : 1,
             objs : {
                 container : document.querySelector("#section_2"),
             },

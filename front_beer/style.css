@@ -29,6 +29,12 @@ section {
     border: 2px solid magenta;
 }
 
+footer {
+
+    height: 300px;
+    text-align: center;
+}
+
 
 
 
@@ -53,27 +59,30 @@ section {
 .global_nav_links{
     display: flex;
     justify-content: space-between;
-    max-width: 70em;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 5rem;
     align-items: center;
 }
 
 .local_nav_links{
     display: flex;
     justify-content: right;
-    max-width: 70em;
     height: 100%;
-    margin: 0 auto;
+    margin: 0 5rem;
     align-items: center;
     border-bottom: 1px solid #fff;
 
 }
 
 .local_nav_product_link {
+    font-family: 'Josefin Sans', sans-serif;
     margin-right: auto;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 2rem;
+    /* font-weight: bold; */
+}
+
+.local_nav_product_link > img {
+    width: 40px;
 }
 
 .local_nav_link {
@@ -125,50 +134,57 @@ section {
 }
 
 .sec0_video {
-    position: absolute;
+    position: relative;
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
+    object-fit: none;
     overflow: hidden;
     z-index: -99;
-    filter: brightness(70%);
+    filter: brightness(50%);
     color: #fff;
 }
 
 .sec0_txt {
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 70em;
+    left: 0;
+    top: 0;
+    width: 100vw;
     height: inherit;
     color: #fff;
 }
 
 .sec0_txt_inner {
     position: absolute;
-    left: 0;
-    bottom: 10%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -30%);
+    text-align: center;
     opacity: 0;
 }
 
 .sec0_txt_inner_transY {
     position: absolute;
-    left: 0;
-    bottom: 20%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    text-align: center;
     opacity: 1;
-    transition: all 1s ease 0.2s;
+    transition: all 1s ease 0.5s;
 }
 
 .sec0_txt_inner_title{
-    font-family: 'Raleway', sans-serif;
-    margin-bottom: 0.25em;
-    font-size: 5.5rem;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 7rem;
+    letter-spacing: -0.3rem;
+    line-height: 1.2;
+    font-weight: 400;
 }
 
 .sec0_txt_inner_subtitle{
-    line-height: 1.8em;
-    font-size: 1.2rem;
-    font-weight: 300;
+    margin-bottom: 1em;
+    font-size: 2.4rem;
+    opacity: 0.7;
 }
+
