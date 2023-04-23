@@ -32,7 +32,7 @@
         // section_1
         {
             height : 0,
-            hMultiple : 1,
+            hMultiple : 2,
             objs : {
                 container : document.querySelector("#section_1"),
 
@@ -46,6 +46,16 @@
             hMultiple : 1,
             objs : {
                 container : document.querySelector("#section_2"),
+            },
+            vals : {}
+        },
+
+        // section_3
+        {
+            height : 0,
+            hMultiple : 2,
+            objs : {
+                container : document.querySelector("#section_3"),
             },
             vals : {}
         }
@@ -95,6 +105,7 @@
 
     }
 
+
     ////// 섹션0의 타이틀에 트랜지션 부여 ---------------------------------------------------------------------
     const setTitleTransY = function() {
 
@@ -116,6 +127,7 @@
 
     }
 
+
     ////// 화살표 버튼이 섹션0(탑)에 있을 때만 안보이게 --------------------------------------------------------
     const HideScrollBtn = function() {
 
@@ -130,6 +142,45 @@
         }
 
     }
+
+
+    ////// 스크롤된 시점의 섹션명 도출 ---------------------------------------------------
+    const getCurrentSection = function() {
+
+        let segment = [
+            sectionSet[0].height,
+            sectionSet[0].height + sectionSet[1].height,
+            sectionSet[0].height + sectionSet[1].height + sectionSet[2].height,
+            sectionSet[0].height + sectionSet[1].height + sectionSet[2].height + sectionSet[3].height
+        ]
+
+        let section = 0
+
+        if (yOffset <= segment[0]) {
+            section = 0;
+        }
+        else if ((yOffset > segment[0]) && (yOffset <= segment[1])) {
+            section = 1;
+        }
+        else if ((yOffset > segment[1]) && (yOffset <= segment[2])) {
+            section = 2;
+        }
+        else if ((yOffset > segment[2]) && (yOffset <= segment[3])) {
+            section = 3;
+        }
+        else {
+            // 올 일이 없지만 작성해둔다.
+            console.error("[ERROR] getCurrentSection()");
+        }
+        return section;
+    }
+
+
+    ////// body ID를 section0에서 1로 변경
+    const setBodyID = function(section) {
+        document.body.setAttribute("id", `show_section${section}`);
+    }
+
 
 
 
@@ -152,6 +203,13 @@
         // 스크롤 버튼이 섹션0(탑)에서만 안보이게
         HideScrollBtn();
 
+        // 현재 섹션값 가져오기
+        currentSection = getCurrentSection();
+        console.log(currentSection);
+
+        // CSS 변경..
+        setBodyID(currentSection);
+
     });
 
 
@@ -166,7 +224,15 @@
         // 로컬 내비게이션을 특정 위치부터 고정
         makeLocalNavFixed();
 
+        // 탑 텍스트 트랜지션
         setTitleTransY();
+
+        // 현재 섹션값 가져오기
+        currentSection = getCurrentSection();
+
+        // CSS 변경..
+        setBodyID(currentSection);
+
 
     });
 
