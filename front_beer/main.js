@@ -26,18 +26,40 @@
             objs : {
                 container : document.querySelector("#section_0"),
             },
-            vals : {}
+            vals : {
+
+            }
         },
     
         // section_1
         {
             height : 0,
-            hMultiple : 4,
+            hMultiple : 5,
             objs : {
                 container : document.querySelector("#section_1"),
-
+                messageA : document.querySelector(".sec1_msg.a"),
+                messageB : document.querySelector(".sec1_msg.b"),
+                messageC : document.querySelector(".sec1_msg.c"),
+                messageD : document.querySelector(".sec1_msg.d"),
+                messageE : document.querySelector(".sec1_msg.e"),
+                messageF : document.querySelector(".sec1_msg.f")
             },
-            vals : {}
+            vals : {
+                messageA_fade_in : [0, 1, {start: 0.02, end: 0.10}],
+                messageA_fade_out : [1, 0, {start: 0.12, end: 0.20}],
+        
+                messageB_fade_in : [0, 1, {start: 0.22, end: 0.30}],
+                messageB_fade_out : [1, 0, {start: 0.32, end: 0.40}],
+        
+                messageC_fade_in : [0, 1, {start: 0.42, end: 0.50}],
+                messageC_fade_out : [1, 0, {start: 0.52, end: 0.60}],
+        
+                messageD_fade_in : [0, 1, {start: 0.62, end: 0.70}],
+                messageD_fade_out : [1, 0, {start: 0.72, end: 0.80}],
+        
+                messageE_fade_in : [0, 1, {start: 0.82, end: 0.90}],
+                messageE_fade_out : [1, 0, {start: 0.92, end: 1.00}]    
+            }
         },
     
         // section_2
@@ -62,7 +84,7 @@
     ];
 
 
-    //// 각 섹션의 높이 지정 ----------------------------------------------
+    ////// 각 섹션의 높이 지정 -------------------------------------------------------------------------------
     const setLayout = function() {
 
         let height = 0;
@@ -144,7 +166,7 @@
     }
 
 
-    ////// 스크롤된 시점의 섹션명 도출 ---------------------------------------------------
+    ////// 스크롤된 시점의 섹션명 도출 ------------------------------------------------------------------------
     const getCurrentSection = function() {
 
         let segment = [
@@ -169,20 +191,180 @@
             section = 3;
         }
         else {
-            // 올 일이 없지만 작성해둔다.
+            // 발생할 일이 없지만~
             console.error("[ERROR] getCurrentSection()");
         }
         return section;
     }
 
 
-    ////// body ID를 section0에서 1로 변경
+    ////// body ID를 섹션에 맞게 변경 -----------------------------------------------------------------------
     const setBodyID = function(section) {
         document.body.setAttribute("id", `show_section${section}`);
     }
 
 
+    ////// 이전 섹션의 높이 구하기 --------------------------------------------------------------------------
+    const getPrevSecHeight = function() {
 
+        let prevHeight = 0;
+
+        for (let i = 0; i < currentSection; i++) {
+            prevHeight = prevHeight + sectionSet[i].height;
+        }
+        return prevHeight;
+    }
+
+
+    ////// 애니메이션 범위 할당 ----------------------------------------------------------------------------
+    const calcValue = function(values) {
+
+        let result = 0; // 결과(CSS값)
+        let ratio = 0;  // 비율
+
+        // 부분 애니메이션 계산 시 필요한 변수
+        let partStart = 0;
+        let partEnd = 0;
+        let partDistance = 0;
+
+        // 현재 섹션의 높이
+        const curHeight = sectionSet[currentSection].height;
+
+        // [1, 0];
+        if (values.length === 2) {
+
+            // 비율 구하기
+            ratio = sectionYOffset / curHeight;
+
+            // 비율에 따른 CSS값 구하기
+            result = ((values[1] - values[0]) * ratio) + values[0];
+
+        }
+
+        // [1, 0, {start, end}]
+        else if (values.length === 3) {
+
+            partStart = values[2].start * curHeight;
+            partEnd = values[2].end * curHeight;
+            partDistance = partEnd - partStart;
+
+            if (sectionYOffset < partStart) {
+
+                result = values[0];
+
+            } else if (sectionYOffset > partEnd) {
+
+                result = values[1];
+            } else {
+
+                ratio = (sectionYOffset - partStart) / partDistance;
+                result = ((values[1] - values[0]) * ratio) + values[0];
+ 
+            }
+
+        }
+
+        return result;
+
+    }
+
+
+    ////// 섹션별 애니메이션 실행 -------------------------------------------------------------------
+    const playAnimation = function() {
+
+        let opacity = 0;
+        let scrollRate = sectionYOffset / sectionSet[currentSection].height; // 0~1 사이의 값이 나온다.
+
+        let values = sectionSet[currentSection].vals;
+        let objects = sectionSet[currentSection].objs;
+
+        switch(currentSection) {
+        // 현재 스크롤된 위치가 어느 섹션인가?
+
+            case 0:
+                // console.log("0번 섹션 애니메이션 실행중");
+                break;
+                
+            case 1:
+
+                // 스크롤업 시 투명도 0%
+                objects.messageA.style.opacity = 0;
+                objects.messageB.style.opacity = 0;
+                objects.messageC.style.opacity = 0;
+                objects.messageD.style.opacity = 0;
+                objects.messageE.style.opacity = 0;
+               
+                if (scrollRate < 0.12) {                                        // messageA
+
+                    opacity = calcValue(values.messageA_fade_in);
+                    objects.messageA.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.12) && (scrollRate < 0.22)) {
+
+                    opacity = calcValue(values.messageA_fade_out);
+                    objects.messageA.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.22) && (scrollRate < 0.32)) {       // messageB
+
+                    opacity = calcValue(values.messageB_fade_in);
+                    objects.messageB.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.32) && (scrollRate < 0.42)) {
+
+                    opacity = calcValue(values.messageB_fade_out);
+                    objects.messageB.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.42) && (scrollRate < 0.52)) {       // messageC
+
+                    opacity = calcValue(values.messageC_fade_in);
+                    objects.messageC.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.52) && (scrollRate < 0.62)) {
+
+                    opacity = calcValue(values.messageC_fade_out);
+                    objects.messageC.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.62) && (scrollRate < 0.72)) {       // messageD
+
+                    opacity = calcValue(values.messageD_fade_in);
+                    objects.messageD.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.72) && (scrollRate < 0.82)) {
+
+                    opacity = calcValue(values.messageD_fade_out);
+                    objects.messageD.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.82) && (scrollRate < 0.92)) {       // messageE
+
+                    opacity = calcValue(values.messageE_fade_in);
+                    objects.messageE.style.opacity = opacity;
+
+                } else if ((scrollRate >= 0.92) && (scrollRate < 0.95)) {
+
+                    opacity = calcValue(values.messageE_fade_out);
+                    objects.messageE.style.opacity = opacity;
+
+                }
+
+                // console.log("1번 섹션 애니메이션 실행중");
+                break;
+
+            case 2:
+                // console.log("2번 섹션 애니메이션 실행중");
+                break;
+
+            case 3:
+                // console.log("3번 섹션 애니메이션 실행중");
+                break;
+
+            default:
+                console.error("[ERROR] playAnimation()");
+                break;
+
+        }
+
+    }
+    
 
 
 
@@ -207,8 +389,14 @@
         currentSection = getCurrentSection();
         console.log(currentSection);
 
+        // 섹션별 스크롤값 초기화
+        sectionYOffset = yOffset - getPrevSecHeight();
+
         // CSS 변경..
         setBodyID(currentSection);
+
+        // 애니메이션 실행
+        playAnimation();
 
     });
 
@@ -242,10 +430,20 @@
         // 레이아웃 재설정
         setLayout();
 
+        // 현재 섹션값 가져오기
+        currentSection = getCurrentSection();
+
+        // 섹션별 스크롤값 초기화
+        sectionYOffset = yOffset - getPrevSecHeight();
+
         // CSS 변경
         makeLocalNavFixed();
 
+        setBodyID(currentSection);
+
     });
+
+
 
     // 화살표 버튼을 클릭하면 최상단으로 스크롤
     $scrollBtn.addEventListener('click', backToTop);
