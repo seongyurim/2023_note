@@ -32,7 +32,7 @@
         // section_1
         {
             height : 0,
-            hMultiple : 2,
+            hMultiple : 4,
             objs : {
                 container : document.querySelector("#section_1"),
 
@@ -129,7 +129,7 @@
 
 
     ////// 화살표 버튼이 섹션0(탑)에 있을 때만 안보이게 --------------------------------------------------------
-    const HideScrollBtn = function() {
+    const hideScrollBtn = function() {
 
         if (yOffset > 0) {
 
@@ -201,7 +201,7 @@
         makeLocalNavFixed();
 
         // 스크롤 버튼이 섹션0(탑)에서만 안보이게
-        HideScrollBtn();
+        hideScrollBtn();
 
         // 현재 섹션값 가져오기
         currentSection = getCurrentSection();

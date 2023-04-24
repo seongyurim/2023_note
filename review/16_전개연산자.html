@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 배열에 사용
+
+        const ar1 = [1, 2, 3];
+        const ar2 = ar1; // 얕은 복사
+        const ar3 = [...ar1]; // 깊은 복사
+        console.log(ar2);
+        console.log(ar3);
+
+
+
+        // 오브젝트에 사용
+
+        const logiMouse = {
+            name : 'logi-mouse',
+            color : 'black'
+        }
+
+        const logiMouseWireless = {
+            ...logiMouse,
+            wired : false
+        }
+
+        console.log(logiMouse); // {name: 'logi-mouse', color: 'black'}
+        console.log(logiMouseWireless); // {name: 'logi-mouse', color: 'black', wired: false}
+
+    </script>
+    
+</body>
+</html>

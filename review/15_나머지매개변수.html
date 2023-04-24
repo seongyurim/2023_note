@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 1. 나머지 파라미터
+        // 가변적인 파라미터를 갯수와 상관 없이 배열로 한번에 받는 것
+        // 실무에서 많이 쓰이지는 않으나, 적재적소에 잘 쓰면 아주 유용
+        // 모든 언어에서 통용되는 개념
+        const testFunction = function(...args) {
+
+            console.log(args.length);
+            console.log(Array.isArray(args));
+
+        }
+
+        // testFunction(1, 2, 3); // 1 // true
+        // testFunction(1, 2, 3, 4, 5); // 5 // true
+        // testFunction([1, 2, 3, 4]); // 1 // true
+
+        // 어떤 파라미터가 들어와도 숫자 요소를 모두 더하는 함수
+        // (1, 2, 3, 4, 5)와 ([1, 2, 3, 4])가 어떤 차이점이 있지?
+        const add = function(first, ...args) {
+
+            let target = undefined;
+            let total = 0;
+
+            if (Array.isArray(first)) {
+
+                target = first;
+
+            } else {
+
+                target = args;
+                target.push(first);
+
+            }
+
+            for (const val of target) {
+
+                total += val;
+
+            }
+
+            return total;
+
+        }
+
+        console.log(add(1, 2, 3, 4, 5)); // 15
+        console.log(add([1, 2, 3, 4])); // 10
+        console.log(add([1, 2])); // 3
+
+
+
+
+    </script>
+    
+</body>
+</html>
