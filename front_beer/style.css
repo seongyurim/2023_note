@@ -2,10 +2,12 @@
 /* 태그 영역 *******************************************************************/
 
 html {
+    width: 100%;
     font-size: 14px;
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: #000;
-    color: #fff;
+    /* background-color: #000;
+    color: #fff; */
+    color: #292929;
 }
 
 body {
@@ -15,8 +17,8 @@ body {
 }
 
 a {
+    color: inherit;
     text-decoration: none;
-    color: #fff;
 }
 
 nav {
@@ -40,6 +42,7 @@ footer {
 /* 내비게이션 영역 *************************************************************/
 
 .global_nav {
+    color: #fff;
     position: absolute;
     width: 100%;
     height: 44px;
@@ -48,6 +51,8 @@ footer {
 }
 
 .local_nav {
+    font-size: 1.3rem;
+    color: #fff;
     position: absolute;
     width: 100%;
     height: 60px;
@@ -69,23 +74,17 @@ footer {
     height: 100%;
     margin: 0 5rem;
     align-items: center;
-    border-bottom: 1px solid #fff;
-
+    /* border-bottom: 1px solid #fff; */
 }
 
 .local_nav_product_link {
     font-family: 'Josefin Sans', sans-serif;
     margin-right: auto;
     font-size: 2rem;
-    /* font-weight: bold; */
-}
-
-.local_nav_product_link > img {
-    width: 40px;
 }
 
 .local_nav_link {
-    margin-left: 1em;
+    margin-left: 2em;
 }
 
 .local_nav_fixed > .local_nav {
@@ -102,6 +101,18 @@ footer {
 
 .local_nav_fixed .local_nav_links {
     border: none;
+}
+
+/* 섹션0 이외에서 로컬내비 색상 변경 - font */
+.local_nav_overSec0 {
+    color: #292929;
+    transition: all 0.5s ease;
+}
+
+/* 섹션0 이외에서 로컬내비 색상 변경 - border */
+.local_nav_fixed > .local_nav_overSec0 {
+    border-bottom: 1px solid #292929;
+    transition: all 0.5s ease;
 }
 
 .scrollToTop {
@@ -130,19 +141,14 @@ footer {
 
 #section_0 {
     position: relative;
+    overflow: hidden;
 }
 
-.sec0_video {
-    position: relative;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: none;
-    overflow: hidden;
-    z-index: -99;
+.sec0_video > video {
     filter: brightness(50%);
-    color: #fff;
+    width: 100vw;    
+    height: 100vh;
+    object-fit: cover;
 }
 
 .sec0_txt {
@@ -152,39 +158,70 @@ footer {
     width: 100vw;
     height: inherit;
     color: #fff;
+    overflow: hidden;
 }
 
-.sec0_txt_inner {
+.sec0_txt_title{
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -30%);
-    text-align: center;
-    opacity: 0;
-}
-
-.sec0_txt_inner_transY {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -40%);
-    text-align: center;
-    opacity: 1;
-    transition: all 1s ease 0.5s;
-}
-
-.sec0_txt_inner_title{
+    left: 0;
+    top: 13%;
     font-family: 'Josefin Sans', sans-serif;
-    font-size: 7rem;
-    letter-spacing: -0.3rem;
-    line-height: 1.2;
+    font-size: 15rem;
+    letter-spacing: -1.5rem;
     font-weight: 400;
+    word-spacing: -0.5rem;
+    opacity: 0.8;
+
+    display: flex;
+    animation: txt 40s infinite linear;
+    text-overflow: clip;
 }
 
-.sec0_txt_inner_subtitle{
-    margin-bottom: 1em;
-    font-size: 2.4rem;
-    opacity: 0.7;
+@keyframes txt {
+    from {
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+    to {
+      -webkit-transform: translate3d(-100%, 0, 0);
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+/* @keyframes txt {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+} */
+
+.sec0_txt_title > div {
+    flex-shrink: 0;
+    margin-right: 3rem;
+}
+
+.sec0_txt_subtitle_left{
+    font-family: 'Josefin Sans', sans-serif;
+    position: absolute;
+    left: 0;
+    top: 35%;
+    margin: 0 5rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+    opacity: 0.8;
+}
+
+.sec0_txt_subtitle_right{
+    position: absolute;
+    right: 0;
+    top: 35%;
+    margin: 0 5rem;
+    font-size: 1.6rem;
+    opacity: 0.8;
+    text-align: right;
+    font-weight: 300;
 }
 
 

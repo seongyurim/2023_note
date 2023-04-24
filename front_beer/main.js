@@ -34,7 +34,7 @@
         // section_1
         {
             height : 0,
-            hMultiple : 5,
+            hMultiple : 8,
             objs : {
                 container : document.querySelector("#section_1"),
                 messageA : document.querySelector(".sec1_msg.a"),
@@ -128,13 +128,26 @@
     }
 
 
-    ////// 섹션0의 타이틀에 트랜지션 부여 ---------------------------------------------------------------------
-    const setTitleTransY = function() {
+    ////// 로컬 내비게이션 컬러 변경 ----------------------------------------------------------------------
+    const changeLocalNavColor = function() {
 
-        const $titleTransY = document.querySelector(".sec0_txt_inner");
-        $titleTransY.setAttribute('class', 'sec0_txt_inner_transY');
+        const $localNav = document.querySelector(".local_nav");
+        if (currentSection > 0) {
+            $localNav.classList.add('local_nav_overSec0')
+        } else {
+            $localNav.classList.remove('local_nav_overSec0');
+        }
 
     }
+
+
+    // ////// 섹션0의 타이틀에 트랜지션 부여 ---------------------------------------------------------------------
+    // const setTitleTransY = function() {
+
+    //     const $titleTransY = document.querySelector(".sec0_txt_inner");
+    //     $titleTransY.setAttribute('class', 'sec0_txt_inner_transY');
+
+    // }
 
 
     ////// 화살표 버튼을 클릭하면 최상단으로 스크롤 -----------------------------------------------------------
@@ -394,6 +407,7 @@
 
         // CSS 변경..
         setBodyID(currentSection);
+        changeLocalNavColor();
 
         // 애니메이션 실행
         playAnimation();
@@ -412,15 +426,14 @@
         // 로컬 내비게이션을 특정 위치부터 고정
         makeLocalNavFixed();
 
-        // 탑 텍스트 트랜지션
-        setTitleTransY();
+        // // 탑 텍스트 트랜지션
+        // setTitleTransY();
 
         // 현재 섹션값 가져오기
         currentSection = getCurrentSection();
 
         // CSS 변경..
         setBodyID(currentSection);
-
 
     });
 
