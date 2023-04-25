@@ -42,7 +42,12 @@
                 messageC : document.querySelector(".sec1_msg.c"),
                 messageD : document.querySelector(".sec1_msg.d"),
                 messageE : document.querySelector(".sec1_msg.e"),
-                messageF : document.querySelector(".sec1_msg.f")
+
+                imageA : document.querySelector(".sec1_img.f"),
+                imageB : document.querySelector(".sec1_img.g"),
+                imageC : document.querySelector(".sec1_img.h"),
+                imageD : document.querySelector(".sec1_img.i"),
+                imageE : document.querySelector(".sec1_img.j")
             },
             vals : {
                 messageA_fade_in : [0, 1, {start: 0.02, end: 0.10}],
@@ -318,56 +323,72 @@
                 objects.messageC.style.opacity = 0;
                 objects.messageD.style.opacity = 0;
                 objects.messageE.style.opacity = 0;
+                objects.imageA.style.opacity = 0;
+                objects.imageB.style.opacity = 0;
+                objects.imageC.style.opacity = 0;
+                objects.imageD.style.opacity = 0;
+                objects.imageE.style.opacity = 0;
                
                 if (scrollRate < 0.12) {                                        // messageA
 
                     opacity = calcValue(values.messageA_fade_in);
                     objects.messageA.style.opacity = opacity;
+                    objects.imageA.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.12) && (scrollRate < 0.22)) {
 
                     opacity = calcValue(values.messageA_fade_out);
                     objects.messageA.style.opacity = opacity;
+                    objects.imageA.style.opacity = opacity;
+
 
                 } else if ((scrollRate >= 0.22) && (scrollRate < 0.32)) {       // messageB
 
                     opacity = calcValue(values.messageB_fade_in);
                     objects.messageB.style.opacity = opacity;
+                    objects.imageB.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.32) && (scrollRate < 0.42)) {
 
                     opacity = calcValue(values.messageB_fade_out);
                     objects.messageB.style.opacity = opacity;
+                    objects.imageB.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.42) && (scrollRate < 0.52)) {       // messageC
 
                     opacity = calcValue(values.messageC_fade_in);
                     objects.messageC.style.opacity = opacity;
+                    objects.imageC.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.52) && (scrollRate < 0.62)) {
 
                     opacity = calcValue(values.messageC_fade_out);
                     objects.messageC.style.opacity = opacity;
+                    objects.imageC.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.62) && (scrollRate < 0.72)) {       // messageD
 
                     opacity = calcValue(values.messageD_fade_in);
                     objects.messageD.style.opacity = opacity;
+                    objects.imageD.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.72) && (scrollRate < 0.82)) {
 
                     opacity = calcValue(values.messageD_fade_out);
                     objects.messageD.style.opacity = opacity;
+                    objects.imageD.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.82) && (scrollRate < 0.92)) {       // messageE
 
                     opacity = calcValue(values.messageE_fade_in);
                     objects.messageE.style.opacity = opacity;
+                    objects.imageE.style.opacity = opacity;
 
                 } else if ((scrollRate >= 0.92) && (scrollRate < 0.95)) {
 
                     opacity = calcValue(values.messageE_fade_out);
                     objects.messageE.style.opacity = opacity;
+                    objects.imageE.style.opacity = opacity;
 
                 }
 

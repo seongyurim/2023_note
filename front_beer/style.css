@@ -264,6 +264,16 @@ footer {
     width: 40vw;
 }
 
+.sec1_img {
+    opacity: 1;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    height: 4em;
+    z-index: -99;
+}
+
 #show_section1 .sticky_element {
     display: block;
+    position: fixed;
 }
