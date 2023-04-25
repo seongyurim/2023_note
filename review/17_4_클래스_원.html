@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 원 클래스를 만들어봅시다.
+        // 원 클래스의 필요한 기능
+        // 1. 원의 둘레를 구할 수 있어야 한다.
+        // 2. 원의 넓이도 구할 수 있어야 한다.
+
+        class Circle {
+
+            pi = 3.14;
+            // 아래 생성자 영역 대신 이곳에 놓을 수도 있음
+            // 하지만 기존 문법(변수는 생성자에 놓는다)을 완전히 깨는 방식이었음
+            // 2022년에 개정된 자바스크립트 문법에 추가된  최신 문법임
+            // 모든 브라우저에서 지원
+            // 따라서 이곳에서는 Attribute의 선언 및 고정값 초기화(가독성 향상)
+
+            constructor(radius) {
+
+                // 생성자의 파라미터로 받은 값을 통한 초기화
+                this.radius = radius;
+                // this.pi = 3.14;
+
+            }
+            
+            // 둘레 = (반지름*2) * 3.14
+            getCircum() {
+                return Math.floor(this.radius * 2 * this.pi);
+            }
+
+            // 넓이 = 반지름^2 * 3.14
+            getArea() {
+                return Math.floor((Math.pow(2, this.radius)) * this.pi);
+            }
+
+            // 파이값을 3.14가 아니라 3.1415같이 오류 범위를 줄이고 싶은 경우가 생긴다면
+            setPi(pi) {
+                this.pi = pi;
+           }
+
+        }
+
+        const cir1 = new Circle(10);
+        console.log("원1의 둘레: " + cir1.getCircum());
+        console.log("원1의 넓이: " + cir1.getArea());
+
+        const cir2 = new Circle(15);
+        console.log("원2의 둘레: " + cir2.getCircum());
+        console.log("원2의 넓이: " + cir2.getArea());
+
+    </script>
+    
+</body>
+</html>

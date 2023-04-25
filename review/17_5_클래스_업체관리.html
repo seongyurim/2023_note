@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // '최고돈까스'라는 업체를 관리하는 SW를 만들려고 합니다.
+        // 메뉴: 돈까스(10,000원), 생선까스(9,000원), 돈까스세트(12,000원)
+        // 매출은 날짜, 순번, 메뉴, 수량, 매출액 데이터를 저장해야 해요.
+        // 매출을 출력하는 기능도 필요해요. 날짜를 넣으면 매출 데이터를 출력해줘야 해요.
+        // ex. 최고돈까스 매출현황: 20230425 / 350,000원
+        
+        const Menu = {
+            pork : 10000,
+            fish : 9000,
+            porkSet : 12000
+        };
+
+        class Sale {
+
+            brand = '최고돈까스';
+            date;
+            order;
+            menu;
+            count;
+            sales;
+
+            constructor(date, order, menu, count) {
+                this.date = date;
+                this.order = order;
+                this.menu = menu;
+                this.count = count;
+                this.sales = Menu[menu] * count;
+
+            }
+        }
+
+
+        const SalesData = [];
+
+        let ss = new Sale('20230425', 1, '돈까스', 3);
+        SalesData.push(ss);
+
+        ss = new Sale('20230425', 2, '돈까스세트', 1);
+        SalesData.push(ss);
+
+        ss = new Sale('20230425', 3, '생선까스', 2);
+        SalesData.push(ss);
+
+        ss = new Sale('20230426', 1, '생선까스', 1);
+        SalesData.push(ss);
+
+        ss = new Sale('20230426', 2, '돈까스', 10);
+        SalesData.push(ss);
+
+
+
+        const getSales = function(date) {
+
+            let total = 0;
+            for (const sale of SalesData) {
+                if (sale.date === date) {
+                    total = total + sale.sales;
+                }
+            }
+            return total;
+        }
+
+        console.log(getSales("20230425"));
+
+
+
+
+    </script>
+    
+</body>
+</html>

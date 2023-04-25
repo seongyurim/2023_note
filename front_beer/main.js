@@ -75,7 +75,7 @@
         // section_3
         {
             height : 0,
-            hMultiple : 2,
+            hMultiple : 1,
             objs : {
                 container : document.querySelector("#section_3"),
             },
@@ -177,6 +177,18 @@
         }
 
     }
+
+
+    ////// 부제목 트랜지션 ------------------------------------------------------------------------------------
+    const sec0_subtitle_transY = function() {
+
+        const $subtitle_left = document.querySelector(".sec0_txt_subtitle_left");
+        const $subtitle_right = document.querySelector(".sec0_txt_subtitle_right");
+        $subtitle_left.classList.add('sec0_txt_subtitle_left_transY');
+        $subtitle_right.classList.add('sec0_txt_subtitle_right_transY');
+
+    }
+
 
 
     ////// 스크롤된 시점의 섹션명 도출 ------------------------------------------------------------------------
@@ -400,7 +412,7 @@
 
         // 현재 섹션값 가져오기
         currentSection = getCurrentSection();
-        console.log(currentSection);
+        // console.log(currentSection);
 
         // 섹션별 스크롤값 초기화
         sectionYOffset = yOffset - getPrevSecHeight();
@@ -434,6 +446,7 @@
 
         // CSS 변경..
         setBodyID(currentSection);
+        sec0_subtitle_transY();
 
     });
 
@@ -451,6 +464,8 @@
 
         // CSS 변경
         makeLocalNavFixed();
+        sec0_subtitle_transY();
+
 
         setBodyID(currentSection);
 

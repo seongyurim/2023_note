@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        class Rectangle {
+
+            constructor(height, width) { // constructor = 생성자(객체의 초기화용). 이름이 정해져 있음
+
+                this.height = height;
+                this.width = width;
+
+            }
+
+            getWidth() {
+
+                return this.width;
+
+            }
+
+            getHeight() {
+
+                return this.height;
+
+            }
+
+        }
+
+        const myRect1 = new Rectangle(10, 20); // 초기화
+        const myRect2 = new Rectangle;         // 초기화할 수 없음
+        // new Rectangle() => Rectangle이라는 클래스를 객체화시켜라!
+        //                 => Rectangle templete을 객체화시켜라!
+        //                 => 메모리에 올라가는 데이터가 아니다.
+        //                 => 메모리에 올리기 위한 데이터타입일 뿐이다.
+        // new             => heap 영역에 올리기 위한 명령어
+        // (10, 20);       => 생성자 호출
+        
+
+
+        console.log("Height = " + myRect1.getHeight());
+        console.log("Width = " + myRect1.getWidth());
+
+    </script>
+    
+</body>
+</html>

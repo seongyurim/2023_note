@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 원생 정보 관리 SW를 구현하려 합니다.
+        // 학생 정보는 이름, 학번, 전공
+        // 학생은 전공에 따라 캠퍼스가 바뀔 수 있어요.
+        // (예를 들어 전공이 A면 서울캠퍼스, B면 성남캠퍼스)
+        // 학생클래스를 설계하고 코딩해보세요.
+
+        class Student {
+
+            constructor(name, grade, major, campus) {
+
+                // 클래스 내에서 사용되는 변수 = Attribute(속성)                
+                this.name = name;
+                this.grade = grade;
+                this.major = major;
+                this.campus = campus;
+
+            }
+
+            // 클래스에 소속된 함수 = Method(메소드)
+            getName() {
+                return this.name;
+            }
+
+            getGrade() {
+                return this.grade;
+            }
+
+            getMajor() {
+                return this.major;
+            }
+
+            setCampus() {
+
+                if ((this.major == "경영학") || (this.major == "컴퓨터공학")) {
+                    this.campus = "서울";
+
+                } else {
+                    this.campus = "성남";
+
+                }
+                return this.campus;
+            }
+
+        }
+
+        const stu1 = new Student('강아지', 23, '경영학');
+        console.log("학생1의 이름: " + stu1.getName());
+        console.log("학생1의 학번: " + stu1.getGrade());
+        console.log("학생1의 전공: " + stu1.getMajor());
+        console.log("학생1의 캠퍼스: " + stu1.setCampus());
+        console.log(stu1);
+        
+        const stu2 = new Student('고양이', 21, '건축학');
+        console.log("학생2의 이름: " + stu2.getName());
+        console.log("학생2의 학번: " + stu2.getGrade());
+        console.log("학생2의 전공: " + stu2.getMajor());
+        console.log("학생2의 캠퍼스: " + stu2.setCampus());
+        console.log(stu2);
+
+        const stu3 = new Student('햄스터', 22, '컴퓨터공학');
+        console.log("학생3의 이름: " + stu3.getName());
+        console.log("학생3의 학번: " + stu3.getGrade());
+        console.log("학생3의 전공: " + stu3.getMajor());
+        console.log("학생3의 캠퍼스: " + stu3.setCampus());
+        console.log(stu3);
+
+    </script>
+    
+</body>
+</html>
