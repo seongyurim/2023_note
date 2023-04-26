@@ -267,8 +267,8 @@ footer {
 .sec1_img {
     opacity: 1;
     position: absolute;
-    left: calc(50% - 105px);
-    top: calc(50% - 105px);
+    left: calc(25%);
+    top: calc(30% - 105px);
     /* height: 4em; */
     z-index: -99;
 }

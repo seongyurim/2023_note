@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        const Menus = {
+            후라이드치킨 : 12000,
+            양념치킨 : 14000,
+            갈비양념치킨 : 20000
+        };
+
+        class SalesManager {
+            #brandName; // # = 해당 클래스 외부에서 접근이 불가한 Private Attribute
+                        // 변수명이 brandName이고, 앞에 #을 붙여서 외부접근이 불가해졌구나! No!
+                        // 변수명이 #brandName이고, 이게 Private Attribute구나! Yes!
+                        // 따라서 brandName과 #brandName은 완전히 다르다! Public과 Private의 차이
+                        // 자바스크립트만 이렇게 함
+
+            constructor(menu, brandName) {
+                this.menu = menu;
+                this.#brandName = brandName;
+                this.SalesData = [];
+            }
+
+            // 매출 추가하기
+            addSale(date, menu, count) {
+                // Inner Class
+                class Sale {
+                    date;
+                    menu;
+                    count;
+                    amount;
+
+                    constructor(date, menu, count) {
+                        this.date = date;
+                        this.menu = menu;
+                        this.count = count;
+                        this.amount = Menus[menu] * count;
+                    }
+                };
+
+                // Sale 객체 생성
+                const SaleObj = new Sale(date, menu, count);
+                this.SalesData.push(SaleObj);
+            }
+
+            // 매출액 합계 구하기
+            getAmount(date) {
+                let total = 0;
+                for (const sale of this.SalesData) {
+                    if (sale.date === date) {
+                        total = total + sale.amount;
+                    }
+                }
+                return total;
+            }
+
+            // 특정 날짜의 매출이 몇 건인가?
+            getSalesCount(date) {
+                let count = 0;
+                for (const sale of this.SalesData) {
+                    if (sale.date === date) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            
+            // GETTER
+            // 정상적인 방법(어플리케이션에서 허가하는 방법)으로
+            // 변수값을 '읽는' 이러한 함수를 'getter(게터)'라고 한다.
+            // 의미를 꼭 알아두자!!
+            getBrandName() {
+                return this.#brandName;
+            }
+
+            // SETTER
+            // 정상적인 방법(어플리케이션에서 허가하는 방법)으로
+            // 변수값을 '설정'하는(쓰는) 이러한 함수를 'setter(세터)'라고 한다.
+            setBrandName(brand) {
+                this.#brandName = brand;
+            }
+
+
+            // 아래 두개 함수는 최신문법
+            // 이렇게 쓰면 바깥에서 출력할 때 ()를 쓰지 않아도 된다.
+            // 크게 권장되지 않으며 몰라도 된다.
+            // get brandName() {
+            //     return this.#brandName;
+            // }
+
+            // set brandName(brand) {
+            //     this.#brandName = brand;
+            // }
+
+        };
+
+        const bestChicken = new SalesManager(Menus, '최고양념통닭');
+        bestChicken.addSale('20230425', '후라이드치킨', 2);
+        bestChicken.addSale('20230425', '양념치킨', 1);
+        console.log(bestChicken.SalesData[0]);
+        console.log(bestChicken.SalesData[1]);
+        console.log(bestChicken.getAmount('20230425')); // 38000
+        console.log(bestChicken.getSalesCount('20230425')); // 2
+
+
+        // brandName ---------------------------------------------------------------------------------------------------------------
+        bestChicken.brandName = '동네양념통닭';
+        // 밖에서 클래스를 뚫고 들어와서(부적절한 방법) 브랜드명을 변경한 것
+        // 이렇게 외부에서 접근할 수 없도록 할 수 있다.
+        // 무조건 접근을 못시키도록 한다는 것이 아니라 정상적인 방법으로만 접근할 수 있게 한다는 뜻이다.
+
+        // 그 방법은?
+        // Step 1. brandName을 외부에서 접근하지 못하게 한다.
+        // brandName 앞에 #을 넣는다. 변경이 불가능해졌다.
+        // bestChicken.#brandName = '우린망했어요';
+        // console.log(bestChicken.getBrandName()); // 최고양념통닭
+        // Step 2. brandName을 접근하는 정상적인 방법을 제공한다.(중요)
+        // console.log(bestChicken.setBrandName('BSTC')); // BSTC
+
+        // getter, setter가 필요한 이유
+        // 정상적인 방법(정해진 규칙)을 제공해주기 위해서
+        // 아무 변수나 접근해서 마구잡이로 바꾸지 않게 하도록 하기 위해서
+        // ex. 내 집에 아무나 들어와도 되나? 당연히 안된다. 벨을 울리고 신원을 밝혀야 그 택배기사에게 문을 열어줄 수 있다.
+        // 변수의 값을 호출하는 게 게터, 변경하는 게 세터이다? 이것은 정확한 정의가 아니다.
+        // 정상적인 방법인지 아닌지가 선행이 되어야 하는 개념이기 때문이다.
+        // 예를 들어 setAverage 세터는 존재 자체가 오류이다.
+        // 국영수 평균을 구해야 하는데 저 세터로 인해 새로운 값이 세팅된다면? 말도 안된다!
+        // 꼭 기억하자!!!!!!!!!!
+        // 게터와 세터가 필요한 클래스인지 생각을 해봐야 한다.
+        // 위의 setAverage처럼 존재 자체가 오류인 경우가 있기 때문이다.
+
+        // bestChicken.brandName = '우린망했어요';
+        // console.log(bestChicken.brandName); // #brandName이 기존에 있고, brandName이 없어서 새로 생겨버렸다. 주의하기
+
+        // bestChicken.brandName = "BEST 치킨";
+        // console.log(bestChicken.brandName);
+
+
+        // menu --------------------------------------------------------------------------------------------------------------------
+        bestChicken.menu['후라이드치킨'] = 10;
+
+
+    </script>
+    
+</body>
+</html>

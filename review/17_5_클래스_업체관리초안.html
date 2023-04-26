@@ -16,12 +16,14 @@
         // 매출을 출력하는 기능도 필요해요. 날짜를 넣으면 매출 데이터를 출력해줘야 해요.
         // ex. 최고돈까스 매출현황: 20230425 / 350,000원
         
+        // 메뉴데이터
         const Menu = {
             pork : 10000,
             fish : 9000,
             porkSet : 12000
         };
 
+        // 매출건
         class Sale {
 
             brand = '최고돈까스';
@@ -41,22 +43,22 @@
             }
         }
 
-
+        // 매출배열
         const SalesData = [];
 
-        let ss = new Sale('20230425', 1, '돈까스', 3);
+        let ss = new Sale('20230425', 1, 'pork', 3);
         SalesData.push(ss);
 
-        ss = new Sale('20230425', 2, '돈까스세트', 1);
+        ss = new Sale('20230425', 2, 'porkSet', 1);
         SalesData.push(ss);
 
-        ss = new Sale('20230425', 3, '생선까스', 2);
+        ss = new Sale('20230425', 3, 'fish', 2);
         SalesData.push(ss);
 
-        ss = new Sale('20230426', 1, '생선까스', 1);
+        ss = new Sale('20230426', 1, 'fish', 1);
         SalesData.push(ss);
 
-        ss = new Sale('20230426', 2, '돈까스', 10);
+        ss = new Sale('20230426', 2, 'pork', 10);
         SalesData.push(ss);
 
 
