@@ -1,12 +1,16 @@
 
+/* @font-face {
+    font-family: 'YoonGothicPro750';
+    src: url(./fonts/YoonGothicPro750.woff) format('woff'); 
+} */
+
 /* 태그 영역 *******************************************************************/
 
 html {
     width: 100%;
     font-size: 14px;
+    /* font-family: 'YoonGothicPro750'; */
     font-family: 'Noto Sans KR', sans-serif;
-    /* background-color: #000;
-    color: #fff; */
     color: #292929;
 }
 
@@ -33,7 +37,7 @@ nav {
 }
 
 section {
-    border: 2px solid magenta;
+    /* border: 2px solid magenta; */
 }
 
 footer {
@@ -289,3 +293,69 @@ footer {
 .sec1_img.h {left: 40%;}
 .sec1_img.i {left: 55%;}
 .sec1_img.j {left: 58%;}
+
+
+
+/* 섹션2 영역 ******************************************************************/
+
+#section_2 {
+    position: relative;
+}
+
+.sec2_wrap {
+    position: absolute;
+    left: 50%;
+    top: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 85vw;
+    transform: translateX(-50%);
+    height: calc(inherit - 20%);
+    /* margin: 0 5rem; */
+}
+
+.guide_box {
+    position: relative;
+    background-color: #006837;
+    color: #fff;
+    border-radius: 30px;
+    width: 700px;
+    height: 800px;
+    margin: 2rem;
+}
+
+.guide_txt {
+    position: absolute;
+    left: 6%;
+    top: 6%;
+    z-index: 99;
+}
+
+.guide_img {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+}
+
+.guide_title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.3;
+}
+
+.guide_subtitle_eng {
+    font-family: 'Josefin Sans', sans-serif;
+    word-spacing: -0.5rem;
+    font-size: 5.5rem;
+    font-weight: 300;
+    letter-spacing: -0.25rem;
+    line-height: 95%;
+    /* margin-bottom: 1rem; */
+}
+
+.guide_subtitle_kor {
+    font-size: 1.5rem;
+    font-weight: 300;
+    opacity: 0.7;
+}
