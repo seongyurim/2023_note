@@ -50,20 +50,30 @@
                 imageE : document.querySelector(".sec1_img.j")
             },
             vals : {
-                messageA_fade_in : [0, 1, {start: 0.02, end: 0.10}],
-                messageA_fade_out : [1, 0, {start: 0.12, end: 0.20}],
+                messageA_fade_in :       [0, 1,     {start: 0.02, end: 0.10}],
+                messageA_fade_out :      [1, 0,     {start: 0.12, end: 0.20}],
+                messageA_transY_in :     [20, -30,   {start: 0.02, end: 0.10}],
+                messageA_transY_out :    [-30, -60, {start: 0.12, end: 0.20}],
         
-                messageB_fade_in : [0, 1, {start: 0.22, end: 0.30}],
-                messageB_fade_out : [1, 0, {start: 0.32, end: 0.40}],
+                messageB_fade_in :       [0, 1,     {start: 0.22, end: 0.30}],
+                messageB_fade_out :      [1, 0,     {start: 0.32, end: 0.40}],
+                messageB_transY_in :     [20, -30,   {start: 0.22, end: 0.30}],
+                messageB_transY_out :    [-30, -60, {start: 0.32, end: 0.40}],
         
-                messageC_fade_in : [0, 1, {start: 0.42, end: 0.50}],
-                messageC_fade_out : [1, 0, {start: 0.52, end: 0.60}],
+                messageC_fade_in :       [0, 1,     {start: 0.42, end: 0.50}],
+                messageC_fade_out :      [1, 0,     {start: 0.52, end: 0.60}],
+                messageC_transY_in :     [20, -30,   {start: 0.42, end: 0.50}],
+                messageC_transY_out :    [-30, -60, {start: 0.52, end: 0.60}],
         
-                messageD_fade_in : [0, 1, {start: 0.62, end: 0.70}],
-                messageD_fade_out : [1, 0, {start: 0.72, end: 0.80}],
+                messageD_fade_in :       [0, 1,     {start: 0.62, end: 0.70}],
+                messageD_fade_out :      [1, 0,     {start: 0.72, end: 0.80}],
+                messageD_transY_in :     [20, -30,   {start: 0.62, end: 0.70}],
+                messageD_transY_out :    [-30, -60, {start: 0.72, end: 0.80}],
         
-                messageE_fade_in : [0, 1, {start: 0.82, end: 0.90}],
-                messageE_fade_out : [1, 0, {start: 0.92, end: 1.00}]    
+                messageE_fade_in :       [0, 1,     {start: 0.82, end: 0.90}],
+                messageE_fade_out :      [1, 0,     {start: 0.92, end: 1.00}],
+                messageE_transY_in :     [20, -30,   {start: 0.82, end: 0.90}],
+                messageE_transY_out :    [-30, -60, {start: 0.92, end: 1.00}], 
             }
         },
     
@@ -316,7 +326,6 @@
                 break;
                 
             case 1:
-
                 // 스크롤업 시 투명도 0%
                 objects.messageA.style.opacity = 0;
                 objects.messageB.style.opacity = 0;
@@ -335,11 +344,17 @@
                     objects.messageA.style.opacity = opacity;
                     objects.imageA.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageA_transY_in);
+                    objects.imageA.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.12) && (scrollRate < 0.22)) {
 
                     opacity = calcValue(values.messageA_fade_out);
                     objects.messageA.style.opacity = opacity;
                     objects.imageA.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageA_transY_out);
+                    objects.imageA.style.transform = `translateY(${translateY}%)`;
 
 
                 } else if ((scrollRate >= 0.22) && (scrollRate < 0.32)) {       // messageB
@@ -348,11 +363,17 @@
                     objects.messageB.style.opacity = opacity;
                     objects.imageB.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageB_transY_in);
+                    objects.imageB.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.32) && (scrollRate < 0.42)) {
 
                     opacity = calcValue(values.messageB_fade_out);
                     objects.messageB.style.opacity = opacity;
                     objects.imageB.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageB_transY_out);
+                    objects.imageB.style.transform = `translateY(${translateY}%)`;
 
                 } else if ((scrollRate >= 0.42) && (scrollRate < 0.52)) {       // messageC
 
@@ -360,11 +381,17 @@
                     objects.messageC.style.opacity = opacity;
                     objects.imageC.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageC_transY_in);
+                    objects.imageC.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.52) && (scrollRate < 0.62)) {
 
                     opacity = calcValue(values.messageC_fade_out);
                     objects.messageC.style.opacity = opacity;
                     objects.imageC.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageC_transY_out);
+                    objects.imageC.style.transform = `translateY(${translateY}%)`;
 
                 } else if ((scrollRate >= 0.62) && (scrollRate < 0.72)) {       // messageD
 
@@ -372,11 +399,17 @@
                     objects.messageD.style.opacity = opacity;
                     objects.imageD.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageD_transY_in);
+                    objects.imageD.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.72) && (scrollRate < 0.82)) {
 
                     opacity = calcValue(values.messageD_fade_out);
                     objects.messageD.style.opacity = opacity;
                     objects.imageD.style.opacity = opacity;
+
+                    translateY = calcValue(values.messageD_transY_out);
+                    objects.imageD.style.transform = `translateY(${translateY}%)`;
 
                 } else if ((scrollRate >= 0.82) && (scrollRate < 0.92)) {       // messageE
 
@@ -384,14 +417,18 @@
                     objects.messageE.style.opacity = opacity;
                     objects.imageE.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageE_transY_in);
+                    objects.imageE.style.transform = `translateY(${translateY}%)`;
+
                 } else if ((scrollRate >= 0.92) && (scrollRate < 0.95)) {
 
                     opacity = calcValue(values.messageE_fade_out);
                     objects.messageE.style.opacity = opacity;
                     objects.imageE.style.opacity = opacity;
 
+                    translateY = calcValue(values.messageE_transY_out);
+                    objects.imageE.style.transform = `translateY(${translateY}%)`;
                 }
-
                 // console.log("1번 섹션 애니메이션 실행중");
                 break;
 

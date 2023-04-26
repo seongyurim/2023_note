@@ -14,7 +14,13 @@ body {
     width: 100%;
     overflow-x: hidden;
     letter-spacing: -0.03rem;
+    -ms-overflow-style: none;
 }
+    
+::-webkit-scrollbar {
+    display: none;
+}
+
 
 a {
     color: inherit;
@@ -277,3 +283,9 @@ footer {
     display: block;
     position: fixed;
 }
+
+.sec1_img.f {left: 10%;}
+.sec1_img.g {left: 25%;}
+.sec1_img.h {left: 40%;}
+.sec1_img.i {left: 55%;}
+.sec1_img.j {left: 58%;}
