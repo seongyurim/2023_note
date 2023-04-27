@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class SalesManager {
+            #brandName;
+            #menu;
+
+            constructor(brandName) {
+                this.#menu = {};
+                this.#brandName = brandName;
+                this.SalesData = [];
+            }
+
+            initManager() { // 나중에 이 클래스가 확장되면 추가적인 코딩을 하기 위해 만들어둠
+                return true;
+            }
+
+            setMenu(name, price) {
+                this.#menu[name] = price;
+            }
+
+            getMenu() {
+                return {...this.#menu};
+                // 여기서 return this.#menu를 하면 참조값이 전달되어 원본으로의 접근이 외부에서도 가능해지기 때문에
+                // 이렇게 Deep Copy로 넘겨야 원본이 보존된다.
+            }
+
+            addSale(date, menu, count) {
+                class Sale {
+                    date;
+                    menu;
+                    count;
+                    amount;
+
+                    constructor(date, menu, price, count) {
+                        this.date = date;
+                        this.menu = menu;
+                        this.count = count;
+                        this.amount = price * count;
+                    }
+                };
+
+                const SaleObj = new Sale(date, menu, this.#menu[menu], count);
+                this.SalesData.push(SaleObj);
+            }
+
+            getAmount(date) {
+                let total = 0;
+                for (const sale of this.SalesData) {
+                    if (sale.date === date) {
+                        total = total + sale.amount;
+                    }
+                }
+                return total;
+            }
+
+            getSalesCount(date) {
+                let count = 0;
+                for (const sale of this.SalesData) {
+                    if (sale.date === date) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            
+            getBrandName() {
+                return this.#brandName;
+            }
+
+            setBrandName(brand) {
+                this.#brandName = brand;
+            }
+
+        };
+
+
+        // menu --------------------------------------------------------------------------------------------------------------------
+        const bestChicken = new SalesManager('최고양념통닭'); // 이 객체를 만든다면 무조건 필수로 들어가야 하는 '브랜드명'만 넣었다.
+        bestChicken.initManager({});                          // 나머지는 리더빌리티 향상을 위해 따로 추가한다.
+
+        bestChicken.setMenu('후라이드치킨', 12000);
+        bestChicken.setMenu('양념치킨', 15000);
+        bestChicken.setMenu('반반치킨', 18000);
+
+        // // bestChicken.menu['후라이드치킨'] = 10; // 이렇게 비정상적인 방법으로 수정이 가능하다니. 개선이 필요하다.
+        // console.log(bestChicken);
+
+        // // 클래스 내에서 menu를 모두 #menu로 바꾸니 위 코드가 에러가 난다.
+        // bestChicken.setMenu('반반치킨', 20000); // 이렇게 정상적인 방법으로만 접근이 가능해졌다.
+        // // 이제 getMenu를 만들어 메뉴를 출력하는 함수를 만들 차례이다.
+        // const chickenMenu = bestChicken.getMenu();
+        // console.log(chickenMenu); // 메뉴 오브젝트가 정상적으로 출력되었다.
+
+        // chickenMenu['뿌링클'] = 20000;
+        // console.log(bestChicken); // 뿌링클이 추가되지 않았음(원본이 보호되고 있음)
+        // console.log(chickenMenu); // 뿌링클이 추가되었음(복제본에)
+        // // 이러한 경우가 존재하므로 getter, setter도 충분히 생각한 뒤에 만들어야 한다.
+
+        bestChicken.addSale('20230425', '후라이드치킨', 2);
+        bestChicken.addSale('20230425', '양념치킨', 1);
+
+        bestChicken.SalesData[0].amount = 1000000;
+
+        console.log(bestChicken.getAmount('20230425')); // 39000 정상출력
+
+
+    </script>
+    
+</body>
+</html>

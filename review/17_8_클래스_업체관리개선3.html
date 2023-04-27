@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        class SalesManager {
+            #brandName;
+            #menu;
+            #SalesData; // #SaleData 수정
+
+            constructor(brandName) {
+                this.#menu = {};
+                this.#brandName = brandName;
+                this.#SalesData = []; // #SaleData 수정
+                // 클래스를 개선하다보니 모든 속성에 #을 붙이게 되었다.
+                // 그렇다면 생성자의 모든 속성에는 #을 붙여야 하나?! 맞다! 그것이 기본이다.
+            }
+
+            initManager() {
+                return true;
+            }
+
+            setMenu(name, price) {
+                this.#menu[name] = price;
+            }
+
+            getMenu() {
+                return {...this.#menu};
+            }
+
+            addSale(date, menu, count) {
+                class Sale {
+                    date;
+                    menu;
+                    count;
+                    amount;
+
+                    constructor(date, menu, price, count) {
+                        this.date = date;
+                        this.menu = menu;
+                        this.count = count;
+                        this.amount = price * count;
+                        // 여기는 #이 없네? 필요없는 걸까? 그렇다.
+                        // 외부에서 이 속성들의 존재 여부마저 알 수 없기 때문에 굳이 보호화가 필요 없다.
+                        // addSale 전용 속성들이기 때문이다.
+                    }
+                };
+
+                const SaleObj = new Sale(date, menu, this.#menu[menu], count);
+                this.#SalesData.push(SaleObj); // #SaleData 수정
+            }
+
+            getAmount(date) {
+                let total = 0;
+                for (const sale of this.#SalesData) { // #SaleData 수정
+                    if (sale.date === date) {
+                        total = total + sale.amount;
+                    }
+                }
+                return total;
+            }
+
+            getSalesCount(date) {
+                let count = 0;
+                for (const sale of this.#SalesData) { // #SaleData 수정
+                    if (sale.date === date) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            
+            getBrandName() {
+                return this.#brandName;
+            }
+
+            setBrandName(brand) {
+                this.#brandName = brand;
+            }
+
+        };
+
+
+        // SalesData ---------------------------------------------------------------------------------------------------------------
+        bestChicken.SalesData[0].amount = 1000000;
+        console.log(bestChicken.getAmount('20230425'));
+
+
+    </script>
+    
+</body>
+</html>

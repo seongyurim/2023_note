@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <table id="salesTable" border="1">
+        <tr>
+            <th>날짜</th>
+            <th>품목</th>
+            <th>수량</th>
+            <th>단가</th>
+            <th>판매금액</th>
+        </tr>
+
+    </table>
+
+    <p><button>매출조회</button></p>
+    
+
+
+    <script>
+
+        class SalesManager {
+            #brandName;
+            #menu;
+            #SalesData;
+
+            constructor(brandName) {
+                this.#menu = {};
+                this.#brandName = brandName;
+                this.#SalesData = [];
+            }
+
+            initManager() {
+                return true;
+            }
+
+            setMenu(name, price) {
+                this.#menu[name] = price;
+            }
+
+            getMenu() {
+                return {...this.#menu};
+            }
+
+            // getSalesData() {
+            //     return {...this.#SalesData};
+            // }
+
+            addSale(date, num, menu, count) {
+                class Sale {
+                    date;
+                    num;
+                    menu;
+                    count;
+                    price;
+                    amount;
+
+                    constructor(date, num, menu, price, count) {
+                        this.date = date;
+                        this.num = num;
+                        this.menu = menu;
+                        this.count = count;
+                        this.price = price;
+                        this.amount = price * count;
+                    }
+                };
+
+                const SaleObj = new Sale(date, num, menu, this.#menu[menu], count);
+                this.#SalesData.push(SaleObj);         
+
+            }
+
+            getSalebyIndex(index) {
+
+                if ((index < 0) || (index >= this.#SalesData.length)) {
+                    console.error('[ERROR] getSalebyIndex(), out of index');
+                    return {};
+                }
+                return {
+                    date : this.#SalesData[index].date,
+                    menu : this.#SalesData[index].menu,
+                    count : this.#SalesData[index].count,
+                    amount : this.#SalesData[index].amount,
+                };
+            }
+
+            // 전체 매출액 합계
+            getAmountAll() {
+                let total = 0;
+                for (const sale of this.#SalesData) {
+                    total = total + sale.amount;
+                }
+                return total;
+
+            }
+
+            getAmount(date) {
+                let total = 0;
+                for (const sale of this.#SalesData) {
+                    if (sale.date === date) {
+                        total = total + sale.amount;
+                    }
+                }
+                return total;
+            }
+
+            getSalesCount(date) {
+                let count = 0;
+
+                // date가 없다면 전체 매출 건수를 리턴
+                if (date === undefined) {
+                    return this.#SalesData.length;
+                }
+
+
+
+                for (const sale of this.#SalesData) {
+                    if (sale.date === date) {
+                        count++;
+                    }
+                }
+                return count;
+            }
+            
+            getBrandName() {
+                return this.#brandName;
+            }
+
+            setBrandName(brand) {
+                this.#brandName = brand;
+            }
+
+        };
+
+
+
+        ////// 데이터 입력 /////////////////////////////////////////////////////////////////////////////////
+
+        // 브랜드명 입력
+        const bestChicken = new SalesManager('최고양념통닭');
+
+        // 메뉴 입력
+        bestChicken.setMenu('후라이드치킨', 12000);
+        bestChicken.setMenu('양념치킨', 15000);
+        bestChicken.setMenu('반반치킨', 18000);
+
+        // 매출데이터 입력
+        bestChicken.addSale('20230405', 1, '후라이드치킨', 1);
+        bestChicken.addSale('20230405', 2, '양념치킨', 2);
+        bestChicken.addSale('20230405', 3, '반반치킨', 3);
+        bestChicken.addSale('20230406', 1, '후라이드치킨', 1);
+        bestChicken.addSale('20230406', 2, '양념치킨', 1);
+        bestChicken.addSale('20230406', 3, '반반치킨', 1);
+
+        // 엘리먼트 가져오기
+        const $btnInquiry = document.querySelector('button');
+        const $tblSale = document.querySelector('#salesTable');
+        console.log($btnInquiry);
+        console.log($tblSale);
+        
+        console.log(bestChicken.getSalesCount()); // test
+        console.log(bestChicken.getSalebyIndex(2)); // test
+        
+
+
+        const makeSalesTable = function() {
+
+            let count = bestChicken.getSalesCount(); // 전체카운트
+            let $trElem = undefined;
+            let $tdDate = undefined;
+            let $tdMenu = undefined;
+            let $tdCount = undefined;
+            let $tdPrice = undefined;
+            let $tdAmount = undefined;
+            let $tdTotalAmount = undefined;
+            let $tdTotalAmountTitle = undefined;
+            let sale;
+            let menu = bestChicken.getMenu();
+
+            for (let i = 0; i < count; i++) {
+                
+                sale = bestChicken.getSalebyIndex(i);
+
+                // 1. tr 태그 엘리먼트를 만든다.
+                $trElem = document.createElement('tr');
+                
+                // 2. td 태그 엘리먼트를 만든다.
+                $tdDate = document.createElement('td');
+                $tdDate.textContent = sale.date;
+                $tdMenu = document.createElement('td');
+                $tdMenu.textContent = sale.menu;
+                $tdCount = document.createElement('td');
+                $tdCount.textContent = sale.count;
+                $tdPrice = document.createElement('td');
+                $tdPrice.textContent = menu[sale.menu];
+                $tdAmount = document.createElement('td');
+                $tdAmount.textContent = sale.amount;
+                
+                // 3. td를 tr에 붙인다.
+                $trElem.appendChild($tdDate);
+                $trElem.appendChild($tdMenu);
+                $trElem.appendChild($tdCount);
+                $trElem.appendChild($tdPrice);
+                $trElem.appendChild($tdAmount);
+
+                // 4. tr을 테이블에 붙인다.
+                $tblSale.appendChild($trElem);
+            }
+
+            $trElem = document.createElement('tr');
+
+            $tdTotalAmountTitle = document.createElement('td');
+            $tdTotalAmountTitle.setAttribute('colspan', 4);
+            $tdTotalAmountTitle.textContent = '총매출액';
+
+            $tdTotalAmount = document.createElement('td');
+            $tdTotalAmount.textContent = String(bestChicken.getAmountAll());
+            $trElem.appendChild($tdTotalAmountTitle);
+            $trElem.appendChild($tdTotalAmount);
+
+            $tblSale.appendChild($trElem);
+
+
+        }
+
+
+        $btnInquiry.addEventListener('click', () => {
+
+            makeSalesTable();   // 테이블 만들기
+
+        });
+
+
+
+
+
+
+
+
+        // // 테이블을 스크립트로 가져온다.
+        // const objects = [
+        //     document.querySelectorAll('.date01'),
+        //     document.querySelectorAll('.date02'),
+        //     document.querySelectorAll('.date03'),
+        //     document.querySelectorAll('.date04'),
+        //     document.querySelectorAll('.date05')
+        // ];
+
+        // // 클래스에서 보호되고 있는 판매데이터를 복제해온다.
+        // const dataObj = bestChicken.getSalesData();
+        // console.log(dataObj);
+
+        // // 클래스에서 보호되고 있는 메뉴를 복제해온다.
+        // const menuObj = bestChicken.getMenu();
+        // console.log(menuObj);
+
+        // // 버튼을 클릭하면 테이블에 데이터가 푸시되도록 만든다.
+        // // const $btn = document.querySelector('button');
+        // $btn.addEventListener('click', () => {
+
+        //     for (let i = 0; i < objects.length; i++) {
+    
+        //         objects[i][0].textContent = dataObj[i].date;
+        //         objects[i][1].textContent = dataObj[i].num;
+        //         objects[i][2].textContent = dataObj[i].menu;
+        //         objects[i][3].textContent = dataObj[i].count;
+        //         objects[i][4].textContent = dataObj[i].price;
+        //         objects[i][5].textContent = dataObj[i].amount;
+        //     }
+        // });
+
+
+    </script>
+    
+</body>
+</html>
