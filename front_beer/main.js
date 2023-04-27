@@ -80,7 +80,7 @@
         // section_2
         {
             height : 0,
-            hMultiple : 2.7,
+            hMultiple : 3,
             objs : {
                 container : document.querySelector("#section_2"),
             },
