@@ -34,7 +34,7 @@
         // section_1 : 인트로 스크롤 영역
         {
             height : 0,
-            hMultiple : 7,
+            hMultiple : 4,
             objs : {
                 container : document.querySelector("#section_1"),
                 messageA : document.querySelector(".sec1_msg.a"),
@@ -42,7 +42,11 @@
                 messageC : document.querySelector(".sec1_msg.c"),
                 messageD : document.querySelector(".sec1_msg.d"),
                 messageE : document.querySelector(".sec1_msg.e"),
-                imagePint : document.querySelector(".sec1_img")
+                imagePint : document.querySelector(".sec1_img"),
+
+                // titleA : document.querySelector(".sec2_title_eng_p1"),
+                // titleB : document.querySelector(".sec2_title_eng_p2"),
+                // titleC : document.querySelector(".sec2_title_eng_p3")
             },
             vals : {
                 messageA_fade_in :       [0, 1,     {start: 0.02, end: 0.08}],
@@ -72,26 +76,41 @@
 
                 imagePint_fade_in :      [0, 1,     {start: 0.00, end: 0.80}],
                 imagePint_transY :       [0, -30,   {start: 0.05, end: 0.84}],
-                imagePint_fade_out :     [1, 0,     {start: 0.74, end: 0.90}],
+                imagePint_fade_out :     [1, 0,     {start: 0.74, end: 1.00}],
+
+                // titleA_transX : [-30, 0,  {start: 0.90, end: 1.00}],
+                // titleB_transX : [-30, 0,  {start: 0.90, end: 1.00}],
+                // titleC_transX : [-30, 0,  {start: 0.90, end: 1.00}],
             }
         },
     
         // section_2 : 기네스 가이드 제목 영역
         {
             height : 0,
-            hMultiple : 1,
+            hMultiple : 1.5,
             objs : {
                 container : document.querySelector("#section_2"),
+                titleA : document.querySelector(".sec2_title_eng_p1"),
+                titleB : document.querySelector(".sec2_title_eng_p2"),
+                titleC : document.querySelector(".sec2_title_eng_p3"),
             },
-            vals : {}
+            vals : {
+                titleA_transX : [0, 10,  {start: 0.00, end: 0.70}],
+                titleB_transX : [0, 20,  {start: 0.00, end: 0.70}],
+                titleC_transX : [0, -20, {start: 0.00, end: 0.70}],
+            }
         },
 
         // section_3 : 기네스 가이드 본문 영역
         {
             height : 0,
-            hMultiple : 2.2,
+            hMultiple : 2.85,
             objs : {
                 container : document.querySelector("#section_3"),
+                guideA : document.querySelector(".guide_box.guide1"),
+                guideB : document.querySelector(".guide_box.guide2"),
+                guideC : document.querySelector(".guide_box.guide3"),
+                guideD : document.querySelector(".guide_box.guide4")
             },
             vals : {}
         },
@@ -102,6 +121,9 @@
             hMultiple : 1.4,
             objs : {
                 container : document.querySelector("#section_4"),
+                info_title : document.querySelector('.info_title'),
+                info_subtitle : document.querySelector('.info_subtitle'),
+                info_map : document.querySelector('.map_img'),
             },
             vals : {}
         }
@@ -222,7 +244,8 @@
             sectionSet[0].height,
             sectionSet[0].height + sectionSet[1].height,
             sectionSet[0].height + sectionSet[1].height + sectionSet[2].height,
-            sectionSet[0].height + sectionSet[1].height + sectionSet[2].height + sectionSet[3].height
+            sectionSet[0].height + sectionSet[1].height + sectionSet[2].height + sectionSet[3].height,
+            sectionSet[0].height + sectionSet[1].height + sectionSet[2].height + sectionSet[3].height + sectionSet[4].height
         ]
 
         let section = 0
@@ -238,6 +261,9 @@
         }
         else if ((yOffset > segment[2]) && (yOffset <= segment[3])) {
             section = 3;
+        }
+        else if ((yOffset > segment[3]) && (yOffset <= segment[4])) {
+            section = 4;
         }
         else {
             // 발생할 일이 없지만~
@@ -323,6 +349,7 @@
 
         let opacity = 0;
         let translateY = 0;
+        let translateX = 0;
         let scrollRate = sectionYOffset / sectionSet[currentSection].height; // 0~1 사이의 값이 나온다.
 
         let values = sectionSet[currentSection].vals;
@@ -449,21 +476,60 @@
                     translateY = calcValue(values.messageE_transY_out);
                     objects.messageE.style.transform = `translateY(${translateY}%)`;
                 }
-
-
-
-
-
-
                 // console.log("1번 섹션 애니메이션 실행중");
                 break;
 
             case 2:
+
+                
+                translateX = calcValue(values.titleA_transX);
+                objects.titleA.style.transform = `translateX(${translateX}%)`;
+
+                translateX = calcValue(values.titleB_transX);
+                objects.titleB.style.transform = `translateX(${translateX}%)`;
+
+                translateX = calcValue(values.titleC_transX);
+                objects.titleC.style.transform = `translateX(${translateX}%)`;
+
                 // console.log("2번 섹션 애니메이션 실행중");
                 break;
 
             case 3:
+                if (scrollRate > 0.1) {
+                    objects.guideA.classList.add('on');
+                    objects.guideB.classList.add('on');
+                } else {
+                    objects.guideA.classList.remove('on');
+                    objects.guideB.classList.remove('on');
+                }
+
+                if (scrollRate > 0.4) {
+                    objects.guideC.classList.add('on');
+                    objects.guideD.classList.add('on');
+                } else {
+                    objects.guideC.classList.remove('on');
+                    objects.guideD.classList.remove('on');
+                }
+
+
+                const $info_title = document.querySelector('.info_title');
+                const $info_subtitle = document.querySelector('.info_subtitle');
+                const $info_map = document.querySelector('.sec4_map');
+
+                if (scrollRate > 0.65) {
+                    $info_title.classList.add('on');
+                    $info_subtitle.classList.add('on');
+                    $info_map.classList.add('on');
+                } else {
+                    $info_title.classList.remove('on');
+                    $info_subtitle.classList.remove('on');
+                    $info_map.classList.remove('on');
+                }
                 // console.log("3번 섹션 애니메이션 실행중");
+                break;
+
+            case 4:
+                // console.log("4번 섹션 애니메이션 실행중");
                 break;
 
             default:

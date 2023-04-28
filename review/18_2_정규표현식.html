@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        // 가장 많이 쓰는 정형화된 방식!
+        // 잘 기억해두자
+        let txt1 = '1abcdea';
+        let pattern1 = /a/;
+        let res1 = txt1.match(pattern1);
+        console.log(res1);
+
+        let txt2 = '1abcdea';
+        let pattern2 = /a/g;
+        let res2 = txt2.match(pattern2);
+        console.log(res2);
+
+        let txt3 = '1abcdea';
+        let pattern3 = /a/g;
+        let res3 = txt3.matchAll(pattern3); // RegExpStringIterator {}
+        let ar = [...res3]; // 이터레이터에 있는 대상의 정보를 배열에 쌓는다.
+        console.log(ar);
+
+
+        // Iterator의 의미(중요)
+
+
+
+
+
+
+
+        let email = 'jsh@testcom...';
+
+        // 이메일 확인 정규표현식
+        let pattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        let res = email.match(pattern);
+        console.log(res);
+
+
+
+        // 정규표현식은 실무에서도 이정도로만 만들어 사용하도록 하자.
+        // NT로 시작하고 문자 4개가 나온 뒤에 S로 끝나는 문자열을 찾는 코드
+        let txt4 = "NT-efddS";
+        const pattern4 = /^NT....S$/;
+        console.log(txt4.match(pattern4));
+
+    </script>
+    
+</body>
+</html>

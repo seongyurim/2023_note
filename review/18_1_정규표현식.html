@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+
+        const txt = "Hi my name is jsh, jsh email address is public.biz@gmail.com"
+
+        const txtTokens = txt.split(" ");
+        let pos = [];
+        let obj;
+
+        // for (let i = 0; i < txtTokens.length; i++) {
+        //     if (txtTokens[i] === "jsh") {
+        //         obj = new Object();
+        //         obj.index = i,
+        //         obj.value = "jsh"
+        //     }
+        //     pos.push(obj);
+        // }
+        // console.log(pos);
+
+        // 정규표현식
+
+        // 리터럴방식
+        // const pattern = /jsh/;
+
+        // 정확한 문법으로 표현한 방식(위 리터럴 방식의 결과와 일치함)
+        // const pattern = new RegExp('jsh');
+        // let result = pattern.exec(txt);
+
+        // if (result === null) {
+        //     console.log("못찾았다!");
+        // }
+        // else if (result.length > 0) {
+        //     console.log("jsh를 찾았다! " + result.index);
+        // }
+
+
+
+        const pattern2 = new RegExp('jsh', 'g');
+        let result2;
+
+        while ((result = pattern2.exec(txt) != null)) {
+            console.log("find! ==> " + result2.index);
+        }
+
+
+    </script>
+    
+</body>
+</html>
